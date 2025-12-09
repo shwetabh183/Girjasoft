@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{% static 'build/css/style.min.css' %}" />
     <link rel="stylesheet" href="{% static 'build/css/sweetalert2.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dark-theme.css' %}">
     <link rel="stylesheet" href="{% static 'build/css/summernote-lite.min.css' %}" />
     <link rel="stylesheet" href="{% static 'build/css/orgChart.css' %}" />
     <link rel="stylesheet" href="{% static '/jquery/jqueryui.css' %}">
@@ -49,6 +50,861 @@
     <!-- Bootstrap JS -->
     {% block styles %}
     {% endblock styles %}
+    
+    <!-- Dark Blue Theme for Navbar and Sidebar -->
+    <style>
+        :root {
+            --theme-blue-50: #eff6ff;
+            --theme-blue-100: #dbeafe;
+            --theme-blue-200: #bfdbfe;
+            --theme-blue-300: #93c5fd;
+            --theme-blue-400: #60a5fa;
+            --theme-blue-500: #3b82f6;
+            --theme-blue-600: #2563eb;
+            --theme-blue-700: #1d4ed8;
+            --theme-blue-800: #1e40af;
+            --theme-blue-900: #1e3a8a;
+            --theme-slate-700: #334155;
+            --theme-slate-800: #1e293b;
+            --theme-slate-900: #0f172a;
+        }
+
+        /* ========== SIDEBAR STYLING ========== */
+        .oh-sidebar {
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%) !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .oh-sidebar__company {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+            margin-bottom: 8px !important;
+        }
+
+        .oh-sidebar__company-title {
+            color: white !important;
+            font-weight: 600 !important;
+        }
+
+        .oh-sidebar__company-link {
+            color: var(--theme-blue-400) !important;
+        }
+
+        .oh-sidebar__menu {
+            padding: 8px !important;
+        }
+
+        .oh-sidebar__menu-item {
+            margin-bottom: 4px !important;
+        }
+
+        .oh-sidebar__menu-link {
+            background: transparent !important;
+            border-radius: 12px !important;
+            padding: 12px 16px !important;
+            color: rgba(255, 255, 255, 0.7) !important;
+            transition: all 0.3s ease !important;
+            border: 1px solid transparent !important;
+        }
+
+        .oh-sidebar__menu-link:hover {
+            background: rgba(59, 130, 246, 0.1) !important;
+            color: white !important;
+            border-color: rgba(59, 130, 246, 0.2) !important;
+        }
+
+        .oh-sidebar__menu-link--active {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.15)) !important;
+            color: white !important;
+            border-color: rgba(59, 130, 246, 0.3) !important;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2) !important;
+        }
+
+        .oh-sidebar__menu-link--active::before {
+            background: var(--theme-blue-500) !important;
+            box-shadow: 0 0 10px var(--theme-blue-500) !important;
+        }
+
+        .oh-sidebar__menu-icon {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-radius: 10px !important;
+            padding: 8px !important;
+            margin-right: 12px !important;
+        }
+
+        .oh-sidebar__menu-link--active .oh-sidebar__menu-icon {
+            background: linear-gradient(135deg, var(--theme-blue-500), var(--theme-blue-600)) !important;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+        }
+
+        .oh-sidebar__submenu {
+            background: rgba(0, 0, 0, 0.2) !important;
+            border-radius: 12px !important;
+            margin: 8px 0 8px 20px !important;
+            padding: 8px !important;
+            border-left: 2px solid rgba(59, 130, 246, 0.3) !important;
+        }
+
+        .oh-sidebar__submenu-item {
+            margin-bottom: 2px !important;
+        }
+
+        .oh-sidebar__submenu-link {
+            color: rgba(255, 255, 255, 0.6) !important;
+            padding: 10px 16px !important;
+            border-radius: 8px !important;
+            transition: all 0.2s ease !important;
+            display: block !important;
+        }
+
+        .oh-sidebar__submenu-link:hover {
+            background: rgba(59, 130, 246, 0.15) !important;
+            color: white !important;
+            padding-left: 20px !important;
+        }
+
+        /* Sidebar scrollbar */
+        .oh-sidebar::-webkit-scrollbar {
+            width: 4px !important;
+        }
+
+        .oh-sidebar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02) !important;
+        }
+
+        .oh-sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-radius: 4px !important;
+        }
+
+        /* ========== NAVBAR STYLING ========== */
+        .oh-navbar {
+            background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .oh-navbar__wrapper {
+            padding: 12px 24px !important;
+        }
+
+        .oh-navbar__toggle-menu {
+            filter: brightness(0) invert(1) !important;
+            opacity: 0.8 !important;
+            transition: opacity 0.2s ease !important;
+        }
+
+        .oh-navbar__toggle-menu:hover {
+            opacity: 1 !important;
+        }
+
+        .oh-navbar__page-title {
+            color: white !important;
+        }
+
+        /* Breadcrumbs */
+        .oh-breadcrumb {
+            background: transparent !important;
+        }
+
+        .oh-breadcrumb__item a {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .oh-breadcrumb__item a:hover {
+            color: var(--theme-blue-400) !important;
+        }
+
+        .oh-breadcrumb__item--active {
+            color: white !important;
+        }
+
+        .oh-breadcrumb__separator {
+            color: rgba(255, 255, 255, 0.3) !important;
+        }
+
+        /* Check-in/out button */
+        .oh-navbar__clock {
+            background: linear-gradient(135deg, var(--theme-blue-500), var(--theme-blue-600)) !important;
+            border: none !important;
+            border-radius: 12px !important;
+            padding: 10px 20px !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .oh-navbar__clock:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4) !important;
+        }
+
+        .oh-navbar__clock-icon,
+        .oh-navbar__clock-text {
+            color: white !important;
+        }
+
+        /* Time runner */
+        .time-runner {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 600 !important;
+        }
+
+        /* Action icons */
+        .oh-navbar__action-icons-link {
+            width: 42px !important;
+            height: 42px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-radius: 12px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .oh-navbar__action-icons-link:hover {
+            background: rgba(59, 130, 246, 0.2) !important;
+        }
+
+        .oh-navbar__icon {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-size: 22px !important;
+        }
+
+        .oh-navbar__action-icons-link:hover .oh-navbar__icon {
+            color: var(--theme-blue-400) !important;
+        }
+
+        /* Notification button */
+        .oh-navbar__notification-link {
+            width: 42px !important;
+            height: 42px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-radius: 12px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .oh-navbar__notification-link:hover {
+            background: rgba(59, 130, 246, 0.2) !important;
+        }
+
+        .oh-navbar__notification-link .oh-navbar__icon {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        .oh-navbar__notification-badge {
+            background: linear-gradient(135deg, #f43f5e, #e11d48) !important;
+            border: 2px solid var(--theme-slate-900) !important;
+        }
+
+        /* Notification tray */
+        .oh-navbar__notification-tray {
+            background: rgba(30, 41, 59, 0.98) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        /* Notifications container needs high z-index */
+        .oh-navbar__notifications {
+            position: relative !important;
+            z-index: 9999 !important;
+        }
+
+        .oh-navbar__notification-head {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 16px 20px !important;
+        }
+
+        .oh-navbar__notification-head-title {
+            color: white !important;
+            font-weight: 700 !important;
+        }
+
+        .oh-navbar__notification-tray-link {
+            color: var(--theme-blue-400) !important;
+        }
+
+        .oh-navbar__notification-tray-link--danger {
+            color: #fb7185 !important;
+        }
+
+        .oh-navbar__notification-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+            padding: 14px 20px !important;
+            transition: background 0.2s ease !important;
+        }
+
+        .oh-navbar__notification-item:hover {
+            background: rgba(59, 130, 246, 0.08) !important;
+        }
+
+        .oh-navbar__notification-text {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        .oh-navbar__notification-text--unread {
+            color: white !important;
+            font-weight: 600 !important;
+        }
+
+        .oh-navbar__notification-date {
+            color: rgba(255, 255, 255, 0.4) !important;
+        }
+
+        .oh-navbar__notification-image {
+            background: rgba(59, 130, 246, 0.2) !important;
+            color: var(--theme-blue-400) !important;
+            border-radius: 10px !important;
+        }
+
+        .oh-navbar__notification-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 14px 20px !important;
+        }
+
+        .oh-navbar__notification-empty {
+            padding: 40px 20px !important;
+        }
+
+        .oh-navbar__notification-empty-title {
+            color: white !important;
+        }
+
+        .oh-navbar__notification-empty-desc {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        /* User profile dropdown */
+        .oh-navbar__user-info {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-radius: 14px !important;
+            padding: 8px 16px 8px 8px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            border: 1px solid transparent !important;
+        }
+
+        .oh-navbar__user-info:hover {
+            background: rgba(59, 130, 246, 0.1) !important;
+            border-color: rgba(59, 130, 246, 0.2) !important;
+        }
+
+        .oh-navbar__user-photo {
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 10px !important;
+            overflow: hidden !important;
+            border: 2px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .oh-navbar__user-image {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+
+        .oh-navbar__user-name {
+            color: white !important;
+            font-weight: 500 !important;
+            margin-left: 10px !important;
+        }
+
+        /* Dropdown menu - must be above dashboard content */
+        .oh-dropdown__menu {
+            background: rgba(30, 41, 59, 0.98) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 14px !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4) !important;
+            padding: 8px !important;
+        }
+        
+        /* Ensure dropdowns appear above all content */
+        .oh-dropdown {
+            position: relative !important;
+            z-index: 9999 !important;
+        }
+
+        .oh-dropdown__item {
+            border-radius: 8px !important;
+            overflow: hidden !important;
+        }
+
+        .oh-dropdown__link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            padding: 12px 16px !important;
+            border-radius: 8px !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .oh-dropdown__link:hover {
+            background: rgba(59, 130, 246, 0.15) !important;
+            color: white !important;
+        }
+
+        .oh-dropdown__menu hr {
+            border-color: rgba(255, 255, 255, 0.08) !important;
+            margin: 8px 0 !important;
+        }
+
+        /* Language/Company selection dropdowns */
+        .oh-dropdown__toggle {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-radius: 10px !important;
+            padding: 10px 14px !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+            border: 1px solid transparent !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .oh-dropdown__toggle:hover {
+            background: rgba(59, 130, 246, 0.1) !important;
+            border-color: rgba(59, 130, 246, 0.2) !important;
+        }
+
+        /* Activity sidebar (notifications panel) */
+        .oh-activity-sidebar {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.98)) !important;
+            backdrop-filter: blur(20px) !important;
+            border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .oh-activity-sidebar__header {
+            background: rgba(0, 0, 0, 0.2) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .oh-activity-sidebar__title {
+            color: white !important;
+            font-weight: 700 !important;
+        }
+
+        .oh-activity-sidebar__header-icon {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        .delete-all-link {
+            color: #fb7185 !important;
+        }
+
+        /* Main wrapper background */
+        .oh-wrapper-main {
+            background: #0f172a !important;
+        }
+
+        #main {
+            background: transparent !important;
+        }
+
+        /* Confirmation modal */
+        .oh-modal__dialog--confirm {
+            background: rgba(30, 41, 59, 0.98) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 20px !important;
+        }
+
+        .oh-modal__dialog-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .oh-modal__dialog-title {
+            color: white !important;
+        }
+
+        .oh-modal__dialog-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        /* ========== MODAL CONTENT - Light text on dark background ========== */
+        .oh-modal__dialog-body {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        /* Modal buttons - outline style with light colors */
+        .oh-modal__dialog .oh-btn--success-outline {
+            background: transparent !important;
+            border: 2px solid #4ade80 !important;
+            color: #4ade80 !important;
+            font-weight: 600 !important;
+        }
+
+        .oh-modal__dialog .oh-btn--success-outline:hover {
+            background: rgba(74, 222, 128, 0.15) !important;
+            color: #4ade80 !important;
+        }
+
+        .oh-modal__dialog .oh-btn--primary-outline {
+            background: transparent !important;
+            border: 2px solid var(--theme-blue-400) !important;
+            color: var(--theme-blue-400) !important;
+            font-weight: 600 !important;
+        }
+
+        .oh-modal__dialog .oh-btn--primary-outline:hover {
+            background: rgba(96, 165, 250, 0.15) !important;
+            color: var(--theme-blue-400) !important;
+        }
+
+        /* Modal table styling */
+        .oh-modal__dialog .oh-sticky-table__thead {
+            background: rgba(59, 130, 246, 0.15) !important;
+            border-radius: 10px !important;
+        }
+
+        .oh-modal__dialog .oh-sticky-table__th {
+            color: var(--theme-blue-400) !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            font-size: 12px !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .oh-modal__dialog .oh-sticky-table__tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+        }
+
+        .oh-modal__dialog .oh-sticky-table__td {
+            color: rgba(255, 255, 255, 0.85) !important;
+        }
+
+        /* Profile name in modals - override dark text */
+        .oh-modal__dialog .oh-text--dark,
+        .oh-modal__dialog .oh-profile__name {
+            color: white !important;
+        }
+
+        /* Switch/checkbox styling */
+        .oh-modal__dialog .oh-switch__checkbox {
+            accent-color: var(--theme-blue-500) !important;
+        }
+
+        /* Save button in modal */
+        .oh-modal__dialog .oh-btn--secondary {
+            background: linear-gradient(135deg, var(--theme-blue-500), var(--theme-blue-600)) !important;
+            border: none !important;
+            color: white !important;
+            font-weight: 600 !important;
+            padding: 12px 28px !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+        }
+
+        .oh-modal__dialog .oh-btn--secondary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4) !important;
+        }
+
+        /* Modal close button */
+        .oh-modal__dialog .oh-modal__close {
+            color: rgba(255, 255, 255, 0.6) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-radius: 10px !important;
+            padding: 8px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .oh-modal__dialog .oh-modal__close:hover {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Form inputs in modals */
+        .oh-modal__dialog input,
+        .oh-modal__dialog select,
+        .oh-modal__dialog textarea {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            color: white !important;
+            border-radius: 10px !important;
+        }
+
+        .oh-modal__dialog input::placeholder,
+        .oh-modal__dialog textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4) !important;
+        }
+
+        .oh-modal__dialog input:focus,
+        .oh-modal__dialog select:focus,
+        .oh-modal__dialog textarea:focus {
+            border-color: var(--theme-blue-500) !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+            outline: none !important;
+        }
+
+        /* Labels in modal */
+        .oh-modal__dialog label {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500 !important;
+        }
+
+        /* ========== DETAIL CARDS (Small popups when clicking rows) ========== */
+        .oh-modal__dialog-relative {
+            background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 20px !important;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* All text in detail cards should be light */
+        .oh-modal__dialog-relative,
+        .oh-modal__dialog-relative * {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .oh-modal__dialog-relative .oh-modal__dialog-header {
+            background: rgba(59, 130, 246, 0.1) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 18px 24px !important;
+        }
+
+        .oh-modal__dialog-relative .oh-modal__dialog-title,
+        .oh-modal__dialog-relative h1,
+        .oh-modal__dialog-relative h2,
+        .oh-modal__dialog-relative h3,
+        .oh-modal__dialog-relative h4,
+        .oh-modal__dialog-relative h5 {
+            color: white !important;
+            font-weight: 700 !important;
+        }
+
+        .oh-modal__dialog-relative .oh-modal__dialog-body {
+            padding: 20px 24px !important;
+        }
+
+        /* Profile/Employee info in detail cards */
+        .oh-modal__dialog-relative .oh-profile__name,
+        .oh-modal__dialog-relative .oh-text--dark {
+            color: white !important;
+            font-weight: 600 !important;
+        }
+
+        .oh-modal__dialog-relative .oh-profile__image {
+            border: 2px solid rgba(255, 255, 255, 0.15) !important;
+            border-radius: 12px !important;
+        }
+
+        /* Info rows/lists in detail cards */
+        .oh-modal__dialog-relative p,
+        .oh-modal__dialog-relative span,
+        .oh-modal__dialog-relative div {
+            color: rgba(255, 255, 255, 0.85) !important;
+        }
+
+        .oh-modal__dialog-relative strong,
+        .oh-modal__dialog-relative b {
+            color: white !important;
+        }
+
+        .oh-modal__dialog-relative .text-muted,
+        .oh-modal__dialog-relative small {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        /* Links in detail cards */
+        .oh-modal__dialog-relative a {
+            color: var(--theme-blue-400) !important;
+        }
+
+        .oh-modal__dialog-relative a:hover {
+            color: var(--theme-blue-300) !important;
+        }
+
+        /* Badges in detail cards */
+        .oh-modal__dialog-relative .badge,
+        .oh-modal__dialog-relative .oh-badge {
+            padding: 6px 12px !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            font-size: 12px !important;
+        }
+
+        .oh-modal__dialog-relative .badge-success,
+        .oh-modal__dialog-relative .oh-badge--success {
+            background: rgba(74, 222, 128, 0.2) !important;
+            color: #4ade80 !important;
+        }
+
+        .oh-modal__dialog-relative .badge-warning,
+        .oh-modal__dialog-relative .oh-badge--warning {
+            background: rgba(251, 191, 36, 0.2) !important;
+            color: #fbbf24 !important;
+        }
+
+        .oh-modal__dialog-relative .badge-danger,
+        .oh-modal__dialog-relative .oh-badge--danger {
+            background: rgba(251, 113, 133, 0.2) !important;
+            color: #fb7185 !important;
+        }
+
+        .oh-modal__dialog-relative .badge-info,
+        .oh-modal__dialog-relative .oh-badge--info,
+        .oh-modal__dialog-relative .badge-primary {
+            background: rgba(96, 165, 250, 0.2) !important;
+            color: #60a5fa !important;
+        }
+
+        /* Buttons in detail cards */
+        .oh-modal__dialog-relative .oh-btn {
+            border-radius: 10px !important;
+            font-weight: 600 !important;
+            padding: 10px 18px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .oh-modal__dialog-relative .oh-btn--success {
+            background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+            border: none !important;
+            color: white !important;
+        }
+
+        .oh-modal__dialog-relative .oh-btn--danger {
+            background: linear-gradient(135deg, #f43f5e, #e11d48) !important;
+            border: none !important;
+            color: white !important;
+        }
+
+        .oh-modal__dialog-relative .oh-btn--info,
+        .oh-modal__dialog-relative .oh-btn--primary {
+            background: linear-gradient(135deg, var(--theme-blue-500), var(--theme-blue-600)) !important;
+            border: none !important;
+            color: white !important;
+        }
+
+        /* Tables in detail cards */
+        .oh-modal__dialog-relative table {
+            width: 100% !important;
+        }
+
+        .oh-modal__dialog-relative table th {
+            color: var(--theme-blue-400) !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            font-size: 11px !important;
+            letter-spacing: 0.5px !important;
+            padding: 12px !important;
+            background: rgba(59, 130, 246, 0.1) !important;
+        }
+
+        .oh-modal__dialog-relative table td {
+            color: rgba(255, 255, 255, 0.85) !important;
+            padding: 12px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+        }
+
+        .oh-modal__dialog-relative table tr:hover td {
+            background: rgba(59, 130, 246, 0.05) !important;
+        }
+
+        /* Close button in detail cards */
+        .oh-modal__dialog-relative .oh-modal__close {
+            color: rgba(255, 255, 255, 0.6) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-radius: 10px !important;
+            width: 36px !important;
+            height: 36px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .oh-modal__dialog-relative .oh-modal__close:hover {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Dividers/separators in detail cards */
+        .oh-modal__dialog-relative hr {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            margin: 16px 0 !important;
+        }
+
+        /* Main section z-index - must be below navbar dropdowns */
+        #main-section {
+            position: relative !important;
+            z-index: 1 !important;
+        }
+
+        /* ========== FLOATING ACTION BUTTON (FAB) STYLING ========== */
+        #fab1.fab {
+            background: linear-gradient(135deg, var(--theme-blue-500), var(--theme-blue-600)) !important;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        #fab1.fab:hover {
+            transform: scale(1.15) rotate(90deg) !important;
+            box-shadow: 
+                0 10px 30px rgba(59, 130, 246, 0.5),
+                0 0 40px rgba(59, 130, 246, 0.3) !important;
+            background: linear-gradient(135deg, var(--theme-blue-400), var(--theme-blue-500)) !important;
+        }
+
+        #fab1.fab:active {
+            transform: scale(1.05) rotate(90deg) !important;
+        }
+
+        .inner-fabs .fab {
+            background: linear-gradient(135deg, #1e293b, #334155) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .inner-fabs .fab:hover {
+            background: linear-gradient(135deg, var(--theme-blue-600), var(--theme-blue-700)) !important;
+            border-color: rgba(59, 130, 246, 0.4) !important;
+            transform: scale(1.1) !important;
+            box-shadow: 
+                0 6px 20px rgba(59, 130, 246, 0.3),
+                0 0 20px rgba(59, 130, 246, 0.2) !important;
+        }
+
+        .fab:before {
+            background: linear-gradient(135deg, #1e293b, #334155) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            border-radius: 8px !important;
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* Alert messages */
+        .oh-alert-container {
+            z-index: 9999 !important;
+        }
+
+        .oh-alert {
+            background: rgba(30, 41, 59, 0.95) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 12px !important;
+            color: white !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .oh-alert.success {
+            border-left: 4px solid #4ade80 !important;
+        }
+
+        .oh-alert.error {
+            border-left: 4px solid #fb7185 !important;
+        }
+
+        .oh-alert.warning {
+            border-left: 4px solid #fbbf24 !important;
+        }
+
+        .oh-alert.info {
+            border-left: 4px solid #60a5fa !important;
+        }
+    </style>
 </head>
 
 

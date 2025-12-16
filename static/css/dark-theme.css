@@ -682,6 +682,59 @@ select option {
 }
 
 /* ========== TABS ========== */
+.oh-tabs {
+    border-color: var(--dark-border) !important;
+    background: transparent !important;
+}
+
+.oh-tabs__tablist {
+    background: transparent !important;
+    border-bottom-color: var(--dark-border) !important;
+}
+
+.oh-tabs__tab {
+    color: var(--dark-text-secondary) !important;
+    background: transparent !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-tabs__tab:hover {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-tabs__tab--active {
+    background-color: rgba(30, 41, 59, 0.95) !important;
+    color: var(--dark-text-primary) !important;
+    border-color: var(--dark-border) !important;
+    border-bottom-color: rgba(30, 41, 59, 0.95) !important;
+}
+
+.oh-tabs__tab--active:hover {
+    background-color: rgba(30, 41, 59, 0.95) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-tabs__contents {
+    background: transparent !important;
+}
+
+.oh-tabs__content {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-tabs__content--active {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+}
+
+/* Tab text and icons */
+.oh-tabs__tab div,
+.oh-tabs__tab span,
+.oh-tabs__tab img {
+    color: inherit !important;
+}
+
 .oh-tabs__nav-link {
     color: var(--dark-text-tertiary) !important;
 }
@@ -694,6 +747,15 @@ select option {
 .oh-tabs__nav-link--active {
     color: var(--dark-text-primary) !important;
     background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+}
+
+/* ========== PROFILE CARD INFO ========== */
+.oh-profile__card-info-list {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-profile__card-info-item {
+    color: var(--dark-text-secondary) !important;
 }
 
 /* ========== ACCORDION ========== */

@@ -30,7 +30,7 @@ env = environ.Env(
         "django-insecure-j8op9)1q8$1&0^s&p*_0%d#pr@w9qj@1o=3#@d=a(^@9@zd@%j",
     ),
     ALLOWED_HOSTS=(list, ["*"]),
-    CSRF_TRUSTED_ORIGINS=(list, ["http://localhost:8000", "https://girjasoft-hrms.onrender.com"]),
+    CSRF_TRUSTED_ORIGINS=(list, ["http://localhost:8000", "https://girjasoft-hrms.onrender.com", "https://girjasoft.azurewebsites.net"]),
 )
 
 env.read_env(os.path.join(BASE_DIR, ".env"), overwrite=True)
@@ -118,8 +118,9 @@ if env("DATABASE_URL", default=None):
     DATABASES = {
         "default": env.db(),
     }
-    # Add SSL requirement for Render PostgreSQL
-    if "render.com" in DATABASES["default"]["HOST"]:
+    # Add SSL requirement for Render/Azure PostgreSQL
+    db_host = DATABASES["default"].get("HOST", "")
+    if "render.com" in db_host or "azure.com" in db_host:
         DATABASES["default"]["OPTIONS"] = {
             "sslmode": "require",
         }
@@ -140,6 +141,12 @@ else:
             "PORT": env("DB_PORT", default=""),
         }
     }
+    # Add SSL requirement for Azure PostgreSQL
+    db_host = env("DB_HOST", default="")
+    if "azure.com" in db_host:
+        DATABASES["default"]["OPTIONS"] = {
+            "sslmode": "require",
+        }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

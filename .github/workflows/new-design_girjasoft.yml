@@ -45,7 +45,9 @@ jobs:
           name: python-app
           path: |
             .
+            !horillavenv/
             !antenv/
+            !.git/
 
       # 🚫 Opting Out of Oryx Build
       # If you prefer to disable the Oryx build process during deployment, follow these steps:
@@ -65,6 +67,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: python-app
+
+      - name: Fix entrypoint.sh permissions after download
+        run: |
+          sed -i 's/\r$//' entrypoint.sh
+          chmod +x entrypoint.sh
+          ls -la entrypoint.sh
       
       - name: Login to Azure
         uses: azure/login@v2

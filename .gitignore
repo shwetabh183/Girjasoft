@@ -130,10 +130,8 @@ dmypy.json
 
 *.pyc
 
-# migration files
-**/migrations/**
-!**/migrations
-!**/migrations/__init__.py
+# migration files - include .py files for deployment
+**/migrations/__pycache__/
 
 # media file
 media/

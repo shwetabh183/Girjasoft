@@ -30,10 +30,10 @@ env = environ.Env(
         "django-insecure-j8op9)1q8$1&0^s&p*_0%d#pr@w9qj@1o=3#@d=a(^@9@zd@%j",
     ),
     ALLOWED_HOSTS=(list, ["*"]),
-    CSRF_TRUSTED_ORIGINS=(list, ["http://localhost:8000", "https://girjasoft-hrms.onrender.com", "https://girjasoft.azurewebsites.net"]),
+    CSRF_TRUSTED_ORIGINS=(list, ["http://localhost:8000", "https://girjasoft-hrms.onrender.com", "https://girjasoft.azurewebsites.net", "https://girjasoft-cdg2bxbjhpddgge3.canadacentral-01.azurewebsites.net"]),
 )
 
-env.read_env(os.path.join(BASE_DIR, ".env"), overwrite=True)
+env.read_env(os.path.join(BASE_DIR, ".env"), overwrite=False)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")

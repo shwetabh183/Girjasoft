@@ -7,7 +7,7 @@ name: Build and deploy Python app to Azure Web App - girjasoft
 on:
   push:
     branches:
-      - new-design
+      - girjasoft
   workflow_dispatch:
 
 jobs:

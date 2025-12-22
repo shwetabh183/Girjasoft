@@ -51,19 +51,19 @@ from base.methods import (
     get_key_instances,
     sortby,
 )
-from base.models import EmailLog, HorillaMailTemplate, JobPosition, clear_messages
+from base.models import EmailLog, GirjasoftMailTemplate, JobPosition, clear_messages
 from employee.models import Employee, EmployeeWorkInformation
 from employee.views import get_content_type
-from horilla import settings
-from horilla.decorators import (
+from girjasoft import settings
+from girjasoft.decorators import (
     any_permission_required,
     hx_request_required,
     logger,
     login_required,
     permission_required,
 )
-from horilla.group_by import group_by_queryset
-from horilla_documents.models import Document
+from girjasoft.group_by import group_by_queryset
+from girjasoft_documents.models import Document
 from notifications.signals import notify
 from recruitment.auth import CandidateAuthenticationBackend
 from recruitment.decorators import (
@@ -1815,7 +1815,7 @@ def form_send_mail(request, cand_id=None):
     else:
         stage_id = None
 
-    templates = HorillaMailTemplate.objects.all()
+    templates = GirjasoftMailTemplate.objects.all()
     return render(
         request,
         "pipeline/pipeline_components/send_mail.html",
@@ -2031,7 +2031,7 @@ def send_acknowledgement(request):
             (file.name, file.read(), file.content_type) for file in other_attachments
         ]
         bodys = list(
-            HorillaMailTemplate.objects.filter(
+            GirjasoftMailTemplate.objects.filter(
                 id__in=template_attachment_ids
             ).values_list("body", flat=True)
         )

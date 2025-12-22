@@ -49,8 +49,8 @@ from employee.models import (
     Policy,
     PolicyMultipleFile,
 )
-from horilla import horilla_middlewares
-from horilla_audit.models import AccountBlockUnblock
+from girjasoft import girjasoft_middlewares
+from girjasoft_audit.models import AccountBlockUnblock
 
 logger = logging.getLogger(__name__)
 
@@ -65,7 +65,7 @@ class ModelForm(forms.ModelForm):
 
         reload_queryset(self.fields)
 
-        request = getattr(horilla_middlewares._thread_locals, "request", None)
+        request = getattr(girjasoft_middlewares._thread_locals, "request", None)
 
         today = date.today()
         now = datetime.now()

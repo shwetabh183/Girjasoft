@@ -25,7 +25,7 @@ def notify_expiring_assets():
     assets = Asset.objects.all()
 
     # Cache bot & superuser once
-    bot = User.objects.filter(username="Horilla Bot").only("id").first()
+    bot = User.objects.filter(username="Girjasoft Bot").only("id").first()
     superuser = User.objects.filter(is_superuser=True).only("id").first()
 
     # Query only assets that are expiring today
@@ -60,11 +60,11 @@ def notify_expiring_documents():
     """
     from django.contrib.auth.models import User
 
-    from horilla_documents.models import Document
+    from girjasoft_documents.models import Document
 
     today = date.today()
     documents = Document.objects.all()
-    bot = User.objects.filter(username="Horilla Bot").first()
+    bot = User.objects.filter(username="Girjasoft Bot").first()
     for document in documents:
         if document.expiry_date:
             expiry_date = document.expiry_date

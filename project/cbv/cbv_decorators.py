@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 
-from horilla.horilla_middlewares import _thread_locals
+from girjasoft.girjasoft_middlewares import _thread_locals
 from project.methods import (
     any_project_manager,
     any_project_member,

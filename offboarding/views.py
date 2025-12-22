@@ -16,15 +16,15 @@ from base.methods import closest_numbers, eval_validate, paginator_qry, sortby
 from base.models import Department, JobPosition
 from base.views import general_settings
 from employee.models import Employee
-from horilla import horilla_middlewares
-from horilla.decorators import (
+from girjasoft import girjasoft_middlewares
+from girjasoft.decorators import (
     hx_request_required,
     login_required,
     manager_can_enter,
     permission_required,
 )
-from horilla.group_by import group_by_queryset as group_by
-from horilla.methods import get_horilla_model_class
+from girjasoft.group_by import group_by_queryset as group_by
+from girjasoft.methods import get_girjasoft_model_class
 from notifications.signals import notify
 from offboarding.decorators import (
     any_manager_can_enter,
@@ -75,7 +75,7 @@ def any_manager(employee: Employee):
 
 def pipeline_grouper(filters={}, offboardings=[]):
     groups = []
-    request = getattr(horilla_middlewares._thread_locals, "request", None)
+    request = getattr(girjasoft_middlewares._thread_locals, "request", None)
     for offboarding in offboardings:
         employees = []
         stages = PipelineStageFilter(
@@ -882,7 +882,7 @@ def update_status(request):
     employee_id = request.GET.get("employee_id")
     offboarding_id = request.GET.get("offboarding_id")
     contract_notice_end_date = (
-        get_horilla_model_class(app_label="payroll", model="contract")
+        get_girjasoft_model_class(app_label="payroll", model="contract")
         .objects.filter(employee_id=employee_id, contract_status="active")
         .first()
         if apps.is_installed("payroll")
@@ -986,7 +986,7 @@ def get_notice_period(request):
     """
     employee_id = request.GET["employee_id"]
     if apps.is_installed("payroll"):
-        Contract = get_horilla_model_class(app_label="payroll", model="contract")
+        Contract = get_girjasoft_model_class(app_label="payroll", model="contract")
         employee_contract = (
             (
                 Contract.objects.order_by("-id")
@@ -1042,7 +1042,7 @@ def offboarding_dashboard(request):
 
     onboarding_employees = []
     if apps.is_installed("recruitment"):
-        Candidate = get_horilla_model_class("recruitment", "candidate")
+        Candidate = get_girjasoft_model_class("recruitment", "candidate")
         onboarding_employees = Candidate.objects.filter(
             onboarding_stage__isnull=False, converted_employee_id__isnull=True
         )
@@ -1095,7 +1095,7 @@ if apps.is_installed("asset"):
         """
         This method is used to render the employee assets table page in the dashboard.
         """
-        AssetAssignment = get_horilla_model_class(
+        AssetAssignment = get_girjasoft_model_class(
             app_label="asset", model="assetassignment"
         )
 
@@ -1122,7 +1122,7 @@ if apps.is_installed("pms"):
         This method is used to render the employee assets table page in the dashboard.
         """
 
-        Feedback = get_horilla_model_class(app_label="pms", model="feedback")
+        Feedback = get_girjasoft_model_class(app_label="pms", model="feedback")
 
         offboarding_employees = OffboardingEmployee.objects.entire().values_list(
             "employee_id__id", "notice_period_starts"
@@ -1165,7 +1165,7 @@ def dashboard_join_chart(request):
         archived_employees.count(),
     ]
     if apps.is_installed("recruitment"):
-        Candidate = get_horilla_model_class(app_label="recruitment", model="candidate")
+        Candidate = get_girjasoft_model_class(app_label="recruitment", model="candidate")
         onboarding_employees = Candidate.objects.filter(
             onboarding_stage__isnull=False, converted_employee_id__isnull=True
         )

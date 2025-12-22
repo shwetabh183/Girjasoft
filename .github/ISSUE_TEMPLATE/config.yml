@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Horilla Community Support
-    url: https://github.com/horilla-opensource/horilla/discussions
+  - name: Girjasoft Community Support
+    url: https://github.com/girjasoft-opensource/girjasoft/discussions
     about: Ask questions or discuss features here
   - name: Documentation
-    url: https://horilla-opensource.github.io/horilla-docs/
-    about: Check the official Horilla documentation
+    url: https://girjasoft-opensource.github.io/girjasoft-docs/
+    about: Check the official Girjasoft documentation

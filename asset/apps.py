@@ -22,8 +22,8 @@ class AssetConfig(AppConfig):
     def ready(self):
         from django.urls import include, path
 
-        from horilla.horilla_settings import APP_URLS, APPS
-        from horilla.urls import urlpatterns
+        from girjasoft.girjasoft_settings import APP_URLS, APPS
+        from girjasoft.urls import urlpatterns
 
         APPS.append("asset")
         urlpatterns.append(

@@ -8,20 +8,20 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 
-from base.horilla_company_manager import HorillaCompanyManager
+from base.girjasoft_company_manager import GirjasoftCompanyManager
 from base.models import Company
 from employee.models import Employee
-from horilla import horilla_middlewares
-from horilla.horilla_middlewares import _thread_locals
-from horilla.methods import get_horilla_model_class
-from horilla.models import HorillaModel, upload_path
-from horilla_audit.models import HorillaAuditInfo, HorillaAuditLog
+from girjasoft import girjasoft_middlewares
+from girjasoft.girjasoft_middlewares import _thread_locals
+from girjasoft.methods import get_girjasoft_model_class
+from girjasoft.models import GirjasoftModel, upload_path
+from girjasoft_audit.models import GirjasoftAuditInfo, GirjasoftAuditLog
 from notifications.signals import notify
 
 # Create your models here.
 
 
-class Offboarding(HorillaModel):
+class Offboarding(GirjasoftModel):
     """
     Offboarding model
     """
@@ -37,7 +37,7 @@ class Offboarding(HorillaModel):
         null=True,
         verbose_name="Company",
     )
-    objects = HorillaCompanyManager("company_id")
+    objects = GirjasoftCompanyManager("company_id")
 
     def __str__(self):
         return self.title
@@ -63,7 +63,7 @@ class Offboarding(HorillaModel):
         return
 
 
-class OffboardingStage(HorillaModel):
+class OffboardingStage(GirjasoftModel):
     """
     Offboarding model
     """
@@ -106,7 +106,7 @@ def create_initial_stage(sender, instance, created, **kwargs):
         initial_stage.save()
 
 
-class OffboardingStageMultipleFile(HorillaModel):
+class OffboardingStageMultipleFile(GirjasoftModel):
     """
     OffboardingStageMultipleFile
     """
@@ -114,7 +114,7 @@ class OffboardingStageMultipleFile(HorillaModel):
     attachment = models.FileField(upload_to=upload_path)
 
 
-class OffboardingEmployee(HorillaModel):
+class OffboardingEmployee(GirjasoftModel):
     """
     OffboardingEmployee model / Employee on stage
     """
@@ -130,7 +130,7 @@ class OffboardingEmployee(HorillaModel):
     unit = models.CharField(max_length=10, choices=UNIT, default="month", null=True)
     notice_period_starts = models.DateField(null=True)
     notice_period_ends = models.DateField(null=True, blank=True)
-    objects = HorillaCompanyManager(
+    objects = GirjasoftCompanyManager(
         related_company_field="employee_id__employee_work_info__company_id"
     )
 
@@ -138,7 +138,7 @@ class OffboardingEmployee(HorillaModel):
         return self.employee_id.get_full_name()
 
 
-class ResignationLetter(HorillaModel):
+class ResignationLetter(GirjasoftModel):
     """
     Resignation Request Employee model
     """
@@ -158,7 +158,7 @@ class ResignationLetter(HorillaModel):
     offboarding_employee_id = models.ForeignKey(
         OffboardingEmployee, on_delete=models.CASCADE, editable=False, null=True
     )
-    objects = HorillaCompanyManager(
+    objects = GirjasoftCompanyManager(
         related_company_field="employee_id__employee_work_info__company_id"
     )
 
@@ -188,7 +188,7 @@ class ResignationLetter(HorillaModel):
             .first()
         )
         default_notice_end = (
-            get_horilla_model_class(
+            get_girjasoft_model_class(
                 app_label="payroll", model="payrollgeneralsetting"
             ).objects.first()
             if apps.is_installed("payroll")
@@ -228,7 +228,7 @@ class ResignationLetter(HorillaModel):
         offboarding_employee.save()
 
 
-class OffboardingTask(HorillaModel):
+class OffboardingTask(GirjasoftModel):
     """
     OffboardingTask model
     """
@@ -250,7 +250,7 @@ class OffboardingTask(HorillaModel):
         return self.title
 
 
-class EmployeeTask(HorillaModel):
+class EmployeeTask(GirjasoftModel):
     """
     EmployeeTask model
     """
@@ -270,10 +270,10 @@ class EmployeeTask(HorillaModel):
     status = models.CharField(max_length=20, choices=statuses, default="todo")
     task_id = models.ForeignKey(OffboardingTask, on_delete=models.CASCADE)
     description = models.TextField(null=True, editable=False, max_length=255)
-    history = HorillaAuditLog(
+    history = GirjasoftAuditLog(
         related_name="history_set",
         bases=[
-            HorillaAuditInfo,
+            GirjasoftAuditInfo,
         ],
     )
 
@@ -296,7 +296,7 @@ class EmployeeTask(HorillaModel):
         )
 
 
-class ExitReason(HorillaModel):
+class ExitReason(GirjasoftModel):
     """
     ExitReason model
     """
@@ -309,7 +309,7 @@ class ExitReason(HorillaModel):
     attachments = models.ManyToManyField(OffboardingStageMultipleFile)
 
 
-class OffboardingNote(HorillaModel):
+class OffboardingNote(GirjasoftModel):
     """
     OffboardingNote
     """
@@ -332,7 +332,7 @@ class OffboardingNote(HorillaModel):
         ordering = ["-created_at"]
 
     def save(self, *args, **kwargs):
-        request = getattr(horilla_middlewares._thread_locals, "request", None)
+        request = getattr(girjasoft_middlewares._thread_locals, "request", None)
         if request:
             updated_by = request.user.employee_get
             self.note_by = updated_by
@@ -341,7 +341,7 @@ class OffboardingNote(HorillaModel):
         return super().save(*args, **kwargs)
 
 
-class OffboardingGeneralSetting(HorillaModel):
+class OffboardingGeneralSetting(GirjasoftModel):
     """
     OffboardingGeneralSettings
     """

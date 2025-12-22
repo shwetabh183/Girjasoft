@@ -14,8 +14,8 @@ provide the main entry points for interacting with the application's functionali
 import logging
 import uuid
 
-from horilla.horilla_settings import DYNAMIC_URL_PATTERNS, HORILLA_DATE_FORMATS
-from horilla.methods import remove_dynamic_url
+from girjasoft.girjasoft_settings import DYNAMIC_URL_PATTERNS, GIRJASOFT_DATE_FORMATS
+from girjasoft.methods import remove_dynamic_url
 
 logger = logging.getLogger(__name__)
 
@@ -120,7 +120,7 @@ from base.models import (
 )
 from employee.filters import EmployeeFilter
 from employee.models import Employee, EmployeeWorkInformation
-from horilla.decorators import (
+from girjasoft.decorators import (
     hx_request_required,
     install_required,
     login_required,
@@ -2371,7 +2371,7 @@ def work_record_export(request):
             record_lookup[record_key] = record.work_record_type
 
     date_format = request.user.employee_get.get_date_format()
-    format_string = HORILLA_DATE_FORMATS.get(date_format)
+    format_string = GIRJASOFT_DATE_FORMATS.get(date_format)
     formatted_dates = [day.strftime(format_string) for day in all_date_objects]
     data_rows = []
 

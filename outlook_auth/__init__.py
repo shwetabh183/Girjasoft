@@ -8,7 +8,7 @@ from outlook_auth import scheduler as _scheduler
 
 settings.OUTLOOK_SCOPES = ["https://outlook.office.com/SMTP.Send"]
 
-# Add these in horilla/settings.py
+# Add these in girjasoft/settings.py
 
 """
 
@@ -21,7 +21,7 @@ installed_apps = [
 EMAIL_BACKEND = 'outlook_auth.backends.OutlookBackend'
 
 """
-# NOTE: Horilla should be run in https
+# NOTE: Girjasoft should be run in https
 
 # Please add redircet url in Azure app authentication URi and AzureApi model redirect URi
 

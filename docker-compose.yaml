@@ -7,10 +7,10 @@ services:
       - 8000:8000
     restart: unless-stopped
     environment:
-      DATABASE_URL: "postgres://postgres:postgres@db:5432/horilla"
+      DATABASE_URL: "postgres://postgres:postgres@db:5432/girjasoft"
     command: sh ./entrypoint.sh
     volumes:
-      - ./horilla:/app/horilla
+      - ./girjasoft:/app/girjasoft
       - ./media:/app/media
     depends_on:
       db:
@@ -19,7 +19,7 @@ services:
   db:
     image: postgres:16-bullseye
     environment:
-      POSTGRES_DB: horilla
+      POSTGRES_DB: girjasoft
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256"
@@ -28,7 +28,7 @@ services:
       - 5432:5432
     restart: unless-stopped
     volumes:
-      - horilla-data:/var/lib/postgresql/data
+      - girjasoft-data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
       interval: 10s
@@ -36,4 +36,4 @@ services:
       retries: 5
 
 volumes:
-  horilla-data:
+  girjasoft-data:

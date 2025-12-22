@@ -30,7 +30,7 @@ jobs:
           name: python-app
           path: |
             .
-            !horillavenv/
+            !girjasoftvenv/
             !antenv/
             !.git/
             !.venv/

@@ -16,13 +16,13 @@ from accessibility.methods import check_is_accessible
 from accessibility.models import DefaultAccessibility
 from base.methods import filtersubordinatesemployeemodel
 from employee.models import DisciplinaryAction, Employee, Policy
-from horilla.filters import FilterSet, HorillaFilterSet, filter_by_name
-from horilla.horilla_middlewares import _thread_locals
-from horilla_documents.models import Document
-from horilla_views.templatetags.generic_template_filters import getattribute
+from girjasoft.filters import FilterSet, GirjasoftFilterSet, filter_by_name
+from girjasoft.girjasoft_middlewares import _thread_locals
+from girjasoft_documents.models import Document
+from girjasoft_views.templatetags.generic_template_filters import getattribute
 
 
-class EmployeeFilter(HorillaFilterSet):
+class EmployeeFilter(GirjasoftFilterSet):
     """
     Filter set class for Candidate model
 

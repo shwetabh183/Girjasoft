@@ -2,7 +2,7 @@
 
 ## ✅ Good News: Django Settings Already Support DATABASE_URL!
 
-Your `horilla/settings.py` already checks for `DATABASE_URL` environment variable (line 117), so this will work automatically!
+Your `girjasoft/settings.py` already checks for `DATABASE_URL` environment variable (line 117), so this will work automatically!
 
 ---
 

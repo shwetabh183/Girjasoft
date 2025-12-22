@@ -7,8 +7,8 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 
-from horilla.decorators import login_required, permission_required
-from horilla_views.generic.cbv import views
+from girjasoft.decorators import login_required, permission_required
+from girjasoft_views.generic.cbv import views
 from recruitment import models
 from recruitment.filters import LinkedInAccountFilter
 from recruitment.forms import LinkedInAccountForm
@@ -18,7 +18,7 @@ from recruitment.forms import LinkedInAccountForm
 @method_decorator(
     permission_required("recruitment.view_linkedinaccount"), name="dispatch"
 )
-class LinkedinSettingSectionView(views.HorillaSectionView):
+class LinkedinSettingSectionView(views.GirjasoftSectionView):
     """
     LinkedinSetting SectionView
     """
@@ -38,7 +38,7 @@ class LinkedinSettingSectionView(views.HorillaSectionView):
 @method_decorator(
     permission_required("recruitment.view_linkedinaccount"), name="dispatch"
 )
-class LinkedInSettingNavView(views.HorillaNavView):
+class LinkedInSettingNavView(views.GirjasoftNavView):
     """
     LinkedInSetting nav view
     """
@@ -61,7 +61,7 @@ class LinkedInSettingNavView(views.HorillaNavView):
 @method_decorator(
     permission_required("recruitment.change_linkedinaccount"), name="dispatch"
 )
-class LinkedInAccountFormView(views.HorillaFormView):
+class LinkedInAccountFormView(views.GirjasoftFormView):
     """
     LinkedInForm View
     """
@@ -110,7 +110,7 @@ class LinkedInAccountFormView(views.HorillaFormView):
 @method_decorator(
     permission_required("recruitment.view_linkedinaccount"), name="dispatch"
 )
-class LinkedInSettingListView(views.HorillaListView):
+class LinkedInSettingListView(views.GirjasoftListView):
     """
     LinkedInSetting list view
     """

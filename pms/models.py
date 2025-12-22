@@ -7,32 +7,32 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from base.horilla_company_manager import HorillaCompanyManager
+from base.girjasoft_company_manager import GirjasoftCompanyManager
 from base.models import Company, Department, JobPosition
 from employee.models import BonusPoint, Employee
-from horilla import horilla_middlewares
-from horilla.models import HorillaModel
-from horilla_audit.methods import get_diff
-from horilla_audit.models import HorillaAuditInfo, HorillaAuditLog
-from horilla_views.cbv_methods import render_template
+from girjasoft import girjasoft_middlewares
+from girjasoft.models import GirjasoftModel
+from girjasoft_audit.methods import get_diff
+from girjasoft_audit.models import GirjasoftAuditInfo, GirjasoftAuditLog
+from girjasoft_views.cbv_methods import render_template
 
 """Objectives and key result section"""
 
 
-class Period(HorillaModel):
+class Period(GirjasoftModel):
     """this is a period model used for creating period"""
 
     period_name = models.CharField(max_length=150, unique=True)
     start_date = models.DateField()
     end_date = models.DateField()
     company_id = models.ManyToManyField(Company, blank=True, verbose_name=_("Company"))
-    objects = HorillaCompanyManager("company_id")
+    objects = GirjasoftCompanyManager("company_id")
 
     def __str__(self):
         return self.period_name
 
 
-class KeyResult(HorillaModel):
+class KeyResult(GirjasoftModel):
     """model used to create key results"""
 
     PROGRESS_CHOICES = (
@@ -52,7 +52,7 @@ class KeyResult(HorillaModel):
     target_value = models.IntegerField(null=True, blank=True, default=100)
     duration = models.IntegerField(null=True, blank=True)
     archive = models.BooleanField(default=False)
-    history = HorillaAuditLog(bases=[HorillaAuditInfo])
+    history = GirjasoftAuditLog(bases=[GirjasoftAuditInfo])
     company_id = models.ForeignKey(
         Company,
         null=True,
@@ -60,7 +60,7 @@ class KeyResult(HorillaModel):
         verbose_name=_("Company"),
         on_delete=models.CASCADE,
     )
-    objects = HorillaCompanyManager()
+    objects = GirjasoftCompanyManager()
 
     class Meta:
         """
@@ -75,7 +75,7 @@ class KeyResult(HorillaModel):
         return f"{self.title}"
 
 
-class Objective(HorillaModel):
+class Objective(GirjasoftModel):
     """Model used for creating objectives"""
 
     DURATION_UNIT = (
@@ -115,7 +115,7 @@ class Objective(HorillaModel):
     duration = models.IntegerField(default=1, validators=[MinValueValidator(0)])
     add_assignees = models.BooleanField(default=False)
     archive = models.BooleanField(default=False)
-    history = HorillaAuditLog(bases=[HorillaAuditInfo])
+    history = GirjasoftAuditLog(bases=[GirjasoftAuditInfo])
     company_id = models.ForeignKey(
         Company,
         null=True,
@@ -124,7 +124,7 @@ class Objective(HorillaModel):
         on_delete=models.CASCADE,
     )
     self_employee_progress_update = models.BooleanField(default=True)
-    objects = HorillaCompanyManager()
+    objects = GirjasoftCompanyManager()
 
     class Meta:
         """
@@ -139,7 +139,7 @@ class Objective(HorillaModel):
         return f"{self.title}"
 
     def save(self, *args, **kwargs):
-        request = getattr(horilla_middlewares._thread_locals, "request", None)
+        request = getattr(girjasoft_middlewares._thread_locals, "request", None)
         selected_company = request.session.get("selected_company")
         if (
             not self.id
@@ -152,7 +152,7 @@ class Objective(HorillaModel):
         super().save()
 
 
-class EmployeeObjective(HorillaModel):
+class EmployeeObjective(GirjasoftModel):
     """this is a EmployObjective model used for creating Employee objectives"""
 
     STATUS_CHOICES = (
@@ -209,9 +209,9 @@ class EmployeeObjective(HorillaModel):
     )
     progress_percentage = models.IntegerField(default=0)
 
-    history = HorillaAuditLog(bases=[HorillaAuditInfo], related_name="history_set")
+    history = GirjasoftAuditLog(bases=[GirjasoftAuditInfo], related_name="history_set")
     archive = models.BooleanField(default=False)
-    objects = HorillaCompanyManager("employee_id__employee_work_info__company_id")
+    objects = GirjasoftCompanyManager("employee_id__employee_work_info__company_id")
 
     class Meta:
         """
@@ -273,8 +273,8 @@ class Comment(models.Model):
         blank=True,
     )
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-    history = HorillaAuditLog(excluded_fields=["comment"], bases=[HorillaAuditInfo])
-    objects = HorillaCompanyManager(
+    history = GirjasoftAuditLog(excluded_fields=["comment"], bases=[GirjasoftAuditInfo])
+    objects = GirjasoftCompanyManager(
         related_company_field="employee_id__employee_work_info__company_id"
     )
 
@@ -332,8 +332,8 @@ class EmployeeKeyResult(models.Model):
     target_value = models.IntegerField(null=True, blank=True, default=0)
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
-    history = HorillaAuditLog(bases=[HorillaAuditInfo])
-    objects = HorillaCompanyManager(
+    history = GirjasoftAuditLog(bases=[GirjasoftAuditInfo])
+    objects = GirjasoftCompanyManager(
         related_company_field="employee_objective_id__objective_id__company_id"
     )
     progress_percentage = models.IntegerField(default=0)
@@ -433,7 +433,7 @@ class EmployeeKeyResult(models.Model):
 """360degree feedback section"""
 
 
-class QuestionTemplate(HorillaModel):
+class QuestionTemplate(GirjasoftModel):
     """question template creation"""
 
     question_template = models.CharField(
@@ -441,13 +441,13 @@ class QuestionTemplate(HorillaModel):
     )
     company_id = models.ManyToManyField(Company, blank=True, verbose_name=_("Company"))
 
-    objects = HorillaCompanyManager("company_id")
+    objects = GirjasoftCompanyManager("company_id")
 
     def __str__(self):
         return self.question_template
 
 
-class Question(HorillaModel):
+class Question(GirjasoftModel):
     """question creation"""
 
     QUESTION_TYPE_CHOICE = (
@@ -468,13 +468,13 @@ class Question(HorillaModel):
         null=True,
         blank=True,
     )
-    objects = HorillaCompanyManager("template_id__company_id")
+    objects = GirjasoftCompanyManager("template_id__company_id")
 
     def __str__(self):
         return self.question
 
 
-class QuestionOptions(HorillaModel):
+class QuestionOptions(GirjasoftModel):
     """options for question"""
 
     question_id = models.ForeignKey(
@@ -488,10 +488,10 @@ class QuestionOptions(HorillaModel):
     option_b = models.CharField(max_length=250, null=True, blank=True)
     option_c = models.CharField(max_length=250, null=True, blank=True)
     option_d = models.CharField(max_length=250, null=True, blank=True)
-    objects = HorillaCompanyManager("question_id__template_id__company_id")
+    objects = GirjasoftCompanyManager("question_id__template_id__company_id")
 
 
-class Feedback(HorillaModel):
+class Feedback(GirjasoftModel):
     """feedback model for creating feedback"""
 
     STATUS_CHOICES = (
@@ -576,7 +576,7 @@ class Feedback(HorillaModel):
     cyclic_next_start_date = models.DateField(null=True, blank=True)
     cyclic_next_end_date = models.DateField(null=True, blank=True)
 
-    objects = HorillaCompanyManager("employee_id__employee_work_info__company_id")
+    objects = GirjasoftCompanyManager("employee_id__employee_work_info__company_id")
 
     class Meta:
         ordering = ["-id"]
@@ -730,7 +730,7 @@ class Answer(models.Model):
     feedback_id = models.ForeignKey(
         Feedback, on_delete=models.PROTECT, related_name="feedback_answer"
     )
-    objects = HorillaCompanyManager("employee_id__employee_work_info__company_id")
+    objects = GirjasoftCompanyManager("employee_id__employee_work_info__company_id")
 
     def __str__(self):
         return f"{self.employee_id.employee_first_name} - {self.answer}"
@@ -755,10 +755,10 @@ class KeyResultFeedback(models.Model):
         blank=True,
         on_delete=models.DO_NOTHING,
     )
-    objects = HorillaCompanyManager("employee_id__employee_work_info__company_id")
+    objects = GirjasoftCompanyManager("employee_id__employee_work_info__company_id")
 
 
-class Meetings(HorillaModel):
+class Meetings(GirjasoftModel):
     title = models.CharField(max_length=100)
     date = models.DateTimeField(null=True, blank=True)
     employee_id = models.ManyToManyField(
@@ -789,7 +789,7 @@ class Meetings(HorillaModel):
         verbose_name=_("Company"),
         on_delete=models.CASCADE,
     )
-    objects = HorillaCompanyManager()
+    objects = GirjasoftCompanyManager()
 
     class Meta:
         verbose_name = _("Meetings")
@@ -799,7 +799,7 @@ class Meetings(HorillaModel):
         return self.title
 
     def save(self, *args, **kwargs):
-        request = getattr(horilla_middlewares._thread_locals, "request", None)
+        request = getattr(girjasoft_middlewares._thread_locals, "request", None)
         selected_company = request.session.get("selected_company")
         if (
             not self.id
@@ -834,13 +834,13 @@ class MeetingsAnswer(models.Model):
     meeting_id = models.ForeignKey(
         Meetings, on_delete=models.PROTECT, related_name="meeting_answer"
     )
-    objects = HorillaCompanyManager("employee_id__employee_work_info__company_id")
+    objects = GirjasoftCompanyManager("employee_id__employee_work_info__company_id")
 
     def __str__(self):
         return f"{self.employee_id.employee_first_name} - {self.answer}"
 
 
-class EmployeeBonusPoint(HorillaModel):
+class EmployeeBonusPoint(GirjasoftModel):
     employee_id = models.ForeignKey(
         Employee,
         on_delete=models.DO_NOTHING,
@@ -859,7 +859,7 @@ class EmployeeBonusPoint(HorillaModel):
         on_delete=models.CASCADE,
         related_name="employeebonuspoint_set",
     )
-    objects = HorillaCompanyManager("employee_id__employee_work_info__company_id")
+    objects = GirjasoftCompanyManager("employee_id__employee_work_info__company_id")
 
     def __str__(self):
         return f"{self.employee_id.employee_first_name} - {self.bonus_point}"

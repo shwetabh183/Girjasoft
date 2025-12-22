@@ -13,8 +13,8 @@ from django.utils.translation import gettext_lazy as _
 from base.forms import Form, ModelForm
 from base.methods import reload_queryset
 from employee.models import Employee
-from horilla.horilla_middlewares import _thread_locals
-from horilla_widgets.forms import default_select_option_template
+from girjasoft.girjasoft_middlewares import _thread_locals
+from girjasoft_widgets.forms import default_select_option_template
 
 from .models import BiometricDevices, BiometricEmployees
 
@@ -205,7 +205,7 @@ class COSECUserForm(Form):
 
 class DahuaUserForm(Form):
     """
-    This form is used to map a Horilla employee to a user entry on a Dahua biometric device.
+    This form is used to map a Girjasoft employee to a user entry on a Dahua biometric device.
     """
 
     CARD_STATUS_CHOICES = [
@@ -311,10 +311,10 @@ class DahuaUserForm(Form):
 
 class MapBioUsers(ModelForm):
     """
-    Form for mapping biometric users to Horilla employees.
+    Form for mapping biometric users to Girjasoft employees.
 
     This form is used to associate a biometric user (from a biometric device) with
-    an employee in the Horilla system.
+    an employee in the Girjasoft system.
     """
 
     class Meta:

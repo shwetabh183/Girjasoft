@@ -10,9 +10,9 @@ from django.utils.translation import gettext_lazy as _
 
 from base.methods import filter_own_and_subordinate_recordes, is_reportingmanager
 from employee.models import Employee
-from horilla import horilla_middlewares
-from horilla.decorators import login_required, owner_can_enter, permission_required
-from horilla_views.generic.cbv import views
+from girjasoft import girjasoft_middlewares
+from girjasoft.decorators import login_required, owner_can_enter, permission_required
+from girjasoft_views.generic.cbv import views
 from pms import models
 from pms.filters import BonusPointSettingFilter, EmployeeBonusPointFilter
 from pms.forms import (
@@ -28,7 +28,7 @@ from pms.methods import check_duplication
 # ================Models for BonusPointSetting==============
 @method_decorator(login_required, name="dispatch")
 @method_decorator(permission_required("pms.view_bonuspointsetting"), name="dispatch")
-class BonusPointSettingSectionView(views.HorillaSectionView):
+class BonusPointSettingSectionView(views.GirjasoftSectionView):
     """
     BonusPointSetting SectionView
     """
@@ -46,7 +46,7 @@ class BonusPointSettingSectionView(views.HorillaSectionView):
 
 @method_decorator(login_required, name="dispatch")
 @method_decorator(permission_required("pms.view_bonuspointsetting"), name="dispatch")
-class BonusPointSettingNavView(views.HorillaNavView):
+class BonusPointSettingNavView(views.GirjasoftNavView):
     """
     BonusPointSetting nav view
     """
@@ -67,7 +67,7 @@ class BonusPointSettingNavView(views.HorillaNavView):
 
 @method_decorator(login_required, name="dispatch")
 @method_decorator(permission_required("pms.change_bonuspointsetting"), name="dispatch")
-class BonusPointSettingFormView(views.HorillaFormView):
+class BonusPointSettingFormView(views.GirjasoftFormView):
     """
     BonusPointSettingForm View
     """
@@ -111,7 +111,7 @@ class BonusPointSettingFormView(views.HorillaFormView):
 
 @method_decorator(login_required, name="dispatch")
 @method_decorator(permission_required("pms.view_bonuspointsetting"), name="dispatch")
-class BonusPointSettingListView(views.HorillaListView):
+class BonusPointSettingListView(views.GirjasoftListView):
     """
     BnusPointSetting list view
     """
@@ -134,7 +134,7 @@ class BonusPointSettingListView(views.HorillaListView):
 # ================Models for EmployeeBonusPoint==============
 
 
-class EmployeeBonusPointSectionView(views.HorillaSectionView):
+class EmployeeBonusPointSectionView(views.GirjasoftSectionView):
     """
     EmployeeBonusPoint SectionView
     """
@@ -150,7 +150,7 @@ class EmployeeBonusPointSectionView(views.HorillaSectionView):
     template_name = "bonus/employee_bonus_point_section.html"
 
 
-class EmployeeBonusPointNavView(views.HorillaNavView):
+class EmployeeBonusPointNavView(views.GirjasoftNavView):
     """
     BonusPoint nav view
     """
@@ -192,7 +192,7 @@ class EmployeeBonusPointNavView(views.HorillaNavView):
 
 @method_decorator(login_required, name="dispatch")
 @method_decorator(permission_required("pms.change_employeebonuspoint"), name="dispatch")
-class EmployeeBonusPointFormView(views.HorillaFormView):
+class EmployeeBonusPointFormView(views.GirjasoftFormView):
     """
     BonusPointForm View
     """
@@ -233,7 +233,7 @@ class EmployeeBonusPointFormView(views.HorillaFormView):
         return super().form_valid(form)
 
 
-class EmployeeBonusPointListView(views.HorillaListView):
+class EmployeeBonusPointListView(views.GirjasoftListView):
     """
     BnusPoint list view
     """
@@ -264,7 +264,7 @@ class EmployeeBonusPointListView(views.HorillaListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        request = getattr(horilla_middlewares._thread_locals, "request", None)
+        request = getattr(girjasoft_middlewares._thread_locals, "request", None)
         if is_reportingmanager(request) or request.user.has_perm(
             "pms.view_employeebonuspoint"
         ):
@@ -279,7 +279,7 @@ class EmployeeBonusPointListView(views.HorillaListView):
 
 
 @method_decorator(login_required, name="dispatch")
-class FeedbackEmployeeFormView(views.HorillaFormView):
+class FeedbackEmployeeFormView(views.GirjasoftFormView):
     """
     Feedback other employee form View
     """
@@ -316,7 +316,7 @@ class FeedbackEmployeeFormView(views.HorillaFormView):
 
 @method_decorator(login_required, name="dispatch")
 @method_decorator(permission_required("pms.add_feedback"), name="dispatch")
-class BulkFeedbackFormView(views.HorillaFormView):
+class BulkFeedbackFormView(views.GirjasoftFormView):
     """
     Feedback other employee form View
     """

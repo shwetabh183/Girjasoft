@@ -1,10 +1,10 @@
 """
-This module defines the configuration for the 'attendance' app within the Horilla HRMS project.
+This module defines the configuration for the 'attendance' app within the Girjasoft HRMS project.
 """
 
 from django.apps import AppConfig
 
-from horilla.horilla_settings import APP_URLS
+from girjasoft.girjasoft_settings import APP_URLS
 
 
 class AttendanceConfig(AppConfig):
@@ -22,9 +22,9 @@ class AttendanceConfig(AppConfig):
         from django.urls import include, path
 
         from attendance import scheduler, signals
-        from horilla.horilla_settings import APPS
-        from horilla.settings import MIDDLEWARE
-        from horilla.urls import urlpatterns
+        from girjasoft.girjasoft_settings import APPS
+        from girjasoft.settings import MIDDLEWARE
+        from girjasoft.urls import urlpatterns
 
         APPS.append("attendance")
         urlpatterns.append(

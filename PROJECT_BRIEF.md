@@ -155,7 +155,7 @@ PostgreSQL Database
 | `Dockerfile` | Docker container configuration |
 | `docker-compose.yaml` | Docker Compose setup |
 | `entrypoint.sh` | Container startup script |
-| `horilla/settings.py` | Django settings |
+| `girjasoft/settings.py` | Django settings |
 
 ---
 

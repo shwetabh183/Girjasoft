@@ -18,7 +18,7 @@ echo "=== Collectstatic done ==="
 # Use PORT environment variable or default to 8000 (Azure App Service default)
 PORT=${PORT:-8000}
 echo "=== Starting gunicorn on port $PORT ==="
-echo "Command: gunicorn --bind 0.0.0.0:$PORT horilla.wsgi:application"
+echo "Command: gunicorn --bind 0.0.0.0:$PORT girjasoft.wsgi:application"
 
 # Keep gunicorn in foreground with logging
-exec gunicorn --bind 0.0.0.0:$PORT --access-logfile - --error-logfile - --log-level info horilla.wsgi:application
+exec gunicorn --bind 0.0.0.0:$PORT --access-logfile - --error-logfile - --log-level info girjasoft.wsgi:application

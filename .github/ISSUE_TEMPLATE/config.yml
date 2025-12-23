@@ -1,8 +1,0 @@
-blank_issues_enabled: false
-contact_links:
-  - name: Girjasoft Community Support
-    url: https://github.com/girjasoft-opensource/girjasoft/discussions
-    about: Ask questions or discuss features here
-  - name: Documentation
-    url: https://girjasoft-opensource.github.io/girjasoft-docs/
-    about: Check the official Girjasoft documentation

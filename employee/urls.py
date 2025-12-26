@@ -425,4 +425,9 @@ urlpatterns = [
         name="employee-tag-delete",
         kwargs={"model": EmployeeTag, "HttpResponse": True},
     ),
+    path(
+        "employee-id-card-preview/<int:emp_id>/",
+        views.employee_id_card_preview,
+        name="employee-id-card-preview",
+    ),
 ]

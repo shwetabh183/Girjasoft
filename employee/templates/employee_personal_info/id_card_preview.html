@@ -1,0 +1,359 @@
+{% load static %}
+{% load i18n %}
+
+<div class="id-card-preview-container">
+    <h5 class="mb-3">{% trans "Employee ID Card Preview" %}</h5>
+    
+    <!-- ID Card Preview -->
+    <div class="id-card-wrapper" id="idCardContent">
+        <div class="id-card">
+            <!-- Front Side -->
+            <div class="id-card__front">
+                <!-- Header with company branding -->
+                <div class="id-card__header">
+                    {% if company and company.icon %}
+                        <img src="{{ company.icon.url }}" alt="{{ company.company }}" class="id-card__company-logo">
+                    {% else %}
+                        <img src="{% static 'images/logo.png' %}" alt="Company Logo" class="id-card__company-logo">
+                    {% endif %}
+                    <div class="id-card__company-name">
+                        {% if company %}
+                            {{ company.company }}
+                        {% else %}
+                            {% trans "Company Name" %}
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Employee Photo -->
+                <div class="id-card__photo-section">
+                    <div class="id-card__photo-frame">
+                        <img src="{{ employee.get_avatar }}" alt="{{ employee.get_full_name }}" class="id-card__photo">
+                    </div>
+                </div>
+                
+                <!-- Employee Details -->
+                <div class="id-card__details">
+                    <div class="id-card__name">{{ employee.get_full_name }}</div>
+                    <div class="id-card__designation">
+                        {% if employee.employee_work_info and employee.employee_work_info.job_position_id %}
+                            {{ employee.employee_work_info.job_position_id }}
+                        {% else %}
+                            {% trans "Employee" %}
+                        {% endif %}
+                    </div>
+                    <div class="id-card__department">
+                        {% if employee.employee_work_info and employee.employee_work_info.department_id %}
+                            {{ employee.employee_work_info.department_id }}
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Employee Info Grid -->
+                <div class="id-card__info-grid">
+                    <div class="id-card__info-item">
+                        <span class="id-card__info-label">{% trans "ID" %}</span>
+                        <span class="id-card__info-value">{{ employee.badge_id|default:"N/A" }}</span>
+                    </div>
+                    <div class="id-card__info-item">
+                        <span class="id-card__info-label">{% trans "Email" %}</span>
+                        <span class="id-card__info-value id-card__info-value--small">{{ employee.email|default:"N/A" }}</span>
+                    </div>
+                    {% if employee.phone %}
+                    <div class="id-card__info-item">
+                        <span class="id-card__info-label">{% trans "Phone" %}</span>
+                        <span class="id-card__info-value">{{ employee.phone }}</span>
+                    </div>
+                    {% endif %}
+                    {% if employee.employee_work_info and employee.employee_work_info.date_joining %}
+                    <div class="id-card__info-item">
+                        <span class="id-card__info-label">{% trans "Joined" %}</span>
+                        <span class="id-card__info-value">{{ employee.employee_work_info.date_joining|date:"M Y" }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Footer -->
+                <div class="id-card__footer">
+                    {% if company and company.address %}
+                        <div class="id-card__address">{{ company.city }}, {{ company.country }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Download Button -->
+    <div class="id-card-actions mt-4">
+        <button type="button" class="oh-btn oh-btn--primary" onclick="downloadIdCard()">
+            <ion-icon name="download-outline" class="me-2"></ion-icon>
+            {% trans "Download ID Card" %}
+        </button>
+    </div>
+</div>
+
+<style>
+    .id-card-preview-container {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .id-card-wrapper {
+        perspective: 1000px;
+    }
+    
+    .id-card {
+        width: 340px;
+        height: 520px;
+        position: relative;
+    }
+    
+    .id-card__front {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(145deg, #1e3a5f 0%, #0d1b2a 50%, #1e3a5f 100%);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .id-card__front::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+        background: linear-gradient(180deg, rgba(59, 130, 246, 0.3) 0%, transparent 100%);
+        border-radius: 16px 16px 0 0;
+    }
+    
+    .id-card__front::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: linear-gradient(0deg, rgba(59, 130, 246, 0.2) 0%, transparent 100%);
+        border-radius: 0 0 16px 16px;
+    }
+    
+    .id-card__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .id-card__company-logo {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        margin-bottom: 8px;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+    
+    .id-card__company-name {
+        font-size: 14px;
+        font-weight: 700;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .id-card__photo-section {
+        margin: 15px 0;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .id-card__photo-frame {
+        width: 110px;
+        height: 130px;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        padding: 3px;
+    }
+    
+    .id-card__photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 7px;
+    }
+    
+    .id-card__details {
+        text-align: center;
+        margin: 10px 0;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .id-card__name {
+        font-size: 18px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 4px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .id-card__designation {
+        font-size: 12px;
+        color: #93c5fd;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 2px;
+    }
+    
+    .id-card__department {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .id-card__info-grid {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 12px;
+        margin-top: 10px;
+        position: relative;
+        z-index: 1;
+        backdrop-filter: blur(10px);
+    }
+    
+    .id-card__info-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .id-card__info-item:last-child {
+        border-bottom: none;
+    }
+    
+    .id-card__info-label {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+    }
+    
+    .id-card__info-value {
+        font-size: 12px;
+        color: #ffffff;
+        font-weight: 500;
+    }
+    
+    .id-card__info-value--small {
+        font-size: 10px;
+        word-break: break-all;
+        text-align: right;
+        max-width: 180px;
+    }
+    
+    .id-card__footer {
+        margin-top: auto;
+        padding-top: 10px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .id-card__address {
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.5);
+        text-align: center;
+        letter-spacing: 0.5px;
+    }
+    
+    .id-card-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+    
+    /* Print styles */
+    @media print {
+        .id-card-actions {
+            display: none !important;
+        }
+        
+        .id-card-preview-container h5 {
+            display: none !important;
+        }
+        
+        .id-card {
+            box-shadow: none;
+        }
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+    function downloadIdCard() {
+        const idCardElement = document.getElementById('idCardContent');
+        const employeeName = "{{ employee.get_full_name|escapejs }}";
+        const employeeId = "{{ employee.badge_id|default:'employee'|escapejs }}";
+        
+        // Show loading state
+        const downloadBtn = event.target.closest('button');
+        const originalText = downloadBtn.innerHTML;
+        downloadBtn.innerHTML = '<ion-icon name="hourglass-outline" class="me-2"></ion-icon> {% trans "Generating..." %}';
+        downloadBtn.disabled = true;
+        
+        html2canvas(idCardElement, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: null,
+            logging: false
+        }).then(canvas => {
+            const { jsPDF } = window.jspdf;
+            
+            // Create PDF with ID card dimensions
+            const pdf = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: [86, 130] // Standard ID card size in mm
+            });
+            
+            // Add the canvas as image
+            const imgData = canvas.toDataURL('image/png');
+            pdf.addImage(imgData, 'PNG', 0, 0, 86, 130);
+            
+            // Download the PDF
+            pdf.save(`ID_Card_${employeeName.replace(/\s+/g, '_')}_${employeeId}.pdf`);
+            
+            // Restore button state
+            downloadBtn.innerHTML = originalText;
+            downloadBtn.disabled = false;
+        }).catch(error => {
+            console.error('Error generating ID card:', error);
+            downloadBtn.innerHTML = originalText;
+            downloadBtn.disabled = false;
+            alert('{% trans "Error generating ID card. Please try again." %}');
+        });
+    }
+</script>
+

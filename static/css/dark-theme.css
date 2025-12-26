@@ -4550,3 +4550,33 @@ input[type="file"] {
 .candidate-table .change-cand * {
     color: inherit;
 }
+
+/* ========== EMPLOYEE ID CARD PREVIEW ========== */
+.id-card-preview-container {
+    background: transparent !important;
+}
+
+.id-card-preview-container h5 {
+    color: var(--dark-text-primary) !important;
+}
+
+#idCardModal .oh-modal__dialog-body {
+    background: var(--dark-bg-secondary) !important;
+    padding: 20px !important;
+}
+
+/* ID Card already has dark styling built-in, but ensure container works */
+.id-card-wrapper {
+    background: transparent !important;
+}
+
+.id-card-actions .oh-btn {
+    background-color: var(--accent-blue) !important;
+    border-color: var(--accent-blue) !important;
+    color: #ffffff !important;
+}
+
+.id-card-actions .oh-btn:hover {
+    background-color: var(--accent-blue-light) !important;
+    border-color: var(--accent-blue-light) !important;
+}

@@ -3645,3 +3645,34 @@ def employee_tag_update(request, tag_id):
         "base/employee_tag/employee_tag_form.html",
         {"form": form, "tag_id": tag_id},
     )
+
+
+@login_required
+@hx_request_required
+def employee_id_card_preview(request, emp_id):
+    """
+    This method renders the employee ID card preview template.
+    The ID card contains company logo, employee photo, name, ID, email, etc.
+    """
+    employee = get_object_or_404(Employee, id=emp_id)
+    company = None
+    
+    # Get company from employee's work info
+    if hasattr(employee, 'employee_work_info') and employee.employee_work_info:
+        company = employee.employee_work_info.company_id
+    
+    # If no company in work info, try to get from the white label company
+    if not company:
+        from base.models import Company
+        company = Company.objects.filter(hq=True).first()
+    
+    context = {
+        "employee": employee,
+        "company": company,
+    }
+    
+    return render(
+        request,
+        "employee_personal_info/id_card_preview.html",
+        context,
+    )

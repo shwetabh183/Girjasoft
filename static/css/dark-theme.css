@@ -264,6 +264,18 @@ body.dark-theme {
 .oh-dropdown__menu {
     background: linear-gradient(135deg, #1e293b, #0f172a) !important;
     border-color: rgba(255, 255, 255, 0.12) !important;
+    z-index: 1000 !important;
+}
+
+/* Ensure dropdown parent has proper stacking context */
+.oh-dropdown {
+    position: relative !important;
+}
+
+/* Elevate dropdown container when open (Alpine.js uses inline style) */
+.oh-dropdown:has(.oh-dropdown__menu[style*="display: block"]),
+.oh-dropdown:has(.oh-dropdown__menu:not([style*="display: none"])) {
+    z-index: 1001 !important;
 }
 
 .oh-dropdown__item a,
@@ -291,6 +303,159 @@ body.dark-theme {
 .oh-dropdown__filter {
     background: linear-gradient(135deg, #1e293b, #0f172a) !important;
     border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ========== DROPDOWN Z-INDEX FIXES FOR ALL CONTEXTS ========== */
+
+/* Table rows - dropdown overlap fix */
+.oh-sticky-table__tr .oh-dropdown,
+.oh-sticky-table__td .oh-dropdown,
+.oh-sticky-table__sd .oh-dropdown,
+.oh-sticky-table__right .oh-dropdown {
+    position: relative !important;
+}
+
+.oh-sticky-table__tr:hover,
+.oh-sticky-table__td:hover,
+.oh-sticky-table__right:hover {
+    z-index: 50 !important;
+}
+
+.oh-sticky-table__tr:focus-within,
+.oh-sticky-table__td:focus-within,
+.oh-sticky-table__right:focus-within {
+    z-index: 100 !important;
+}
+
+/* Card dropdowns */
+.oh-card .oh-dropdown {
+    position: relative !important;
+}
+
+.oh-card:hover {
+    z-index: 10 !important;
+}
+
+.oh-card:focus-within {
+    z-index: 100 !important;
+}
+
+/* Kanban card dropdowns */
+.oh-kanban__card .oh-dropdown,
+.oh-kanban__card-header .oh-dropdown {
+    position: relative !important;
+}
+
+.oh-kanban__card:hover {
+    z-index: 50 !important;
+}
+
+.oh-kanban__card:focus-within {
+    z-index: 100 !important;
+}
+
+/* Nav item dropdowns */
+.oh-inner-sidebar__item .oh-dropdown,
+.oh-navbar__item .oh-dropdown {
+    position: relative !important;
+}
+
+.oh-inner-sidebar__item:focus-within,
+.oh-navbar__item:focus-within {
+    z-index: 100 !important;
+}
+
+/* Generic list item dropdowns */
+.oh-list__item .oh-dropdown,
+.list-group-item .oh-dropdown {
+    position: relative !important;
+}
+
+.oh-list__item:hover,
+.list-group-item:hover {
+    z-index: 10 !important;
+}
+
+.oh-list__item:focus-within,
+.list-group-item:focus-within {
+    z-index: 100 !important;
+}
+
+/* Button group dropdowns */
+.oh-btn-group .oh-dropdown {
+    position: relative !important;
+}
+
+.oh-btn-group:focus-within {
+    z-index: 100 !important;
+}
+
+/* Profile section dropdowns */
+.oh-profile .oh-dropdown,
+.oh-profile-section .oh-dropdown {
+    position: relative !important;
+}
+
+.oh-profile:focus-within,
+.oh-profile-section:focus-within {
+    z-index: 100 !important;
+}
+
+/* Request/allocation list dropdowns */
+.request-line .oh-dropdown,
+.allocation-line .oh-dropdown {
+    position: relative !important;
+}
+
+.request-line:focus-within,
+.allocation-line:focus-within {
+    z-index: 100 !important;
+}
+
+/* Pipeline candidate dropdowns */
+.candidate-table .oh-dropdown,
+.pipeline_items .oh-dropdown {
+    position: relative !important;
+}
+
+.candidate-table tr:focus-within,
+.candidate-table .oh-sticky-table__tr:focus-within {
+    z-index: 100 !important;
+}
+
+/* Dashboard card dropdowns */
+.oh-card-dashboard .oh-dropdown {
+    position: relative !important;
+}
+
+.oh-card-dashboard:focus-within {
+    z-index: 100 !important;
+}
+
+/* Survey/Template accordion dropdowns */
+.oh-accordion .oh-dropdown,
+.template-accordion .oh-dropdown {
+    position: relative !important;
+}
+
+.oh-accordion__item:focus-within,
+.template-accordion__item:focus-within {
+    z-index: 100 !important;
+}
+
+/* Generic fix for any container with dropdowns */
+[class*="__item"]:has(.oh-dropdown__menu:not([style*="display: none"])),
+[class*="__row"]:has(.oh-dropdown__menu:not([style*="display: none"])),
+[class*="__tr"]:has(.oh-dropdown__menu:not([style*="display: none"])) {
+    z-index: 100 !important;
+    position: relative !important;
+}
+
+/* Ensure all dropdown menus are on top */
+.oh-dropdown__menu,
+.oh-dropdown__filter,
+.oh-sticky-dropdown--header {
+    z-index: 1000 !important;
 }
 
 /* ========== TABLES ========== */
@@ -354,6 +519,15 @@ body.dark-theme {
     position: sticky !important;
     right: 0 !important;
     z-index: 15 !important;
+}
+
+/* Elevate sticky right when dropdown is open */
+.oh-sticky-table__right:focus-within {
+    z-index: 200 !important;
+}
+
+.oh-sticky-table__right:hover {
+    z-index: 100 !important;
 }
 
 /* Sticky right in header */
@@ -1211,6 +1385,41 @@ select option {
     color: var(--dark-text-primary) !important;
 }
 
+/* ========== BOOTSTRAP BACKGROUND OVERRIDES ========== */
+.bg-white {
+    background-color: var(--dark-bg-secondary) !important;
+}
+
+.bg-light {
+    background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+.bg-dark {
+    background-color: var(--dark-bg-primary) !important;
+}
+
+/* Text colors */
+.text-black {
+    color: var(--dark-text-primary) !important;
+}
+
+.text-white {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Border colors */
+.border-light {
+    border-color: var(--dark-border) !important;
+}
+
+.border-dark {
+    border-color: var(--dark-border) !important;
+}
+
+.border-white {
+    border-color: var(--dark-border) !important;
+}
+
 /* ========== LINKS ========== */
 a {
     color: var(--accent-blue-light);
@@ -1318,6 +1527,81 @@ hr {
 [style*="color:#4d4a4a"],
 [style*="color: #4f4a4a"] {
     color: var(--dark-text-tertiary) !important;
+}
+
+/* Override inline white backgrounds */
+[style*="background-color: white"],
+[style*="background-color:white"],
+[style*="background: white"],
+[style*="background:white"],
+[style*="background-color: #fff"],
+[style*="background-color:#fff"],
+[style*="background: #fff"],
+[style*="background:#fff"],
+[style*="background-color: #ffffff"],
+[style*="background-color:#ffffff"],
+[style*="background: #ffffff"],
+[style*="background:#ffffff"] {
+    background-color: var(--dark-bg-secondary) !important;
+}
+
+/* Override inline black/dark text colors */
+[style*="color: black"],
+[style*="color:black"],
+[style*="color: #000"],
+[style*="color:#000"],
+[style*="color: #333"],
+[style*="color:#333"],
+[style*="color: #212529"],
+[style*="color:#212529"] {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Override inline light gray backgrounds */
+[style*="background-color: #f8f9fa"],
+[style*="background-color:#f8f9fa"],
+[style*="background: #f8f9fa"],
+[style*="background:#f8f9fa"],
+[style*="background-color: #f5f5f5"],
+[style*="background-color:#f5f5f5"],
+[style*="background: #f5f5f5"],
+[style*="background:#f5f5f5"],
+[style*="background-color: #eee"],
+[style*="background-color:#eee"],
+[style*="background: #eee"],
+[style*="background:#eee"] {
+    background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+/* Override inline light borders */
+[style*="border: 1px solid #ddd"],
+[style*="border:1px solid #ddd"],
+[style*="border-color: #ddd"],
+[style*="border-color:#ddd"],
+[style*="border: solid 1px #ccc"],
+[style*="border:solid 1px #ccc"],
+[style*="border:1px solid lightgrey"],
+[style*="border: 1px solid lightgrey"],
+[style*="border:1px solid lightgray"],
+[style*="border: 1px solid lightgray"] {
+    border-color: var(--dark-border) !important;
+}
+
+/* Override inline box shadows */
+[style*="box-shadow: 2px 2px 2px grey"],
+[style*="box-shadow:2px 2px 2px grey"],
+[style*="box-shadow: 2px 2px 2px gray"] {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Override lightgrey/lightgray backgrounds */
+[style*="background: lightgrey"],
+[style*="background:lightgrey"],
+[style*="background-color: lightgrey"],
+[style*="background-color:lightgrey"],
+[style*="background: lightgray"],
+[style*="background:lightgray"] {
+    background-color: rgba(30, 41, 59, 0.5) !important;
 }
 
 /* ========== ERROR LISTS ========== */
@@ -1719,6 +2003,89 @@ form button ion-icon {
 
 .oh-accordion-meta__body {
     color: var(--dark-text-secondary) !important;
+    background: rgba(15, 23, 42, 0.5) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-accordion-meta__item {
+    background: rgba(30, 41, 59, 0.5) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-accordion-meta__actions {
+    background: transparent !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Fix dropdown overlap issue in accordion meta */
+.oh-accordion-meta__actions .oh-dropdown {
+    position: relative !important;
+}
+
+.oh-accordion-meta__actions .oh-dropdown__menu {
+    z-index: 1000 !important;
+    position: absolute !important;
+}
+
+/* When dropdown is shown, elevate the parent actions container */
+.oh-accordion-meta__item:has(.oh-dropdown__menu[style*="display: block"]),
+.oh-accordion-meta__item:has(.oh-dropdown__menu:not([style*="display: none"])) {
+    z-index: 100 !important;
+    position: relative !important;
+}
+
+/* Fallback for browsers without :has() support - use hover */
+.oh-accordion-meta__actions:hover {
+    z-index: 100 !important;
+}
+
+.oh-accordion-meta__actions:focus-within {
+    z-index: 100 !important;
+}
+
+/* Accessibility restriction info box - override inline light styles */
+#accessibilityContainer .oh-accordion-meta__body .mt-3[style*="background"] {
+    background: rgba(59, 130, 246, 0.15) !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+#accessibilityContainer .oh-accordion-meta__body b {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Labels in accessibility section */
+#accessibilityContainer .oh-label,
+#accessibilityContainer .oh-label__info,
+#accessibilityContainer label {
+    color: var(--dark-text-secondary) !important;
+}
+
+#accessibilityContainer .oh-label b,
+#accessibilityContainer label b {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Form fields in accessibility */
+#accessibilityContainer select,
+#accessibilityContainer .select2-container--default .select2-selection--multiple {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Accordion meta header actions button */
+.oh-accordion-meta__header .oh-btn {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-accordion-meta__header .oh-btn:hover {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    color: var(--dark-text-primary) !important;
 }
 
 /* Not found / empty state */
@@ -1731,6 +2098,33 @@ form button ion-icon {
     background-color: rgba(59, 130, 246, 0.15) !important;
     border-color: rgba(59, 130, 246, 0.3) !important;
     color: var(--accent-blue-light) !important;
+}
+
+/* Override inline light-colored info boxes throughout the app */
+[style*="background: #87cefa"],
+[style*="background:#87cefa"],
+[style*="background: lightskyblue"],
+[style*="background:lightskyblue"],
+div[style*="#87cefa"],
+div[style*="lightskyblue"] {
+    background: rgba(59, 130, 246, 0.15) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Ensure text inside info boxes is visible */
+[style*="background: #87cefa"] *,
+[style*="background:#87cefa"] *,
+div[style*="#87cefa"] *,
+div[style*="lightskyblue"] * {
+    color: inherit;
+}
+
+[style*="background: #87cefa"] b,
+[style*="background:#87cefa"] b,
+div[style*="#87cefa"] b,
+div[style*="lightskyblue"] b {
+    color: var(--dark-text-primary) !important;
 }
 
 /* Resign status badge */
@@ -3261,6 +3655,64 @@ select[name="status_update"] {
     color: var(--accent-blue-light) !important;
 }
 
+/* ========== HISTORY TRACKING ========== */
+/* Override inline white background in history sidebar header */
+.oh-activity-sidebar__header[style*="background:#fff"],
+.oh-activity-sidebar__header[style*="background: #fff"],
+.oh-activity-sidebar__header[style*="background:white"],
+.oh-activity-sidebar__header[style*="background: white"] {
+    background: var(--dark-bg-secondary) !important;
+}
+
+.oh-history__container {
+    background: rgba(30, 41, 59, 0.5) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-history_date,
+.oh-history_date-content {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-history__username {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-history_task-state {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-history-task-state,
+.oh-history_tracking-value {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-history_task-list {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-history_track-value {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-history_track-value span {
+    color: inherit !important;
+}
+
+.oh-history_msg-container {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-history_user-details {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Arrow icon in history */
+.oh-progress_arrow {
+    filter: invert(1) !important;
+}
+
 /* ========== TIMEOFF TITLE ========== */
 .oh-timeoff-title {
     color: var(--dark-text-primary) !important;
@@ -3279,6 +3731,14 @@ select[name="status_update"] {
 /* ========== INNER SIDEBAR CONTENT ========== */
 .oh-inner-sidebar-content {
     background: transparent !important;
+}
+
+.oh-inner-sidebar-content__header {
+    border-bottom-color: var(--dark-border) !important;
+}
+
+.oh-inner-sidebar-content__title {
+    color: var(--dark-text-primary) !important;
 }
 
 .oh-inner-sidebar-content__footer {

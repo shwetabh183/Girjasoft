@@ -231,6 +231,17 @@ body.dark-theme {
     background-color: rgba(74, 222, 128, 0.15) !important;
 }
 
+/* Warning outline button (Check-Out) */
+.oh-btn--warning-outline {
+    background-color: transparent !important;
+    border-color: #fbbf24 !important;
+    color: #fbbf24 !important;
+}
+
+.oh-btn--warning-outline:hover {
+    background-color: rgba(251, 191, 36, 0.15) !important;
+}
+
 .oh-btn--danger-outline {
     background-color: transparent !important;
     border-color: #f87171 !important;
@@ -284,82 +295,116 @@ body.dark-theme {
 
 /* ========== TABLES ========== */
 .oh-sticky-table {
-    background: transparent !important;
+    background: rgba(15, 23, 42, 1) !important;
+    position: relative !important;
 }
 
 .oh-sticky-table__table {
-    background: transparent !important;
+    background: rgba(15, 23, 42, 1) !important;
 }
 
 .oh-sticky-table__thead {
-    background: rgba(59, 130, 246, 0.1) !important;
+    background: rgba(30, 41, 59, 1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+}
+
+.oh-sticky-table__thead .oh-sticky-table__tr {
+    background: rgba(30, 41, 59, 1) !important;
 }
 
 .oh-sticky-table__tbody {
-    background: transparent !important;
+    background: rgba(15, 23, 42, 1) !important;
 }
 
 .oh-sticky-table__th {
     color: var(--accent-blue-light) !important;
-    background: transparent !important;
-    border-bottom-color: rgba(59, 130, 246, 0.2) !important;
+    background: rgba(30, 41, 59, 1) !important;
+    border-bottom-color: rgba(59, 130, 246, 0.3) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+}
+
+/* First column sticky */
+.oh-sticky-table__th:first-child {
+    z-index: 21 !important;
+    background: rgba(30, 41, 59, 1) !important;
 }
 
 .oh-sticky-table__tr {
-    background: transparent !important;
+    background: rgba(15, 23, 42, 1) !important;
     border-bottom-color: rgba(255, 255, 255, 0.05) !important;
 }
 
 .oh-sticky-table__tr:hover {
-    background-color: rgba(59, 130, 246, 0.08) !important;
+    background-color: rgba(59, 130, 246, 0.15) !important;
 }
 
 .oh-sticky-table__td,
 .oh-sticky-table__sd {
     color: var(--dark-text-secondary) !important;
-    background: transparent !important;
+    background: rgba(15, 23, 42, 1) !important;
 }
 
+/* Sticky right column (actions column) */
 .oh-sticky-table__right {
-    background-color: rgba(15, 23, 42, 0.95) !important;
+    background-color: rgba(15, 23, 42, 1) !important;
+    position: sticky !important;
+    right: 0 !important;
+    z-index: 15 !important;
+}
+
+/* Sticky right in header */
+.oh-sticky-table__thead .oh-sticky-table__right {
+    background: rgba(30, 41, 59, 1) !important;
+    z-index: 22 !important;
+}
+
+/* Sticky row (sr class) */
+.oh-sticky-table__sr {
+    background-color: rgba(15, 23, 42, 1) !important;
+    position: sticky !important;
+    right: 0 !important;
 }
 
 /* Profile within tables - force visibility */
 .oh-sticky-table .oh-profile,
 .oh-card-dashboard .oh-profile,
 .oh-card-dashboard__body .oh-profile {
-    background: transparent !important;
+    background: inherit !important;
 }
 
 /* Standard HTML tables */
 table {
-    background: transparent !important;
+    background: rgba(15, 23, 42, 1) !important;
 }
 
 table thead {
-    background: rgba(59, 130, 246, 0.1) !important;
+    background: rgba(30, 41, 59, 1) !important;
 }
 
 table th {
     color: var(--accent-blue-light) !important;
-    background: transparent !important;
+    background: rgba(30, 41, 59, 1) !important;
 }
 
 table tbody {
-    background: transparent !important;
+    background: rgba(15, 23, 42, 1) !important;
 }
 
 table tr {
-    background: transparent !important;
+    background: rgba(15, 23, 42, 1) !important;
 }
 
 table tr:hover {
-    background-color: rgba(59, 130, 246, 0.08) !important;
+    background-color: rgba(59, 130, 246, 0.15) !important;
 }
 
 table td {
     color: var(--dark-text-secondary) !important;
-    background: transparent !important;
+    background: rgba(15, 23, 42, 1) !important;
 }
 
 /* Override white backgrounds from style.css */
@@ -486,6 +531,53 @@ select option {
     color: var(--dark-text-secondary) !important;
 }
 
+.oh-kanban-card__actions {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-kanban-card__dots {
+    color: var(--dark-text-muted) !important;
+}
+
+/* ========== KANBAN BOARD ========== */
+.oh-kanban {
+    background: transparent !important;
+}
+
+.oh-kanban__section {
+    background: rgba(30, 41, 59, 0.5) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-kanban__section-title {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-kanban__section-head {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-kanban__section-head--white {
+    background: rgba(30, 41, 59, 0.8) !important;
+}
+
+.oh-kanban__add-container {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-kanban__add-container:hover {
+    background: rgba(59, 130, 246, 0.1) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-kanban__head-actions {
+    color: var(--dark-text-secondary) !important;
+}
+
 /* ========== PROFILE ========== */
 .oh-profile__name {
     color: var(--dark-text-primary) !important;
@@ -516,7 +608,7 @@ select option {
 /* d-flex containers in tables */
 .oh-sticky-table__sd .d-flex,
 .oh-sticky-table__td .d-flex {
-    background: transparent !important;
+    background: inherit !important;
 }
 
 /* All spans and text within tables */
@@ -571,14 +663,38 @@ select option {
 }
 
 /* ========== PAGINATION ========== */
-.oh-pagination__link {
-    background-color: rgba(255, 255, 255, 0.05) !important;
+.oh-pagination {
+    background: transparent !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-pagination__items {
+    background: transparent !important;
+}
+
+.oh-pagination__item {
+    background-color: rgba(30, 41, 59, 0.9) !important;
     border-color: var(--dark-border) !important;
-    color: var(--dark-text-tertiary) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-pagination__item:hover {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-pagination__item:last-child {
+    border-right-color: var(--dark-border) !important;
+}
+
+.oh-pagination__link {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
 }
 
 .oh-pagination__link:hover {
-    background-color: rgba(59, 130, 246, 0.15) !important;
+    background-color: rgba(59, 130, 246, 0.25) !important;
     color: var(--dark-text-primary) !important;
 }
 
@@ -590,13 +706,17 @@ select option {
 
 .oh-pagination__page,
 .oh-pagination__label {
-    color: var(--dark-text-tertiary) !important;
+    color: var(--dark-text-secondary) !important;
 }
 
 .oh-pagination__input {
     background-color: rgba(255, 255, 255, 0.05) !important;
     border-color: var(--dark-border) !important;
     color: var(--dark-text-primary) !important;
+}
+
+.oh-pagination__nav {
+    color: var(--dark-text-secondary) !important;
 }
 
 /* ========== SIDEBAR ========== */
@@ -654,6 +774,64 @@ select option {
 
 .oh-navbar__notification-badge {
     background-color: #ef4444 !important;
+}
+
+/* ========== CHECK-IN/CHECK-OUT BUTTON ========== */
+/* Navbar clock button container */
+.oh-navbar__clock {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    color: white !important;
+}
+
+.oh-navbar__clock-icon {
+    color: white !important;
+}
+
+.oh-navbar__clock-text {
+    color: white !important;
+}
+
+/* Time runner display */
+.time-runner,
+.at-work-seconds {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Check-In/Out text */
+.hr-Check-In-out-text {
+    color: inherit !important;
+}
+
+/* Attendance activity container buttons */
+#attendance-activity-container .oh-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+#attendance-activity-container .oh-btn--success-outline {
+    background-color: rgba(74, 222, 128, 0.1) !important;
+    border-color: #4ade80 !important;
+    color: #4ade80 !important;
+}
+
+#attendance-activity-container .oh-btn--warning-outline {
+    background-color: rgba(251, 191, 36, 0.1) !important;
+    border-color: #fbbf24 !important;
+    color: #fbbf24 !important;
+}
+
+#attendance-activity-container .oh-navbar__clock-icon {
+    color: inherit !important;
+}
+
+#attendance-activity-container .text-success {
+    color: #4ade80 !important;
+}
+
+#attendance-activity-container .text-warning {
+    color: #fbbf24 !important;
 }
 
 /* ========== ALERTS ========== */
@@ -716,7 +894,7 @@ select option {
 }
 
 .oh-tabs__contents {
-    background: transparent !important;
+    background: rgba(15, 23, 42, 0.9) !important;
 }
 
 .oh-tabs__content {
@@ -762,6 +940,7 @@ select option {
 .oh-accordion-header {
     color: var(--dark-text-primary) !important;
     background-color: rgba(255, 255, 255, 0.03) !important;
+    border-bottom-color: var(--dark-border) !important;
 }
 
 .oh-accordion-header:hover {
@@ -772,8 +951,24 @@ select option {
     color: var(--accent-blue-light) !important;
 }
 
+/* Accordion arrow - override dark SVG with light one */
+.oh-accordion-header::after {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5NGEzYjgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBkPSJtNyAxMCA1IDUgNS01SDdaIj48L3BhdGg+Cjwvc3ZnPg==") !important;
+    filter: brightness(1.5) !important;
+}
+
+.oh-accordion--show .oh-accordion-header::after {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM2MGE1ZmEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBkPSJtNyAxNC41IDUtNSA1IDVIN1oiPjwvcGF0aD4KPC9zdmc+") !important;
+    filter: brightness(1) !important;
+}
+
 .oh-accordion-body {
     color: var(--dark-text-secondary) !important;
+    display: none;
+}
+
+.oh-accordion--show .oh-accordion-body {
+    display: block !important;
 }
 
 .oh-accordion--show .oh-accordion-header {
@@ -930,6 +1125,52 @@ select option {
     color: var(--dark-text-primary) !important;
 }
 
+/* SELECT2 MULTI-SELECT CHOICE TAGS - Fix white on white */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    background: rgba(59, 130, 246, 0.2) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: var(--accent-blue-light) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+    background-color: rgba(248, 113, 113, 0.2) !important;
+    color: #f87171 !important;
+}
+
+/* Multi-select rendered text */
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Multi-select placeholder */
+.select2-container--default .select2-selection--multiple .select2-selection__placeholder {
+    color: var(--dark-text-muted) !important;
+}
+
+/* Admin autocomplete select2 choices */
+.select2-container--admin-autocomplete .select2-selection--multiple .select2-selection__choice {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.select2-container--admin-autocomplete .select2-selection--multiple .select2-selection__choice__remove {
+    color: var(--accent-blue-light) !important;
+}
+
+/* Classic select2 style choices */
+.select2-container--classic .select2-selection--multiple .select2-selection__choice {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+    color: var(--accent-blue-light) !important;
+}
+
 /* ========== 404/EMPTY STATE ========== */
 .oh-404__title {
     color: var(--dark-text-primary) !important;
@@ -952,14 +1193,21 @@ select option {
     color: var(--dark-text-primary) !important;
 }
 
-/* Ensure text is visible in all contexts */
+/* CRITICAL: oh-text--light is actually DARK gray in light theme */
+/* On dark theme, we need to make it LIGHT so it's visible */
 .oh-text--light {
-    color: var(--dark-text-primary) !important;
+    color: var(--dark-text-tertiary) !important;
 }
 
 /* Force dark text classes to use theme colors */
 [class*="text-dark"],
 [class*="oh-text--dark"] {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Profile name specifically */
+.oh-profile__name.oh-text--dark,
+.oh-profile__name.oh-text--light {
     color: var(--dark-text-primary) !important;
 }
 
@@ -1493,7 +1741,7 @@ form button ion-icon {
 
 /* Table sticky wrapper */
 .oh-table_sticky--wrapper {
-    background: transparent !important;
+    background: rgba(15, 23, 42, 1) !important;
 }
 
 /* Dropdown header */
@@ -1536,4 +1784,2309 @@ form button ion-icon {
 .row-permission,
 .row-permission__select-all {
     accent-color: var(--accent-blue) !important;
+}
+
+/* ========== EMPLOYEE LIST - ONLINE/OFFLINE FILTER ========== */
+/* Online/Offline text in employee list */
+.d-flex.flex-row-reverse span {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Ensure clickable filter spans are visible */
+.d-flex.flex-row-reverse span[onclick] {
+    color: var(--dark-text-secondary) !important;
+}
+
+.d-flex.flex-row-reverse span[onclick]:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Oh-dot indicator */
+.oh-dot {
+    display: inline-block;
+}
+
+/* ========== SCROLLABLE CONTAINERS WITH STICKY HEADERS ========== */
+/* Dashboard card body scrollable areas */
+.oh-card-dashboard__body {
+    position: relative !important;
+}
+
+/* Ensure sticky headers work inside scrollable dashboard cards */
+.oh-card-dashboard__body .oh-sticky-table {
+    position: relative !important;
+}
+
+.oh-card-dashboard__body .oh-sticky-table__thead {
+    background: rgba(30, 41, 59, 1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+}
+
+.oh-card-dashboard__body .oh-sticky-table__th {
+    background: rgba(30, 41, 59, 1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+}
+
+/* Sidebar card scrollable bodies */
+.sidebar-card__body .oh-sticky-table__thead,
+.glass-card__body .oh-sticky-table__thead {
+    background: rgba(30, 41, 59, 1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+}
+
+/* Any scrollable container with overflow */
+[style*="overflow-y: auto"] .oh-sticky-table__thead,
+[style*="overflow:auto"] .oh-sticky-table__thead,
+[style*="overflow: auto"] .oh-sticky-table__thead {
+    background: rgba(30, 41, 59, 1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+}
+
+[style*="overflow-y: auto"] .oh-sticky-table__th,
+[style*="overflow:auto"] .oh-sticky-table__th,
+[style*="overflow: auto"] .oh-sticky-table__th {
+    background: rgba(30, 41, 59, 1) !important;
+}
+
+/* Height-constrained containers */
+[style*="height:"] .oh-sticky-table__thead,
+[style*="height:"] .oh-sticky-table__th,
+[style*="max-height:"] .oh-sticky-table__thead,
+[style*="max-height:"] .oh-sticky-table__th {
+    background: rgba(30, 41, 59, 1) !important;
+}
+
+/* Specific dashboard card bodies by ID - SOLID backgrounds for sticky */
+#attendanceValidateCardBody .oh-sticky-table__thead,
+#notInYetIdCardBody .oh-sticky-table__thead,
+#notoutYetIdCardBody .oh-sticky-table__thead,
+#onBreakEmployeesCard .oh-sticky-table__thead,
+#OTApproveBody .oh-sticky-table__thead,
+#lateComersCardBody .oh-sticky-table__thead,
+#shiftRequestApproveBody .oh-sticky-table__thead,
+#WorkTypeRequestApproveBody .oh-sticky-table__thead,
+#leaveApproveCardBody .oh-sticky-table__thead,
+#leaveAllocationApproveBody .oh-sticky-table__thead,
+#feedbackAnswerCardBody .oh-sticky-table__thead,
+#dashboardAssetRequests .oh-sticky-table__thead {
+    background: rgba(30, 41, 59, 1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 25 !important;
+}
+
+#attendanceValidateCardBody .oh-sticky-table__th,
+#notInYetIdCardBody .oh-sticky-table__th,
+#notoutYetIdCardBody .oh-sticky-table__th,
+#onBreakEmployeesCard .oh-sticky-table__th,
+#OTApproveBody .oh-sticky-table__th,
+#lateComersCardBody .oh-sticky-table__th,
+#shiftRequestApproveBody .oh-sticky-table__th,
+#WorkTypeRequestApproveBody .oh-sticky-table__th,
+#leaveApproveCardBody .oh-sticky-table__th,
+#leaveAllocationApproveBody .oh-sticky-table__th,
+#feedbackAnswerCardBody .oh-sticky-table__th,
+#dashboardAssetRequests .oh-sticky-table__th {
+    background: rgba(30, 41, 59, 1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 25 !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* Sticky right columns in dashboard cards */
+#attendanceValidateCardBody .oh-sticky-table__right,
+#notInYetIdCardBody .oh-sticky-table__right,
+#notoutYetIdCardBody .oh-sticky-table__right,
+#OTApproveBody .oh-sticky-table__right,
+#leaveApproveCardBody .oh-sticky-table__right {
+    background: rgba(15, 23, 42, 1) !important;
+    position: sticky !important;
+    right: 0 !important;
+    z-index: 15 !important;
+}
+
+/* Contract tab scrollable table */
+.height-adj .oh-sticky-table__thead,
+.height-adj .oh-sticky-table__th {
+    background: rgba(30, 41, 59, 1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+}
+
+/* Tab content scrollable areas */
+.oh-tabs__content .oh-sticky-table__thead,
+.oh-tabs__content .oh-sticky-table__th {
+    background: rgba(30, 41, 59, 1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+}
+
+/* Modal body scrollable tables */
+.oh-modal__dialog-body .oh-sticky-table__thead,
+.oh-modal__dialog-body .oh-sticky-table__th {
+    background: rgba(30, 41, 59, 1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+}
+
+/* ========== VIEW CONTAINER GENERAL TEXT ========== */
+#view-container {
+    color: var(--dark-text-secondary) !important;
+}
+
+#view-container span,
+#view-container div {
+    color: inherit;
+}
+
+/* Specific text colors override */
+#view-container .text-dark,
+#view-container .oh-text--dark {
+    color: var(--dark-text-primary) !important;
+}
+
+/* ============================================================
+   INLINE STYLE COLOR OVERRIDES
+   Fixing dark text colors that don't show on dark backgrounds
+   ============================================================ */
+
+/* Override inline color: #4d4a4a (commonly used dark gray) */
+[style*="color: #4d4a4a"],
+[style*="color:#4d4a4a"],
+[style*="color: #4f4a4a"],
+[style*="color:#4f4a4a"] {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Override inline color: #5e5c5c, #5c5c5c (dark gray in inputs) */
+[style*="color: #5e5c5c"],
+[style*="color:#5e5c5c"],
+[style*="color: #5c5c5c"],
+[style*="color:#5c5c5c"] {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Override inline color: #888, #4f5153 (gray text) */
+[style*="color: #888"],
+[style*="color:#888"],
+[style*="color: #4f5153"],
+[style*="color:#4f5153"] {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* Override inline color: #665d5d (dark brownish gray) */
+[style*="color: #665d5d"],
+[style*="color:#665d5d"] {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* Override inline color: #333, #222, #000, black */
+[style*="color: #333"],
+[style*="color:#333"],
+[style*="color: #222"],
+[style*="color:#222"],
+[style*="color: #000"],
+[style*="color:#000"],
+[style*="color: black"],
+[style*="color:black"] {
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== MATERIAL ICONS ========== */
+.material-symbols-outlined,
+.material-icons {
+    color: var(--dark-text-secondary) !important;
+}
+
+.material-symbols-outlined:hover,
+.material-icons:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== ION-ICONS DEFAULT COLOR ========== */
+ion-icon {
+    color: var(--dark-text-secondary);
+}
+
+/* Icons inside buttons should inherit */
+.oh-btn ion-icon,
+button ion-icon,
+a ion-icon {
+    color: inherit !important;
+}
+
+/* ========== DASHBOARD SPECIFIC FIXES ========== */
+/* Month/Year selects in dashboard */
+.oh-card-dashboard select,
+.oh-card-dashboard input[type="month"],
+.oh-card-dashboard input[type="date"],
+#tileContainer select,
+#tileContainer input[type="month"],
+#tileContainer input[type="date"] {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Dashboard card text */
+.oh-card-dashboard__body h5,
+.oh-card-dashboard__body h4,
+.oh-card-dashboard__body h3,
+.oh-card-dashboard__body p {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Dashboard card titles */
+.oh-card-dashboard__title {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Material icons in dashboard */
+.oh-card-dashboard .material-icons,
+.oh-card-dashboard i.material-icons {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-card-dashboard .material-icons:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Chart close buttons */
+.chart_close_button {
+    color: var(--dark-text-tertiary) !important;
+    cursor: pointer;
+}
+
+.chart_close_button:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+.chart_close_button i,
+.chart_close_button .material-icons {
+    color: inherit !important;
+}
+
+/* Dashboard empty state */
+.oh-card-dashboard .oh-empty,
+.oh-card-dashboard .oh-empty__title,
+.oh-card-dashboard .oh-empty__subtitle {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* Animated background loader */
+.animated-background {
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.03) 25%, 
+        rgba(255, 255, 255, 0.08) 50%, 
+        rgba(255, 255, 255, 0.03) 75%) !important;
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Dashboard navigation arrows */
+.oh-card-dashboard__title ion-icon {
+    color: var(--accent-blue-light) !important;
+}
+
+/* ========== RECRUITMENT/STATUS TAGS ========== */
+/* Recruitment tag in dashboard - fix white bg with white text */
+.oh-recuritment_tag {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Task status tags */
+.done-task {
+    background-color: rgba(74, 222, 128, 0.15) !important;
+    color: #4ade80 !important;
+    border: 1px solid rgba(74, 222, 128, 0.3) !important;
+}
+
+.scheduled-task {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+.ongoing-task {
+    background-color: rgba(251, 191, 36, 0.15) !important;
+    color: #fbbf24 !important;
+    border: 1px solid rgba(251, 191, 36, 0.3) !important;
+}
+
+.stuck-task {
+    background-color: rgba(248, 113, 113, 0.15) !important;
+    color: #f87171 !important;
+    border: 1px solid rgba(248, 113, 113, 0.3) !important;
+}
+
+.todo-task {
+    background-color: rgba(148, 163, 184, 0.15) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(148, 163, 184, 0.3) !important;
+}
+
+/* Profile active badges */
+.oh-profile__active-badge {
+    border-color: var(--dark-bg-secondary) !important;
+}
+
+.oh-profile__active-badge--secondary {
+    background-color: var(--accent-blue) !important;
+    border-color: var(--dark-bg-secondary) !important;
+}
+
+/* ========== WHITE BACKGROUND OVERRIDES ========== */
+/* Override inline white backgrounds */
+[style*="background-color: white"],
+[style*="background-color:white"],
+[style*="background-color: #fff"],
+[style*="background-color:#fff"],
+[style*="background: white"],
+[style*="background:white"] {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    color: var(--dark-text-secondary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* Organisation chart nodes */
+.org-chart-node,
+.oh-org-chart__node,
+[class*="org-chart"] {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Dashboard event photo placeholder */
+.oh-dasboard__event-photo,
+.oh-dashboard__event-photo {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* Select dropdowns with white backgrounds */
+select[style*="background-color: #fff"],
+select[style*="background-color:#fff"] {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Yellow warning backgrounds - keep visible but adjust */
+[style*="background-color: #fff3cd"] {
+    background-color: rgba(251, 191, 36, 0.15) !important;
+    border-color: rgba(251, 191, 36, 0.3) !important;
+    color: #fbbf24 !important;
+}
+
+/* ========== CHAT STATUS INDICATORS ========== */
+.oh-chat__header-avatar-status--online::after {
+    background-color: #4ade80 !important;
+    border-color: var(--dark-bg-secondary) !important;
+}
+
+.oh-chat__header-avatar-status--offline::after {
+    background-color: rgba(148, 163, 184, 0.5) !important;
+    border-color: var(--dark-bg-secondary) !important;
+}
+
+/* ========== HELPDESK SELECT DROPDOWNS ========== */
+.helpdesk select,
+select[name="status_update"] {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== ONBOARDING STAGE SELECT ========== */
+select[name="stage"] {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== PAYROLL DEDUCTION VIEW ========== */
+.oh-payroll-card,
+.deduction-view {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== TIMEOFF MODAL FIXES ========== */
+.oh-timeoff-modal__user {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-timeoff-modal__detail {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-timeoff-modal__label {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-timeoff-modal__value {
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== CHART AND STATISTICS ========== */
+.oh-chart__legend,
+.oh-chart__label {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-stat__title,
+.oh-counter__title {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-stat__value,
+.oh-counter__value {
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== FILTER TAGS/CHIPS ========== */
+.oh-filter-tag,
+.oh-chip {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-filter-tag__close,
+.oh-chip__close {
+    color: var(--accent-blue-light) !important;
+}
+
+/* ========== COMMENT/ACTIVITY COMPONENTS ========== */
+.oh-comment,
+.oh-activity {
+    background: transparent !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-comment__author,
+.oh-activity__author {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-comment__text,
+.oh-activity__text {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-comment__time,
+.oh-activity__time {
+    color: var(--dark-text-muted) !important;
+}
+
+/* ========== TIMELINE COMPONENTS ========== */
+.oh-timeline {
+    border-color: var(--dark-border) !important;
+}
+
+.oh-timeline__item {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-timeline__title {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-timeline__date {
+    color: var(--dark-text-muted) !important;
+}
+
+/* ========== TOOLTIP ========== */
+.oh-tooltip,
+[data-tooltip]::after {
+    background-color: var(--dark-bg-tertiary) !important;
+    color: var(--dark-text-primary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* ========== BREADCRUMB ========== */
+.oh-breadcrumb {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-breadcrumb__link {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-breadcrumb__link:hover {
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-breadcrumb__separator {
+    color: var(--dark-text-muted) !important;
+}
+
+/* ========== PROGRESS BAR ========== */
+.oh-progress {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.oh-progress__bar {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-light)) !important;
+}
+
+.oh-progress__label {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== EMPTY STATE ========== */
+.oh-empty,
+.oh-empty-state {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-empty__icon,
+.oh-empty-state__icon {
+    color: var(--dark-text-muted) !important;
+}
+
+.oh-empty__title,
+.oh-empty-state__title {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== STEPPERS/WIZARDS ========== */
+.oh-stepper {
+    background: transparent !important;
+}
+
+.oh-stepper__step {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-stepper__step--active {
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-stepper__step--completed {
+    color: #4ade80 !important;
+}
+
+.oh-stepper__line {
+    background-color: var(--dark-border) !important;
+}
+
+/* ========== NOTIFICATION ITEMS ========== */
+.notification-item,
+.oh-notification-item {
+    background: transparent !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.notification-item:hover,
+.oh-notification-item:hover {
+    background-color: rgba(59, 130, 246, 0.08) !important;
+}
+
+.notification-item__title,
+.oh-notification-item__title {
+    color: var(--dark-text-primary) !important;
+}
+
+.notification-item__time,
+.oh-notification-item__time {
+    color: var(--dark-text-muted) !important;
+}
+
+/* ========== AVATAR/PROFILE IMAGES ========== */
+.oh-avatar {
+    border-color: var(--dark-border) !important;
+}
+
+.oh-avatar__status {
+    border-color: var(--dark-bg-secondary) !important;
+}
+
+/* ========== CHECKBOX/RADIO CUSTOM ========== */
+.oh-checkbox,
+.oh-radio {
+    accent-color: var(--accent-blue) !important;
+}
+
+.oh-checkbox__label,
+.oh-radio__label {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== SWITCH/TOGGLE ========== */
+.oh-switch {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.oh-switch--checked {
+    background-color: var(--accent-blue) !important;
+}
+
+.oh-switch__label {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== FILE UPLOAD ========== */
+.oh-file-upload {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-file-upload:hover {
+    background-color: rgba(59, 130, 246, 0.08) !important;
+    border-color: var(--accent-blue) !important;
+}
+
+.oh-file-upload__icon {
+    color: var(--dark-text-muted) !important;
+}
+
+.oh-file-upload__text {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== DATE/TIME DISPLAY ========== */
+.oh-date,
+.oh-time,
+.oh-datetime {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== COUNTER/STATS BOXES ========== */
+.oh-count-box {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-count-box__number {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-count-box__label {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* ========== HELP TEXT / FORM HINTS ========== */
+.form-hint,
+.help-text,
+.oh-hint {
+    color: var(--dark-text-muted) !important;
+}
+
+/* ========== INLINE EDITABLE ========== */
+.oh-editable {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-editable:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ========== QUICK ACTIONS MENU ========== */
+.oh-quick-action {
+    background: rgba(30, 41, 59, 0.95) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-quick-action__item {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-quick-action__item:hover {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== PAYSLIP SPECIFIC ========== */
+.payslip-summary,
+[style*="background-color: #d2f8d7"] {
+    background-color: rgba(74, 222, 128, 0.15) !important;
+    border-color: rgba(74, 222, 128, 0.3) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+[style*="background-color: #dadada"] {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== ROW HIGHLIGHTS ========== */
+[style*="background-color: #ffff000f"] {
+    background-color: rgba(251, 191, 36, 0.08) !important;
+}
+
+/* ========== GLOBAL SPAN/DIV TEXT INHERITANCE ========== */
+body span,
+body div,
+body p,
+body li {
+    color: inherit;
+}
+
+/* Force visibility on common dark text patterns */
+.fw-bold,
+.font-weight-bold,
+strong,
+b {
+    color: inherit;
+}
+
+/* ========== GENERAL INPUT PLACEHOLDERS ========== */
+::placeholder {
+    color: var(--dark-text-muted) !important;
+    opacity: 1 !important;
+}
+
+/* ========== SELECT DROPDOWN STYLING ========== */
+select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2360a5fa' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+    background-position: right 0.5rem center !important;
+    background-repeat: no-repeat !important;
+    background-size: 1.5em 1.5em !important;
+}
+
+/* ========== TAG BADGES (Multi-select widgets) ========== */
+/* Tag badges used in Girjasoft multi-select filter modal */
+.tag-badge {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+.tag-badge--primary {
+    background-color: rgba(59, 130, 246, 0.3) !important;
+    color: white !important;
+    border-color: var(--accent-blue) !important;
+}
+
+.tag-badge--outline {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    color: var(--accent-blue-light) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Avatar items in multi-select */
+.avatars__item {
+    background-color: rgba(59, 130, 246, 0.3) !important;
+    border-color: var(--dark-bg-secondary) !important;
+    color: white !important;
+}
+
+/* ========== RECRUITMENT SPECIFIC STYLES ========== */
+/* Recruitment tags - override pink background */
+.oh-recuritment_tag {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Apply Now tag - keep green theme */
+.oh-recuritment_tag a.text-success {
+    color: #4ade80 !important;
+}
+
+.oh-recuritment_tag[style*="hsl(121deg"] {
+    background-color: rgba(74, 222, 128, 0.15) !important;
+    border-color: rgba(74, 222, 128, 0.3) !important;
+}
+
+/* Kanban section head */
+.oh-kanban__section-head {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-kanban__section-head.stage {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+}
+
+/* Stage manager highlight */
+.oh-kanban__section-head[style*="hsl(38.08deg"] {
+    background-color: rgba(251, 191, 36, 0.12) !important;
+}
+
+/* Pipeline header */
+.pipeline-header {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.pipeline-header[style*="background-color: hsl(38deg"] {
+    background-color: rgba(251, 191, 36, 0.12) !important;
+}
+
+/* Pipeline toggle */
+.pipeline-toggle {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Editable stage input */
+.oh-tabs__movable-title,
+.oh-table__editable-input {
+    background-color: transparent !important;
+    color: var(--dark-text-primary) !important;
+    border-color: transparent !important;
+}
+
+.oh-tabs__movable-title:focus,
+.oh-table__editable-input:focus {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--accent-blue) !important;
+}
+
+/* Stage badges */
+.stage_count,
+.oh-badge--secondary {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* Stage type row status colors */
+.row-status--red {
+    border-left: 3px solid #f87171 !important;
+}
+
+.row-status--yellow {
+    border-left: 3px solid #fbbf24 !important;
+}
+
+.row-status--orange {
+    border-left: 3px solid #fb923c !important;
+}
+
+.row-status--blue {
+    border-left: 3px solid var(--accent-blue-light) !important;
+}
+
+.row-status--cyan {
+    border-left: 3px solid #22d3d1 !important;
+}
+
+.row-status--purple {
+    border-left: 3px solid #a78bfa !important;
+}
+
+/* Candidate converted banner */
+.banner-container {
+    background-color: #22c55e !important;
+    color: white !important;
+}
+
+/* Candidate stage select */
+.oh-select[data-stage-id] {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Candidate checkbox rows */
+.oh-sticky-table__tr--selected {
+    background-color: rgba(59, 130, 246, 0.12) !important;
+}
+
+/* Interview rating stars */
+.oh-rate {
+    color: var(--dark-text-muted) !important;
+}
+
+/* Skill zone cards */
+.oh-skill-zone-card {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* Survey question types */
+.oh-survey-ques {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-survey-ques select,
+.oh-survey-ques input,
+.oh-survey-ques textarea {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== TITLEBAR TAGS (Filter tags) ========== */
+.oh-titlebar__tag {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-titlebar__tag:hover {
+    background-color: rgba(59, 130, 246, 0.25) !important;
+}
+
+.oh-titlebar__tag-close {
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-titlebar__tag-close:hover {
+    color: #f87171 !important;
+}
+
+/* Filter field tags */
+.oh-titlebar__tag.filter-field {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* ========== CHAT MEMBER TAGS ========== */
+.oh-chat__member-tag {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-chat__member-tag:hover {
+    background-color: rgba(59, 130, 246, 0.25) !important;
+}
+
+.oh-chat__member-tag-name {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Chat file tags */
+.oh-chat__file-tag {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-chat__file-tag:hover {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+}
+
+/* ========== HELPDESK TAGS ========== */
+.oh-helpdesk__tags {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-helpdesk__tag {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-helpdesk__tag:hover {
+    background-color: rgba(59, 130, 246, 0.25) !important;
+}
+
+/* ========== FAQ TAGS ========== */
+.oh-faq__tags {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-faq__tag {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-faq__tag:hover {
+    background-color: rgba(59, 130, 246, 0.25) !important;
+}
+
+/* ========== ANNOUNCEMENT HASHTAGS ========== */
+.oh-announcement-hashtags,
+.oh-announcement__tags {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-announcement-hastag__container {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+/* ========== TABS INPUT BADGE CONTAINER ========== */
+.oh-tabs__input-badge-container {
+    background: transparent !important;
+}
+
+.oh-tabs__input-badge-container .oh-badge {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* ========== RECRUITMENT DASHBOARD SPECIFIC ========== */
+/* Override inline white backgrounds in recruitment dashboard */
+.oh-dashboard__movable-cards [style*="background-color: white"],
+.oh-dashboard__movable-cards [style*="background-color:white"] {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+}
+
+.oh-card-dashboard--transparent {
+    background: rgba(30, 41, 59, 0.6) !important;
+}
+
+/* Recruitment dashboard charts container */
+#candidateChart,
+#vacancy {
+    background: transparent !important;
+}
+
+/* Recruitment open positions */
+.oh-card-dashboard__title a {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Skill zone status */
+.oh-card-dashboard__user-list {
+    background: transparent !important;
+}
+
+.oh-card-dashboard__user-item {
+    background: transparent !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== USER PANEL (Recruitment Managers/Jobs listing) ========== */
+/* User panel badges in recruitment table */
+.oh-user-panel {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-user-panel:hover {
+    background-color: rgba(59, 130, 246, 0.25) !important;
+}
+
+/* User panel profile name */
+.oh-user-panel .oh-profile__name,
+.oh-user-panel .oh-profile__name.oh-text--dark {
+    color: var(--dark-text-primary) !important;
+}
+
+/* User panel remove button */
+.oh-user-panel__remove {
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-user-panel__remove:hover {
+    color: #f87171 !important;
+    background-color: rgba(248, 113, 113, 0.1) !important;
+}
+
+/* Collapse panel (same as user panel) */
+.oh-collapse-panel {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Count span under managers/jobs */
+.count-span {
+    color: var(--dark-text-muted) !important;
+}
+
+/* Permission table collapse button */
+.oh-permission-table__collapse {
+    background-color: transparent !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-permission-table__collapse:hover {
+    color: var(--accent-blue-light) !important;
+}
+
+/* Permission table user span */
+.oh-permission-table__user {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Permission panel remove */
+.oh-permission-panel__remove {
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-permission-panel__remove:hover {
+    color: #f87171 !important;
+}
+
+/* ========== TIMEOFF MODAL (Used across all modules) ========== */
+/* User name/title in modals - override inline color: #4d4a4a */
+.oh-timeoff-modal__user {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-timeoff-modal__position {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-timeoff-modal__stat {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-timeoff-modal__stat-title {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-timeoff-modal__stat-count {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-timeoff-modal__download-link {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-timeoff-modal__download-link:hover {
+    background-color: rgba(59, 130, 246, 0.25) !important;
+}
+
+.oh-timeoff-modal__body {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-timeoff-modal__footer {
+    border-top-color: var(--dark-border) !important;
+}
+
+/* ========== DASHBOARD EVENT PHOTO ========== */
+.oh-dasboard__event-photo,
+.oh-dashboard__event-photo {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.oh-dasboard__event-details,
+.oh-dashboard__event-details {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== WORK RECORD LEGEND COLORS ========== */
+/* Keep the legend indicator colors but ensure text is visible */
+.oh-legend-item {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== GRAY BACKGROUND BUTTONS ========== */
+.oh-btn--gray-bkg {
+    background-color: rgba(148, 163, 184, 0.2) !important;
+    color: var(--dark-text-secondary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-btn--gray-bkg:hover {
+    background-color: rgba(148, 163, 184, 0.3) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Override inline background-color: #dadada */
+[style*="background-color: #dadada"],
+[style*="background-color:#dadada"] {
+    background-color: rgba(148, 163, 184, 0.2) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== PAYSLIP SUMMARY CARDS ========== */
+/* Green summary box */
+[style*="background-color: #d2f8d7"] {
+    background-color: rgba(74, 222, 128, 0.15) !important;
+    border-color: rgba(74, 222, 128, 0.4) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Payslip summary text */
+.payslip-summary h5,
+.payslip-summary span,
+.payslip-summary p {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== FORM HINTS ========== */
+/* Override inline color: #888 */
+.form-hint,
+[style*="color: #888"],
+[style*="color:#888"] {
+    color: var(--dark-text-muted) !important;
+}
+
+/* ========== SELECT DROPDOWNS WITH INLINE STYLES ========== */
+/* Helpdesk ticket status select */
+select[style*="background-color: #fff"],
+select[style*="background-color:#fff"] {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Select option with gray color */
+option[style*="color: #999"],
+option[style*="color:#999"] {
+    color: var(--dark-text-muted) !important;
+}
+
+/* ========== PMS/OKR BUTTONS WITH WHITE BACKGROUND ========== */
+/* Archive/delete buttons with white background */
+.oh-btn[style*="background-color: white"],
+.oh-btn[style*="background-color:white"],
+button[style*="background-color: white"],
+button[style*="background-color:white"] {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    color: var(--dark-text-secondary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* ========== ONBOARDING SPECIFIC ========== */
+/* Info box with blue background */
+[style*="background-color:#6089d54e"] {
+    background-color: rgba(96, 137, 213, 0.2) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* Yellowgreen buttons */
+[style*="background-color: yellowgreen"],
+[style*="background-color:yellowgreen"] {
+    background-color: rgba(154, 205, 50, 0.8) !important;
+    color: white !important;
+}
+
+/* Offer rejected button */
+button[style*="background: #ff4500"] {
+    background-color: rgba(255, 69, 0, 0.6) !important;
+}
+
+/* Gray placeholder text */
+[style*="color: #80808080"],
+[style*="color:#80808080"],
+[style*="color: #999"],
+[style*="color:#999"] {
+    color: var(--dark-text-muted) !important;
+}
+
+/* ========== ANNOUNCEMENT TAGS ========== */
+[style*="background-color: hsl(8,77%,56%)"] {
+    background-color: rgba(220, 53, 69, 0.8) !important;
+}
+
+/* ========== DASHBOARD MONTH/DATE INPUTS ========== */
+/* Override inline color: #5e5c5c on inputs */
+input[style*="color: #5e5c5c"],
+input[style*="color:#5e5c5c"],
+select[style*="color: #5e5c5c"],
+select[style*="color:#5e5c5c"] {
+    color: var(--dark-text-secondary) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* ========== LEAVE ALLOCATION TRACKING ========== */
+/* Requested days text */
+[style*="color: #665d5d"],
+[style*="color:#665d5d"] {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* Allocated days text - keep green */
+[style*="color: #35b835"],
+[style*="color:#35b835"] {
+    color: #4ade80 !important;
+}
+
+/* ========== PAYROLL DASHBOARD ========== */
+/* Department total amount header */
+[style*="color:#9C4000"],
+[style*="color: #9C4000"] {
+    color: #fb923c !important;
+}
+
+/* ========== HIGHLIGHTED ROWS ========== */
+/* Yellow highlight row */
+[style*="background-color: #ffff000f"] {
+    background-color: rgba(251, 191, 36, 0.08) !important;
+}
+
+/* ========== MAIL TEMPLATE LINKS ========== */
+/* Unsubscribe links */
+a[style*="color: #5c5c5c"],
+a[style*="color:#5c5c5c"] {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* ========== MATERIAL ICONS COLOR ========== */
+/* Warning icons */
+[style*="color:#ff9146"],
+[style*="color: #ff9146"] {
+    color: #fb923c !important;
+}
+
+/* ========== RELATED MODELS BUTTONS ========== */
+/* Green confirm button */
+[style*="background-color:#008000"] {
+    background-color: rgba(34, 197, 94, 0.8) !important;
+}
+
+/* Red cancel button */
+[style*="background-color:#d33"] {
+    background-color: rgba(220, 53, 69, 0.8) !important;
+}
+
+/* ========== KANBAN CARD ENHANCEMENTS ========== */
+.oh-kanban-card {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-kanban-card:hover {
+    background-color: rgba(30, 41, 59, 0.95) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.oh-kanban-card__title {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-kanban-card__subtitle {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-kanban-card__details {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-kanban-card__biometric-actions {
+    border-top-color: var(--dark-border) !important;
+}
+
+/* Kanban group head collapsed */
+.oh-kanban-card--collapsed .oh-kanban-group__head {
+    background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.oh-kanban-card--collapsed .oh-kanban-group__head:hover {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+/* ========== HELPDESK SPECIFIC ========== */
+/* Ticket status select */
+.oh-helpdesk_selection select,
+select[name="status_update"] {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* File count badge */
+#fileCount1 {
+    background-color: #ef4444 !important;
+    color: white !important;
+}
+
+/* ========== ACTIVITY SIDEBAR (Comments, Notes) ========== */
+.oh-activity-sidebar {
+    background-color: var(--dark-bg-primary) !important;
+    border-left: 1px solid var(--dark-border) !important;
+}
+
+.oh-activity-sidebar__header {
+    background-color: rgba(59, 130, 246, 0.08) !important;
+    border-bottom: 1px solid var(--dark-border) !important;
+    padding: 1rem !important;
+}
+
+.oh-activity-sidebar__title {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-activity-sidebar__header-icon {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-activity-sidebar__header-icon:hover {
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-activity-sidebar__body {
+    background: transparent !important;
+    padding: 1rem !important;
+}
+
+.oh-activity-sidebar__qa-list {
+    background: transparent !important;
+}
+
+.oh-activity-sidebar__qa-item {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.oh-activity-sidebar__qa-item:hover {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+.oh-activity-sidebar__q {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-activity-sidebar__a {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-activity-sidebar__close:hover {
+    color: var(--accent-blue-light) !important;
+}
+
+/* ========== TIMEOFF TITLE ========== */
+.oh-timeoff-title {
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== FILE ICONS ========== */
+.oh-file-icon {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-file-icon:hover {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+}
+
+/* ========== INNER SIDEBAR CONTENT ========== */
+.oh-inner-sidebar-content {
+    background: transparent !important;
+}
+
+.oh-inner-sidebar-content__footer {
+    border-top-color: var(--dark-border) !important;
+}
+
+/* ========== ADDITIONAL MODAL ELEMENTS ========== */
+/* Profile content in modals */
+.oh-timeoff-modal__profile-content {
+    background: transparent !important;
+}
+
+/* Stats container */
+.oh-timeoff-modal__stats-container {
+    background: transparent !important;
+}
+
+/* Profile info */
+.oh-timeoff-modal__profile-info {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== LOAN/REIMBURSEMENT CARDS ========== */
+.loan-card,
+.reimbursement-card {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* ========== PROGRESS CONTAINERS ========== */
+.oh-progress-container {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.oh-progress-container__bar {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-light)) !important;
+}
+
+.oh-progress-container__percentage {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== FLOATING ACTION BUTTON ========== */
+.oh-floating-btn {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+}
+
+.oh-floating-btn:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+}
+
+/* ========== TOUR/ONBOARDING TOOLTIPS ========== */
+.introjs-tooltip {
+    background-color: var(--dark-bg-secondary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.introjs-tooltiptext {
+    color: var(--dark-text-secondary) !important;
+}
+
+.introjs-button {
+    background-color: var(--accent-blue) !important;
+    color: white !important;
+    border-color: transparent !important;
+}
+
+/* ========== CONTEXT MENU ========== */
+.oh-context-menu {
+    background-color: var(--dark-bg-secondary) !important;
+    border-color: var(--dark-border) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.oh-context-menu__item {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-context-menu__item:hover {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== DRAG AND DROP INDICATORS ========== */
+.ui-sortable-placeholder {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+    border: 2px dashed var(--accent-blue) !important;
+}
+
+.drop-target {
+    background-color: rgba(59, 130, 246, 0.08) !important;
+}
+
+/* ========== SKELETON LOADERS ========== */
+.skeleton,
+.skeleton-loader {
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.03) 25%, 
+        rgba(255, 255, 255, 0.08) 50%, 
+        rgba(255, 255, 255, 0.03) 75%) !important;
+    background-size: 200% 100% !important;
+}
+
+/* ========== ANNOUNCEMENTS ========== */
+.oh-announcement {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-announcement__title {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-announcement__body {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-announcement__meta {
+    color: var(--dark-text-muted) !important;
+}
+
+/* ========== ADDITIONAL INLINE STYLE OVERRIDES ========== */
+/* Font size with color overrides */
+[style*="font-size: 18px"][style*="color: #4d4a4a"],
+[style*="font-size:18px"][style*="color:#4d4a4a"],
+[style*="font-size: 12px"][style*="color: #4d4a4a"],
+[style*="font-size:12px"][style*="color:#4d4a4a"] {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Opacity adjustments for dark theme */
+[style*="opacity: 0.7"] {
+    opacity: 0.85 !important;
+}
+
+/* ========== OKR/FEEDBACK VIEWS ========== */
+.okr-card,
+.feedback-card {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.okr-card__title,
+.feedback-card__title {
+    color: var(--dark-text-primary) !important;
+}
+
+.okr-card__body,
+.feedback-card__body {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== SIGNATURE PAD ========== */
+.signature-pad {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* ========== OFFER LETTER VIEW ========== */
+.offer-letter-container {
+    background-color: white !important;
+    color: #333 !important;
+}
+
+/* ========== CHART LEGEND TEXT ========== */
+.chartjs-legend,
+.chart-legend {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== IMPORT/EXPORT POPUP ========== */
+.import-popup,
+.export-popup {
+    background-color: var(--dark-bg-secondary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* ========== BULK ACTION BUTTONS ========== */
+.bulk-action-btn {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.bulk-action-btn:hover {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* ========== EMPLOYEE DISCIPLINARY ACTION ========== */
+.disciplinary-record {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* ========== ASSET REQUEST TAB LINK ========== */
+/* Override inline color: #fff on links */
+a[style*="color: #fff"],
+a[style*="color:#fff"] {
+    color: white !important;
+}
+
+/* ========== RECRUITMENT PIPELINE SPECIFIC ========== */
+/* Pipeline header */
+.pipeline-header {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-bottom-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Stage manager highlight - golden tint */
+.pipeline-header[style*="hsl(38deg"],
+.pipeline-header[style*="hsl(38.08deg"],
+[style*="background-color: hsl(38.08deg 100% 50% / 8%)"],
+[style*="background-color: hsl(38deg"] {
+    background-color: rgba(251, 191, 36, 0.12) !important;
+}
+
+/* Pipeline toggle input */
+.pipeline-toggle .oh-tabs__movable-title {
+    color: var(--dark-text-primary) !important;
+    background: transparent !important;
+}
+
+/* Animated background loader - dark theme */
+.animated-background {
+    background-color: rgba(30, 41, 59, 0.5) !important;
+    background: linear-gradient(to right, 
+        rgba(255, 255, 255, 0.02) -58%, 
+        rgba(255, 255, 255, 0.06) 18%, 
+        rgba(255, 255, 255, 0.02) 33%) !important;
+}
+
+/* Search highlight */
+.search-highlight {
+    background-color: rgba(251, 146, 60, 0.15) !important;
+}
+
+/* Kanban card in pipeline */
+.oh-kanban__card {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-kanban__card:hover {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+.oh-kanban__card-head {
+    border-color: var(--dark-border) !important;
+}
+
+/* Candidate rejected indicator - keep orangered border visible */
+.oh-kanban__card-head[style*="border-left: solid orangered"] {
+    border-left-color: #ff6b35 !important;
+}
+
+/* Kanban section */
+.oh-kanban__section {
+    background-color: rgba(30, 41, 59, 0.6) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* Kanban section head */
+.oh-kanban__section-head {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* Stage manager section highlight */
+.oh-kanban__section-head[style*="hsl(38.08deg"] {
+    background-color: rgba(251, 191, 36, 0.12) !important;
+}
+
+.oh-kanban__section-title {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Kanban dropdown menu */
+.oh-kanban__dropdown-menu {
+    background-color: var(--dark-bg-secondary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* Kanban add card button */
+.oh-kanban__add-container {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-kanban__add-container:hover {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* Pipeline tabs */
+.oh-tabs__tab[style*="hsl(38.08deg"] {
+    background-color: rgba(251, 191, 36, 0.12) !important;
+}
+
+.oh-tabs__tab[style*="text-decoration: line-through"] {
+    color: var(--dark-text-muted) !important;
+}
+
+/* Rating stars in pipeline */
+.oh-rate label {
+    color: var(--dark-text-muted) !important;
+}
+
+.oh-rate input:checked ~ label,
+.oh-rate label:hover,
+.oh-rate label:hover ~ label {
+    color: #fbbf24 !important;
+}
+
+/* Interview indicator - keep green */
+[style*="color:green"],
+[style*="color: green"] {
+    color: #4ade80 !important;
+}
+
+/* Stage bulk update option */
+option[style*="color: gray"],
+option[style*="color:gray"] {
+    color: var(--dark-text-muted) !important;
+    background-color: var(--dark-bg-secondary) !important;
+}
+
+/* Mail status indicator */
+[style*="background-color:yellowgreen"],
+[style*="background-color: yellowgreen"] {
+    background-color: rgba(154, 205, 50, 0.8) !important;
+}
+
+/* Rejected candidate button */
+[style*="background: #ff4500a3"] {
+    background-color: rgba(255, 69, 0, 0.65) !important;
+}
+
+/* Orangered elements */
+[style*="background-color: orangered"],
+[style*="background-color:orangered"] {
+    background-color: rgba(255, 107, 53, 0.85) !important;
+}
+
+/* Tooltips in pipeline */
+.tooltip .tooltiptext {
+    background-color: var(--dark-bg-tertiary) !important;
+    color: var(--dark-text-primary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* Stage badges in pipeline */
+.stage-badges {
+    background: transparent !important;
+}
+
+/* Enlarge image container */
+#enlargeImageContainer {
+    background-color: var(--dark-bg-secondary) !important;
+    border-color: var(--dark-border) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Notes section background */
+[style*="background: rgba(255, 166, 0, 0.158)"] {
+    background-color: rgba(251, 191, 36, 0.15) !important;
+}
+
+/* Candidate highlight when selected */
+.highlight-selected {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+}
+
+/* Pipeline items container */
+.pipeline_items {
+    background: rgba(30, 41, 59, 0.9) !important;
+}
+
+/* Movable tabs body */
+.oh-tabs__movable-body {
+    background: rgba(30, 41, 59, 0.9) !important;
+}
+
+/* Blue background class (drag ghost) */
+.blue-background-class {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Pipeline table headers - ensure visibility */
+.oh-table-config__th {
+    background: rgba(30, 41, 59, 1) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-table-config__td {
+    background: rgba(15, 23, 42, 1) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Candidate stage select in table */
+.stage-change {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Send mail form hints */
+.send-mail-form .form-hint {
+    color: var(--dark-text-muted) !important;
+}
+
+/* File upload in pipeline */
+input[type="file"] {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Matching resumes table */
+.matching-resumes-table {
+    background: rgba(30, 41, 59, 0.85) !important;
+}
+
+/* Bulk resume container */
+.bulk-resume-container {
+    background: rgba(15, 23, 42, 1) !important;
+}
+
+/* Avatars in pipeline */
+.avatars__item {
+    background-color: rgba(89, 99, 118, 0.8) !important;
+    border-color: var(--dark-bg-secondary) !important;
+}
+
+/* Error list in forms */
+#error-list {
+    background-color: rgba(248, 113, 113, 0.15) !important;
+    border-color: rgba(248, 113, 113, 0.3) !important;
+    color: #f87171 !important;
+}
+
+/* Kanban head actions */
+.oh-kanban__head-actions {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-kanban__head-actions ion-icon {
+    color: inherit !important;
+}
+
+/* Add candidate button */
+.oh-kanban__add-section {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-kanban__add-section:hover {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* ========== KANBAN CARD TEXT VISIBILITY ========== */
+/* Card footer text - email and job position */
+.oh-kanban__card-footer-text {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-kanban__card-footer-text.oh-text--light {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* Card footer */
+.oh-kanban__card-footer {
+    background: transparent !important;
+    border-top-color: var(--dark-border) !important;
+}
+
+/* Kanban card body text */
+.oh-kanban__card-body {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Main titlebar title */
+.oh-main__titlebar-title,
+.oh-main__titlebar-title.text-dark {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Pipeline nav text */
+.pipeline-nav-text,
+.pipeline-nav-title {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Ensure all kanban text is visible */
+.oh-kanban span,
+.oh-kanban div,
+.oh-kanban p,
+.oh-kanban a {
+    color: inherit;
+}
+
+/* Kanban section title input */
+.oh-kanban__section-title input,
+.oh-kanban__section-title .oh-tabs__movable-title {
+    color: var(--dark-text-primary) !important;
+    background: transparent !important;
+}
+
+/* Badge count in pipeline */
+.oh-badge--secondary {
+    background-color: rgba(59, 130, 246, 0.25) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* Candidate card profile name */
+.oh-kanban__card .oh-profile__name {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Candidate email in card */
+.oh-kanban__card .oh-profile__email,
+.oh-kanban__card .oh-profile__subtitle {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* Tab recruitment name */
+.oh-tabs__tab span,
+.oh-tabs__tab div {
+    color: inherit;
+}
+
+/* Pipeline table text */
+#pipelineSearchContainer span,
+#pipelineSearchContainer div,
+#pipelineSearchContainer p {
+    color: inherit;
+}
+
+/* Stage count badge */
+.stage_count {
+    background-color: rgba(59, 130, 246, 0.25) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* Candidate table cells */
+.oh-sticky-table__sd .oh-profile__name,
+.oh-sticky-table__td .oh-profile__name {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Dropdown links in kanban */
+.oh-kanban .oh-dropdown__link {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-kanban .oh-dropdown__link:hover {
+    color: var(--dark-text-primary) !important;
+    background-color: rgba(59, 130, 246, 0.15) !important;
+}
+
+.oh-kanban .oh-dropdown__link--danger {
+    color: #f87171 !important;
+}
+
+/* Actions button in kanban */
+.oh-kanban__btn {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-kanban__btn:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== PIPELINE CANDIDATE TABLE (CRITICAL FIX) ========== */
+/* The entire candidate table inside pipeline stages */
+.candidate-table {
+    background: rgba(30, 41, 59, 0.95) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.candidate-table * {
+    color: inherit;
+}
+
+/* Candidate table header */
+.candidate-table .oh-sticky-table__thead {
+    background: rgba(30, 41, 59, 1) !important;
+}
+
+.candidate-table .oh-sticky-table__th,
+.candidate-table .oh-table-config__th {
+    background: rgba(30, 41, 59, 1) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.candidate-table .oh-sticky-table__th span,
+.candidate-table .oh-table-config__th span {
+    color: var(--accent-blue-light) !important;
+}
+
+/* Candidate table body */
+.candidate-table .oh-sticky-table__tbody {
+    background: rgba(30, 41, 59, 0.95) !important;
+}
+
+/* Candidate table rows */
+.candidate-table .oh-sticky-table__tr,
+.candidate-table .oh-table-config__tr {
+    background: rgba(30, 41, 59, 0.95) !important;
+    border-bottom: 1px solid var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.candidate-table .oh-sticky-table__tr:hover,
+.candidate-table .oh-table-config__tr:hover {
+    background: rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Candidate table cells */
+.candidate-table .oh-sticky-table__td,
+.candidate-table .oh-sticky-table__sd,
+.candidate-table .oh-table-config__td {
+    background: rgba(30, 41, 59, 0.95) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.candidate-table .oh-sticky-table__td span,
+.candidate-table .oh-sticky-table__sd span,
+.candidate-table .oh-table-config__td span {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Candidate name in table */
+.candidate-table .oh-profile__name,
+.candidate-table .oh-profile span {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Select dropdowns in candidate table */
+.candidate-table select,
+.candidate-table .oh-select {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.candidate-table select option {
+    background-color: var(--dark-bg-secondary) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Checkbox styling */
+.candidate-table input[type="checkbox"] {
+    accent-color: var(--accent-blue) !important;
+}
+
+/* Action buttons in candidate table */
+.candidate-table .oh-btn-group .oh-btn,
+.candidate-table .oh-btn--light {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.candidate-table .oh-btn-group .oh-btn:hover,
+.candidate-table .oh-btn--light:hover {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.candidate-table .oh-btn ion-icon {
+    color: inherit !important;
+}
+
+/* Move icon */
+.candidate-table ion-icon[name="move"] {
+    color: var(--dark-text-muted) !important;
+}
+
+/* Pipeline stage container */
+.oh-tabs__movable-body,
+.pipeline_items,
+.recruitment_items {
+    background: rgba(30, 41, 59, 0.7) !important;
+}
+
+#pipelineStageContainer,
+[id^="pipelineStageContainer"] {
+    background: rgba(30, 41, 59, 0.7) !important;
+}
+
+/* Pipeline search container */
+#pipelineSearchContainer {
+    background: transparent !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+#pipelineSearchContainer * {
+    color: inherit;
+}
+
+/* Candidate container */
+.candidate-container {
+    background: rgba(15, 23, 42, 1) !important;
+}
+
+/* Stage tabs movable */
+.oh-tabs__movable {
+    background: rgba(30, 41, 59, 0.5) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* Editable input in stages */
+.oh-tabs__movable-title,
+.oh-table__editable-input {
+    background: transparent !important;
+    color: var(--dark-text-primary) !important;
+    border-color: transparent !important;
+}
+
+/* Page title and text */
+.oh-main__titlebar-title,
+.oh-main__titlebar-title.text-dark,
+.oh-main__titlebar-title.fw-bold {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Centered div for checkboxes */
+.centered-div {
+    background: inherit !important;
+}
+
+/* Pagination in pipeline */
+.candidate-table + .oh-pagination,
+.oh-tabs__movable .oh-pagination {
+    background: rgba(15, 23, 42, 1) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Oh-tabs content area */
+.oh-tabs__content {
+    background: rgba(30, 41, 59, 0.85) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Pipeline table container */
+.oh-sticky-table.oh-table--configurable {
+    background: rgba(30, 41, 59, 0.95) !important;
+}
+
+/* Tooltip text in pipeline */
+.candidate-table .tooltiptext {
+    background-color: var(--dark-bg-tertiary) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Rating stars in table */
+.candidate-table .oh-rate label {
+    color: var(--dark-text-muted) !important;
+}
+
+.candidate-table .oh-rate input:checked ~ label {
+    color: #fbbf24 !important;
+}
+
+/* Interview count text */
+.candidate-table .oh-sticky-table__td {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Ensure all spans in table are visible */
+.candidate-table span {
+    color: inherit !important;
+}
+
+/* First column sticky */
+.candidate-table .oh-sticky-table__sd {
+    background: rgba(30, 41, 59, 1) !important;
+    z-index: 10 !important;
+}
+
+/* Draggable handle styling */
+.ui-sortable-handle {
+    cursor: move;
+}
+
+/* HX sortable container */
+.hx-sortable {
+    background: rgba(15, 23, 42, 1) !important;
+}
+
+/* Inter sortable container */
+.oh-table--inter-sortable {
+    background: rgba(15, 23, 42, 1) !important;
+}
+
+/* Candidate row - ensure all content visible */
+.candidate-table .cand,
+.candidate-table .change-cand {
+    color: var(--dark-text-secondary) !important;
+}
+
+.candidate-table .cand *,
+.candidate-table .change-cand * {
+    color: inherit;
 }

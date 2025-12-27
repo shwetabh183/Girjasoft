@@ -6090,3 +6090,144 @@ img[src*="ui-avatars.com"] {
 .oh-general__tab-target {
     color: var(--dark-text-secondary) !important;
 }
+
+/* ========== AUTH FORMS (Change Password, etc.) ========== */
+
+/* Main auth container */
+.oh-auth {
+    background: transparent !important;
+}
+
+/* Auth card */
+.oh-auth-card {
+    background: rgba(30, 41, 59, 0.95) !important;
+    border: 1px solid var(--dark-border) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Auth card title */
+.oh-auth-card .oh-onboarding-card__title,
+.oh-auth-card h1,
+.oh-auth-card h2 {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Form groups within auth card */
+.oh-auth-card .oh-form-group {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Input groups within auth card */
+.oh-auth-card .oh-input-group {
+    background: transparent !important;
+}
+
+/* Labels within auth card */
+.oh-auth-card .oh-label {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Input fields within auth card */
+.oh-auth-card .oh-input,
+.oh-auth-card input[type="text"],
+.oh-auth-card input[type="password"],
+.oh-auth-card input[type="email"] {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-auth-card .oh-input:focus,
+.oh-auth-card input[type="text"]:focus,
+.oh-auth-card input[type="password"]:focus,
+.oh-auth-card input[type="email"]:focus {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border-color: var(--accent-blue) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+}
+
+.oh-auth-card .oh-input::placeholder,
+.oh-auth-card input::placeholder {
+    color: var(--dark-text-muted) !important;
+}
+
+/* Password input container */
+.oh-auth-card .oh-password-input-container {
+    position: relative !important;
+}
+
+/* Password toggle button */
+.oh-auth-card .oh-password-input--toggle {
+    color: var(--dark-text-tertiary) !important;
+    background: transparent !important;
+}
+
+.oh-auth-card .oh-password-input--toggle:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Error messages within auth card */
+.oh-auth-card .errorlist,
+.oh-auth-card ul.errorlist {
+    background: rgba(239, 68, 68, 0.15) !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    border-radius: 8px !important;
+    color: #fca5a5 !important;
+    padding: 8px 12px !important;
+    list-style: none !important;
+}
+
+.oh-auth-card .errorlist li {
+    color: #fca5a5 !important;
+}
+
+/* Links within auth card */
+.oh-auth-card .oh-link,
+.oh-auth-card a {
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-auth-card .oh-link:hover,
+.oh-auth-card a:hover {
+    color: var(--accent-blue) !important;
+}
+
+/* Button within auth card */
+.oh-auth-card .oh-btn--secondary {
+    background: linear-gradient(135deg, var(--accent-blue), #2563eb) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.oh-auth-card .oh-btn--secondary:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+}
+
+/* Small text within auth card */
+.oh-auth-card small {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* Form container target */
+#form-container {
+    color: var(--dark-text-secondary) !important;
+}
+
+#form-container .oh-auth {
+    background: transparent !important;
+}
+
+/* Readonly input fields in auth forms */
+.oh-auth-card input[readonly] {
+    background-color: rgba(30, 41, 59, 0.6) !important;
+    border: 1px solid var(--dark-border) !important;
+    color: var(--dark-text-tertiary) !important;
+    cursor: not-allowed !important;
+}
+
+/* Override inline styles for readonly inputs */
+input[readonly][style*="background-color: #a1a1a1"] {
+    background-color: rgba(30, 41, 59, 0.6) !important;
+    color: var(--dark-text-tertiary) !important;
+}

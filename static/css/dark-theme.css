@@ -4580,3 +4580,1513 @@ input[type="file"] {
     background-color: var(--accent-blue-light) !important;
     border-color: var(--accent-blue-light) !important;
 }
+
+/* ========== ONBOARDING CARD (Leave Type Creation, etc.) ========== */
+.oh-onboarding-card {
+    background-color: rgba(30, 41, 59, 0.95) !important;
+    border: 1px solid var(--dark-border) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.oh-onboarding-card--top-bar::before,
+.oh-onboarding-preview--top-bar::before {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+}
+
+.oh-onboarding-card__container,
+.oh-onboarding-card__container--wide {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-onboarding-card__title,
+.oh-onboarding-card__title--h1,
+.oh-onboarding-card__title--h2,
+.oh-onboarding-card__title--h3 {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-onboarding-card__lead {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-onboarding-card__section-title {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-onboarding-card__header {
+    border-bottom-color: var(--dark-border) !important;
+}
+
+.oh-onboarding-card__greeting {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-onboarding-card__subtitle {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-onboarding-card__company-name {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-onboarding-card__count {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-onboarding-card__text {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-onboarding-card__step--active .oh-onboarding-card__text {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-onboarding-card__highlight-code {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-onboarding-card__highlight-label {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Collapse in onboarding cards */
+.oh-onboarding-card__collapse-header {
+    color: var(--dark-text-primary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.oh-onboarding-card__collapse-header:hover {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+.oh-onboarding-card__collapse-title {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-onboarding-card__collappse-body {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Address group inside onboarding card */
+.oh-onboarding-card__address-group {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-onboarding-card__address-group h2,
+.oh-onboarding-card__address-group h3,
+.oh-onboarding-card__address-group h4,
+.oh-onboarding-card__address-group h5 {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Input groups inside onboarding cards */
+.oh-onboarding-card .oh-input-group {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-onboarding-card .oh-label {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-onboarding-card .oh-label__info {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Form inputs inside onboarding cards */
+.oh-onboarding-card input[type="text"],
+.oh-onboarding-card input[type="email"],
+.oh-onboarding-card input[type="password"],
+.oh-onboarding-card input[type="number"],
+.oh-onboarding-card input[type="date"],
+.oh-onboarding-card input[type="time"],
+.oh-onboarding-card input[type="datetime-local"],
+.oh-onboarding-card input[type="tel"],
+.oh-onboarding-card input[type="url"],
+.oh-onboarding-card textarea {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-onboarding-card input::placeholder,
+.oh-onboarding-card textarea::placeholder {
+    color: var(--dark-text-muted) !important;
+}
+
+.oh-onboarding-card input:focus,
+.oh-onboarding-card textarea:focus {
+    border-color: var(--accent-blue) !important;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Select inputs inside onboarding cards */
+.oh-onboarding-card select {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-onboarding-card select option {
+    background-color: var(--dark-bg-secondary) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Info tooltip icons */
+.oh-onboarding-card .oh-info {
+    color: var(--dark-text-muted) !important;
+}
+
+.oh-onboarding-card .oh-info:hover {
+    color: var(--accent-blue-light) !important;
+}
+
+/* Switch toggle inside onboarding cards */
+.oh-onboarding-card .oh-switch {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Color picker inside onboarding cards */
+.oh-onboarding-card input[type="color"] {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* File input inside onboarding cards */
+.oh-onboarding-card input[type="file"] {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Row and column text colors */
+.oh-onboarding-card .row,
+.oh-onboarding-card .col-sm-12,
+.oh-onboarding-card [class*="col-"] {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* All text, spans, and paragraphs inside onboarding card */
+.oh-onboarding-card p,
+.oh-onboarding-card span,
+.oh-onboarding-card label {
+    color: inherit;
+}
+
+/* Error messages */
+.oh-onboarding-card .errorlist,
+.oh-onboarding-card .error {
+    color: #f87171 !important;
+}
+
+/* Icon picker/color picker custom widgets */
+.oh-onboarding-card .select2-container--default .select2-selection--single,
+.oh-onboarding-card .select2-container--default .select2-selection--multiple {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-onboarding-card .select2-container--default .select2-selection--single .select2-selection__rendered,
+.oh-onboarding-card .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-onboarding-card .select2-container--default .select2-selection--single .select2-selection__placeholder,
+.oh-onboarding-card .select2-container--default .select2-selection--multiple .select2-selection__placeholder {
+    color: var(--dark-text-muted) !important;
+}
+
+/* ========== LEAVE SECTION - COMPREHENSIVE DARK THEME ========== */
+
+/* --- Leave Request View Styles --- */
+/* Diff cell for cancelled requests */
+.diff-cell {
+    background: rgba(100, 116, 139, 0.3) !important;
+}
+
+/* Row status indicators - ensure visibility */
+.row-status--orange {
+    border-left: 3px solid #f97316 !important;
+}
+
+.row-status--yellow {
+    border-left: 3px solid #84cc16 !important;
+}
+
+.row-status--gray {
+    border-left: 3px solid #64748b !important;
+}
+
+.row-status--red {
+    border-left: 3px solid #ef4444 !important;
+}
+
+/* --- Time Off Modal Styles --- */
+.oh-timeoff-modal {
+    background: rgba(30, 41, 59, 0.98) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+.oh-timeoff-modal__profile-content {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-timeoff-modal__profile-info {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-timeoff-modal__user {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Override inline dark color style */
+.oh-timeoff-modal__user[style*="color: #4d4a4a"],
+.oh-timeoff-modal__profile-info span[style*="color: #4d4a4a"] {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-timeoff-modal__stats-container {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-timeoff-modal__stat {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-timeoff-modal__stat-title {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-timeoff-modal__stat-count {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-timeoff-modal__stat-description {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-timeoff-modal__stats {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-timeoff-modal__download-link {
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-timeoff-modal__download-link:hover {
+    color: var(--accent-blue) !important;
+}
+
+/* --- Timeoff Card (Leave Type Cards) --- */
+.oh-timeoff-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+.oh-timeoff-card__stat-container {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- Kanban Card (Leave Types Grid View) --- */
+.oh-kanban-card {
+    background: rgba(30, 41, 59, 0.9) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+.oh-kanban-card__details {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-kanban-card .oh-card__title {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Override text-dark class inside kanban cards */
+.oh-kanban-card .text-dark,
+.oh-kanban-card .oh-timeoff-modal__stat-title.text-dark,
+.oh-kanban-card .fw-bold.text-dark {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-kanban-card .oh-timeoff-modal__stat-title:not(.text-dark) {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-kanban-card__dots .oh-btn {
+    color: var(--dark-text-muted) !important;
+}
+
+.oh-kanban-card__dots .oh-btn:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Grid layout for leave types */
+.oh-layout--grid-3 {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- Leave Dashboard Specific Styles --- */
+/* Dashboard event cards */
+.oh-dashboard__event {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+.oh-dashboard__event--purple {
+    border-left: 3px solid #8b5cf6 !important;
+}
+
+/* Override inline white background in dashboard */
+.oh-dasboard__event-photo[style*="background-color:white"],
+.oh-dasboard__event-photo[style*="background-color: white"] {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.oh-dashboard__event-title {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-dashboard__event-main {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-dashboard__event-date {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Dashboard tooltip */
+.tooltip {
+    background-color: var(--dark-bg-tertiary) !important;
+    color: var(--dark-text-primary) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Month input styling in dashboard */
+input[type="month"] {
+    background-color: var(--dark-bg-tertiary) !important;
+    border: 1px solid var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+    padding: 5px 10px !important;
+    border-radius: 4px !important;
+}
+
+input[type="month"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) !important;
+}
+
+/* On Leave card list */
+#onLeaveListCard,
+#upcomingHolidaysList {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Animated background loading placeholder */
+.animated-background {
+    background: linear-gradient(90deg, rgba(30, 41, 59, 0.5) 25%, rgba(51, 65, 85, 0.5) 50%, rgba(30, 41, 59, 0.5) 75%) !important;
+    background-size: 200% 100% !important;
+}
+
+/* --- Leave Request Form Modal --- */
+#availableLeaveCount {
+    background: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+}
+
+/* --- Leave Comment Sidebar --- */
+.oh-activity-sidebar {
+    background: rgba(30, 41, 59, 0.98) !important;
+    border-left: 1px solid var(--dark-border) !important;
+}
+
+.oh-activity-sidebar__body {
+    background: transparent !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- Reject Modal and Bulk Reject Modal --- */
+#rejectModal .oh-modal__dialog,
+#bulkRejectModal .oh-modal__dialog {
+    background: rgba(30, 41, 59, 0.98) !important;
+}
+
+#rejectModal .oh-modal__dialog-title,
+#bulkRejectModal .oh-modal__dialog-title {
+    color: var(--dark-text-primary) !important;
+}
+
+#bulkRejectForm .oh-label {
+    color: var(--dark-text-secondary) !important;
+}
+
+#bulkRejectForm textarea {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* --- Penalty Modal and View --- */
+#penaltyModal .oh-modal__dialog,
+#penaltyViewModal .oh-modal__dialog {
+    background: rgba(30, 41, 59, 0.98) !important;
+}
+
+/* Penalty badge in leave requests */
+.oh-sticky-table__td div[style*="background-color: rgba(229, 79, 56"] {
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    border-color: rgba(239, 68, 68, 0.6) !important;
+    color: #fca5a5 !important;
+}
+
+/* --- Clash View Modal --- */
+#clashViewModal .oh-modal__dialog {
+    background: rgba(30, 41, 59, 0.98) !important;
+}
+
+#clashViewModal .oh-main__titlebar-title {
+    color: var(--dark-text-primary) !important;
+}
+
+#clashViewModalBody {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- Leave Filter Dropdown --- */
+.oh-dropdown__filter {
+    background: rgba(30, 41, 59, 0.98) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+.oh-dropdown__filter .oh-label {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-dropdown__filter-footer {
+    border-top-color: var(--dark-border) !important;
+}
+
+/* --- Group By Dropdown in Leave --- */
+.oh-accordion label {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- Leave Allocation Request Styles --- */
+.oh-profile-section {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- Quick Filter Status Dots --- */
+.oh-dot {
+    display: inline-block !important;
+}
+
+/* Quick filter text colors */
+.review_ongoing,
+.paid,
+.confirmed {
+    color: var(--dark-text-secondary) !important;
+}
+
+.review_ongoing:hover,
+.paid:hover,
+.confirmed:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+/* --- Checkpoint Badges (Selection Buttons) --- */
+.oh-checkpoint-badge {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-checkpoint-badge.text-success {
+    color: #4ade80 !important;
+}
+
+.oh-checkpoint-badge.text-secondary {
+    color: #94a3b8 !important;
+}
+
+.oh-checkpoint-badge.text-info {
+    color: #38bdf8 !important;
+}
+
+.oh-checkpoint-badge.text-danger {
+    color: #f87171 !important;
+}
+
+.oh-checkpoint-badge--secondary {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* --- Warning Icon in Leave Requests --- */
+.material-symbols-outlined[style*="color:#ff9146"] {
+    color: #fb923c !important;
+}
+
+/* Tooltip text in leave requests */
+.tooltiptext {
+    background-color: var(--dark-bg-tertiary) !important;
+    color: var(--dark-text-primary) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* --- Leave Request One View Modal Navigation --- */
+.oh-modal__diaglog-nav {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border: 1px solid var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-modal__diaglog-nav:hover {
+    background: rgba(59, 130, 246, 0.2) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* --- Holiday View Styles --- */
+.oh-404 {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-404__subtitle {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* --- Empty State Styles --- */
+.oh-empty {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-empty__title {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-empty__subtitle {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* --- Leave Assign Form Modal --- */
+.oh-profile-section .oh-modal__dialog-footer {
+    border-top-color: var(--dark-border) !important;
+}
+
+/* --- Accrual Plan Styles --- */
+.accrual-plan-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* --- Company Leave Styles --- */
+.company-leave-item {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* --- User Leave View (My Leaves) --- */
+.oh-tabs__movable .oh-timeoff-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+}
+
+/* --- Leave Restrict Styles --- */
+.restrict-item {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* --- Fix text-dark class override for all leave section --- */
+.oh-sticky-table .text-dark,
+.oh-card-dashboard .text-dark,
+.oh-modal .text-dark,
+.oh-timeoff-modal .text-dark,
+.oh-kanban-card .text-dark,
+.oh-dropdown .text-dark {
+    color: var(--dark-text-primary) !important;
+}
+
+/* --- Oh-text--dark override --- */
+.oh-text--dark {
+    color: var(--dark-text-primary) !important;
+}
+
+/* --- SweetAlert2 Dark Theme --- */
+.swal2-popup {
+    background: rgba(30, 41, 59, 0.98) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+.swal2-title {
+    color: var(--dark-text-primary) !important;
+}
+
+.swal2-html-container {
+    color: var(--dark-text-secondary) !important;
+}
+
+.swal2-confirm {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+}
+
+.swal2-cancel {
+    background: rgba(239, 68, 68, 0.8) !important;
+}
+
+/* --- Calendar Widget Dark Theme --- */
+.ui-datepicker {
+    background: var(--dark-bg-secondary) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+.ui-datepicker-header {
+    background: var(--dark-bg-tertiary) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.ui-datepicker-calendar td {
+    background: var(--dark-bg-secondary) !important;
+}
+
+.ui-datepicker-calendar td a {
+    color: var(--dark-text-secondary) !important;
+}
+
+.ui-datepicker-calendar td a:hover {
+    background: rgba(59, 130, 246, 0.2) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.ui-datepicker-calendar .ui-state-active {
+    background: var(--accent-blue) !important;
+    color: white !important;
+}
+
+/* --- Fix inline style overrides --- */
+/* Override inline color #4d4a4a which appears in leave modals */
+[style*="color: #4d4a4a"],
+[style*="color:#4d4a4a"] {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* --- Compensatory Leave Specific --- */
+/* Diff cell for compensatory leave (amber variant) */
+.diff-cell[style*="rgba(255, 166, 0"],
+div[style*="background: rgba(255, 166, 0"] {
+    background: rgba(251, 146, 60, 0.2) !important;
+}
+
+/* --- Tabs Component (Leave Sections) --- */
+.oh-tabs {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-tabs__tab {
+    color: var(--dark-text-tertiary) !important;
+    background: transparent !important;
+}
+
+.oh-tabs__tab:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-tabs__tab--active {
+    color: var(--accent-blue-light) !important;
+    border-bottom-color: var(--accent-blue) !important;
+}
+
+.oh-tabs__content {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- Scrollable Container (User Leave Cards) --- */
+.oh-scrollable-container {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- Additional Modal Fixes --- */
+.oh-modal__close--custom {
+    color: var(--dark-text-secondary) !important;
+    background: transparent !important;
+}
+
+.oh-modal__close--custom:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+/* --- Enlarge Image Container --- */
+.enlargeImageContainer {
+    background: var(--dark-bg-secondary) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+.enlargeImageContainer span {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- General Table Wrapper Styling --- */
+.oh-table_sticky--wrapper {
+    background: rgba(30, 41, 59, 0.85) !important;
+}
+
+/* Sticky dropdown in table */
+.oh-sticky-dropdown--header {
+    background: transparent !important;
+}
+
+.oh-sticky-dropdown_btn {
+    color: var(--dark-text-muted) !important;
+}
+
+.oh-sticky-dropdown_btn:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-sticky-table_dropdown {
+    background: var(--dark-bg-secondary) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* --- Week Days in Company Leave --- */
+.week_days {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Company leave table row */
+.company_leave {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- Highlight Selected Row --- */
+.highlight-selected {
+    background: rgba(59, 130, 246, 0.15) !important;
+}
+
+/* --- Fix For Dark Theme Visibility --- */
+/* Ensure all general text is visible */
+.oh-wrapper,
+.oh-wrapper * {
+    color: inherit;
+}
+
+/* Main titlebar title */
+.oh-main__titlebar-title {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Filter count badge */
+#filterCount {
+    color: var(--accent-blue-light) !important;
+}
+
+/* --- Input Group Icons --- */
+.oh-input-group__icon--left {
+    color: var(--dark-text-muted) !important;
+}
+
+/* --- Material Icons in Tables --- */
+.material-icons {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Groups icon in leave clash */
+.material-icons[style*="font-size:33px"] {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* --- Badge in Leave Clash --- */
+.oh-badge--secondary {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-badge--round {
+    border-radius: 50% !important;
+}
+
+/* --- Dashboard specific fix for inline styles --- */
+/* Event photo background override */
+[style*="background-color:white"],
+[style*="background-color: white"],
+[style*="background:white"],
+[style*="background: white"] {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* --- Ensure modals have proper styling --- */
+.oh-modal__dialog-navigation {
+    background: transparent !important;
+}
+
+/* Modal relative body */
+.oh-modal__dialog-relative {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- Leave Allocation Request View --- */
+#allocationactivitySidebar {
+    background: rgba(30, 41, 59, 0.98) !important;
+    border-left: 1px solid var(--dark-border) !important;
+}
+
+/* --- Form paragraph styling (Django forms) --- */
+form p {
+    color: var(--dark-text-secondary) !important;
+}
+
+form p label {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* --- Help text in forms --- */
+.helptext {
+    color: var(--dark-text-muted) !important;
+}
+
+/* --- Leave request search field dropdown --- */
+#searchFieldDiv select {
+    background-color: var(--dark-bg-secondary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+#searchFieldDiv option {
+    background-color: var(--dark-bg-secondary) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== ATTENDANCE SECTION ========== */
+
+/* Attendance Dashboard - fix inline white background */
+.oh-sticky-table__right[style*="background-color: #fff"],
+.oh-sticky-table__right[style*="background-color:#fff"] {
+    background-color: rgba(30, 41, 59, 0.95) !important;
+}
+
+/* Override inline color #5e5c5c used in attendance selects/inputs */
+[style*="color: #5e5c5c"],
+[style*="color:#5e5c5c"] {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Attendance analytic select and date inputs */
+#type,
+#attendance_month,
+#hourAccountMonth,
+#department_date_type,
+#department_month {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Attendance dashboard card bodies */
+#notInYetIdCardBody,
+#onBreakEmployeesCard,
+#OTApproveBody,
+#attendanceValidateCardBody {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== PAYROLL SECTION ========== */
+
+/* Payroll Dashboard - month/year selector label */
+label[for="monthYearField"] {
+    color: #f87171 !important;
+}
+
+/* Override inline color #9C4000 */
+[style*="color:#9C4000"],
+[style*="color: #9C4000"] {
+    color: #fb923c !important;
+}
+
+/* Department total list */
+#department_total,
+#department_total_empty,
+#contract_ending {
+    color: var(--dark-text-secondary) !important;
+}
+
+#department_total li,
+#contract_ending li {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Payroll dashboard styling */
+.payslip-number,
+.payslip-amount,
+.contract-number {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Contribution report container */
+#contributionReportContainer {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Payslip Component */
+.oh-payslip {
+    background: rgba(30, 41, 59, 0.95) !important;
+    border: 1px solid var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-payslip__header {
+    border-bottom-color: var(--dark-border) !important;
+}
+
+.oh-payslip__header-left {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-payslip__title {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-payslip__title--h1 {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-payslip__title--h2 {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-payslip__body {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Sent to employee badge */
+.sent-to-employee {
+    background-color: #84cc16 !important;
+    color: white !important;
+}
+
+/* ========== RECRUITMENT SECTION ========== */
+
+/* Task status backgrounds for recruitment/onboarding */
+.done-task {
+    background-color: rgba(154, 205, 50, 0.25) !important;
+}
+
+.scheduled-task {
+    background-color: rgba(0, 175, 255, 0.25) !important;
+}
+
+.ongoing-task {
+    background-color: rgba(230, 255, 0, 0.2) !important;
+}
+
+.stuck-task {
+    background-color: rgba(255, 69, 0, 0.25) !important;
+}
+
+.todo-task {
+    background-color: rgba(141, 141, 141, 0.25) !important;
+}
+
+/* Skill zone list and candidate lists */
+.oh-card-dashboard__user-list {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-card-dashboard__user-item {
+    color: var(--dark-text-secondary) !important;
+    border-bottom-color: var(--dark-border) !important;
+}
+
+/* ========== ONBOARDING SECTION ========== */
+
+/* Onboarding canvas body */
+#onboarding_canvas_body {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Task report container */
+#taskStatus {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== PMS (Performance Management) SECTION ========== */
+
+/* PMS cards and containers */
+.pms-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* OKR styling */
+.okr-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Feedback styling */
+.feedback-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== HELPDESK SECTION ========== */
+
+/* Helpdesk cards */
+.helpdesk-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Ticket styling */
+.ticket-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== ASSET SECTION ========== */
+
+/* Asset cards */
+.asset-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== OFFBOARDING SECTION ========== */
+
+/* Offboarding cards */
+.offboarding-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== PROJECT SECTION ========== */
+
+/* Project cards */
+.project-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== BIOMETRIC SECTION ========== */
+
+/* Biometric configuration cards */
+.biometric-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== GENERAL UI COMPONENTS ========== */
+
+/* HR lines */
+hr,
+hr.line {
+    border-color: var(--dark-border) !important;
+    opacity: 0.3 !important;
+}
+
+/* Text color utilities override */
+.text-danger {
+    color: #f87171 !important;
+}
+
+.text-success {
+    color: #4ade80 !important;
+}
+
+.text-warning {
+    color: #fbbf24 !important;
+}
+
+.text-info {
+    color: #38bdf8 !important;
+}
+
+.text-primary {
+    color: var(--accent-blue-light) !important;
+}
+
+.text-muted {
+    color: var(--dark-text-muted) !important;
+}
+
+/* Font weight bold text should be visible */
+.fw-bold {
+    color: inherit;
+}
+
+/* Border bottom styling */
+.border-bottom {
+    border-bottom-color: var(--dark-border) !important;
+}
+
+/* List styling */
+ul[style*="list-style: disc"] li,
+ol li {
+    color: inherit;
+}
+
+/* Canvas containers */
+canvas {
+    color-scheme: dark;
+}
+
+/* Profile name links */
+.oh-profile__name a {
+    color: inherit !important;
+}
+
+.oh-profile__name a:hover {
+    color: var(--accent-blue-light) !important;
+}
+
+/* Text decoration none links */
+a.text-decoration-none {
+    color: inherit;
+}
+
+/* Card dashboard links */
+.oh-card-dashboard a {
+    color: inherit;
+}
+
+.oh-card-dashboard a:hover {
+    color: inherit;
+}
+
+/* Recruitment link styling */
+a.recruitment {
+    color: inherit !important;
+}
+
+/* Month/Year field */
+#monthYearField {
+    background-color: var(--dark-bg-tertiary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* General dropdown filters in all sections */
+.oh-dropdown__filter {
+    background: rgba(30, 41, 59, 0.98) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Export form styling */
+.oh-dropdown__filter form {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-dropdown__filter .oh-label {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== RESPONSIVE TABLES ========== */
+
+/* Mobile card views */
+@media (max-width: 768px) {
+    .oh-card-dashboard {
+        background: rgba(30, 41, 59, 0.85) !important;
+    }
+}
+
+/* ========== CHART.JS DARK THEME ========== */
+
+/* Chart tooltip */
+.chartjs-tooltip {
+    background: rgba(30, 41, 59, 0.95) !important;
+    border: 1px solid var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== UI AVATARS COMPATIBILITY ========== */
+
+/* Ensure avatars from UI Avatars API look good */
+img[src*="ui-avatars.com"] {
+    border: 2px solid var(--dark-border) !important;
+    border-radius: 50% !important;
+}
+
+/* ========== EMPLOYEE PROFILE SECTION ========== */
+
+/* Profile info styling */
+.oh-profile__info-container {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-profile__info-name {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-profile__info-designation {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-profile__info-list {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-profile__info-list-item {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-profile__info-label {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-profile__info-value {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Profile section tabs */
+.oh-profile-section__tab {
+    border-bottom-color: var(--dark-border) !important;
+}
+
+/* General tabs */
+.oh-general__tabs {
+    border-bottom-color: var(--dark-border) !important;
+}
+
+.oh-general__tab-link {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-general__tab-link:hover {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-general__tab-link--active {
+    color: var(--accent-blue-light) !important;
+    border-bottom-color: var(--accent-blue) !important;
+}
+
+/* Profile section content */
+.oh-profile-section {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Profile active badge colors - preserve online status colors */
+.oh-profile__active-badge {
+    border: 2px solid var(--dark-bg-secondary) !important;
+}
+
+/* Enlarge image container */
+.enlarge-image-container {
+    background: rgba(30, 41, 59, 0.95) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== SETTINGS SECTION ========== */
+
+/* Settings cards and sections */
+.settings-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* IP Restriction styling */
+.ip-restriction-item {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Grace time styling */
+.grace-time-item {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== WORK RECORD SECTION ========== */
+
+/* Work record cards */
+.work-record-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== LOAN SECTION ========== */
+
+/* Loan cards */
+.loan-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Installments table */
+.installments-table {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== REIMBURSEMENT SECTION ========== */
+
+/* Reimbursement cards */
+.reimbursement-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== CONTRACT SECTION ========== */
+
+/* Contract cards */
+.contract-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Contract modal */
+#contract_target {
+    background: rgba(30, 41, 59, 0.98) !important;
+}
+
+#ContractModal .oh-modal__dialog {
+    background: rgba(30, 41, 59, 0.98) !important;
+}
+
+/* ========== ALLOWANCE/DEDUCTION CARDS ========== */
+
+/* Allowance cards */
+.card-allowance {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Deduction cards */
+.card-deduction {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== TAX SECTION ========== */
+
+/* Tax bracket items */
+.tax-bracket-item {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Filing status items */
+.filing-status-item {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== BONUS/FINE SECTION ========== */
+
+/* Bonus items */
+.bonus-item {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Asset fine items */
+.asset-fine-item {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== BREAK POINT SECTION ========== */
+
+/* Break point condition styling */
+.break-condition {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== LATE COME / EARLY OUT SECTION ========== */
+
+/* Report cards */
+.late-come-report {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== OWN ATTENDANCE SECTION ========== */
+
+/* Own attendance cards */
+.own-attendance-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== PENALTY SECTION ========== */
+
+/* Penalty form styling */
+.penalty-form {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== NOTIFICATION SECTION ========== */
+
+/* Notification items */
+.notification-item {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== ANNOUNCEMENT SECTION ========== */
+
+/* Announcement cards */
+.announcement-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* ========== FINAL GENERAL OVERRIDES ========== */
+
+/* Ensure all cards have proper dark theme */
+[class*="-card"]:not(.oh-card):not(.oh-card-dashboard) {
+    color: var(--dark-text-secondary);
+}
+
+/* Modal send mail */
+#sendMailModal .oh-modal__dialog {
+    background: rgba(30, 41, 59, 0.98) !important;
+}
+
+#sendMailModalLabel {
+    color: var(--dark-text-primary) !important;
+}
+
+#mail-content {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Asset dashboard requests */
+#dashboardAssetRequests {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Asset available chart container */
+#assetAvailableChartContainer {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* General tab target areas */
+#personal_target,
+#shift_target,
+#attendance_target,
+#asset_target {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Email configuration */
+.email-config-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Two factor auth */
+.two-factor-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* Database initialization forms */
+.init-database-form {
+    background: rgba(30, 41, 59, 0.85) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* General content sections */
+.oh-general__tab-target {
+    color: var(--dark-text-secondary) !important;
+}

@@ -430,4 +430,9 @@ urlpatterns = [
         views.employee_id_card_preview,
         name="employee-id-card-preview",
     ),
+    path(
+        "employee-visiting-card-preview/<int:emp_id>/",
+        views.employee_visiting_card_preview,
+        name="employee-visiting-card-preview",
+    ),
 ]

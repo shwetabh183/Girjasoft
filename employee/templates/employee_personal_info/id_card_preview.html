@@ -65,10 +65,10 @@
                         <span class="id-card__info-value">{{ employee.phone }}</span>
                     </div>
                     {% endif %}
-                    {% if employee.employee_work_info and employee.employee_work_info.date_joining %}
+                    {% if employee.address %}
                     <div class="id-card__info-item">
-                        <span class="id-card__info-label">{% trans "Joined" %}</span>
-                        <span class="id-card__info-value">{{ employee.employee_work_info.date_joining|date:"M Y" }}</span>
+                        <span class="id-card__info-label">{% trans "Address" %}</span>
+                        <span class="id-card__info-value id-card__info-value--small">{{ employee.address|truncatechars:40 }}</span>
                     </div>
                     {% endif %}
                 </div>

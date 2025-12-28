@@ -3676,3 +3676,34 @@ def employee_id_card_preview(request, emp_id):
         "employee_personal_info/id_card_preview.html",
         context,
     )
+
+
+@login_required
+@hx_request_required
+def employee_visiting_card_preview(request, emp_id):
+    """
+    This method renders the employee visiting card preview template.
+    The visiting card is horizontal with company info on left and employee info on right.
+    """
+    employee = get_object_or_404(Employee, id=emp_id)
+    company = None
+    
+    # Get company from employee's work info
+    if hasattr(employee, 'employee_work_info') and employee.employee_work_info:
+        company = employee.employee_work_info.company_id
+    
+    # If no company in work info, try to get from the white label company
+    if not company:
+        from base.models import Company
+        company = Company.objects.filter(hq=True).first()
+    
+    context = {
+        "employee": employee,
+        "company": company,
+    }
+    
+    return render(
+        request,
+        "employee_personal_info/visiting_card_preview.html",
+        context,
+    )

@@ -1,0 +1,304 @@
+{% load static %}
+{% load i18n %}
+
+<div class="visiting-card-preview-container">
+    <h5 class="mb-3">{% trans "Visiting Card Preview" %}</h5>
+    
+    <!-- Visiting Card Preview -->
+    <div class="visiting-card-wrapper" id="visitingCardContent">
+        <div class="visiting-card">
+            <!-- Left Half - Company Info -->
+            <div class="visiting-card__left">
+                <div class="visiting-card__company-section">
+                    {% if company and company.icon %}
+                        <img src="{{ company.icon.url }}" alt="{{ company.company }}" class="visiting-card__logo">
+                    {% endif %}
+                    <h2 class="visiting-card__company-name">
+                        {% if company %}
+                            {{ company.company }}
+                        {% else %}
+                            {% trans "Company Name" %}
+                        {% endif %}
+                    </h2>
+                </div>
+                <div class="visiting-card__company-address">
+                    {% if company %}
+                        {% if company.address %}{{ company.address }}{% endif %}
+                        {% if company.city or company.country %}
+                            <br>{{ company.city }}{% if company.city and company.country %}, {% endif %}{{ company.country }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="visiting-card__divider"></div>
+            
+            <!-- Right Half - Employee Info -->
+            <div class="visiting-card__right">
+                <div class="visiting-card__employee-section">
+                    <h3 class="visiting-card__employee-name">{{ employee.get_full_name }}</h3>
+                    <p class="visiting-card__employee-position">
+                        {% if employee.employee_work_info and employee.employee_work_info.job_position_id %}
+                            {{ employee.employee_work_info.job_position_id }}
+                        {% endif %}
+                    </p>
+                    {% if employee.employee_work_info and employee.employee_work_info.department_id %}
+                        <p class="visiting-card__employee-department">{{ employee.employee_work_info.department_id }}</p>
+                    {% endif %}
+                </div>
+                <div class="visiting-card__contact-info">
+                    {% if employee.phone %}
+                        <div class="visiting-card__contact-item">
+                            <ion-icon name="call-outline"></ion-icon>
+                            <span>{{ employee.phone }}</span>
+                        </div>
+                    {% endif %}
+                    {% if employee.email %}
+                        <div class="visiting-card__contact-item">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <span>{{ employee.email }}</span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Download Button -->
+    <div class="visiting-card-actions mt-4">
+        <button type="button" class="oh-btn oh-btn--primary" onclick="downloadVisitingCard()">
+            <ion-icon name="download-outline" class="me-2"></ion-icon>
+            {% trans "Download Visiting Card" %}
+        </button>
+    </div>
+</div>
+
+<style>
+    .visiting-card-preview-container {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .visiting-card-wrapper {
+        perspective: 1000px;
+    }
+    
+    .visiting-card {
+        width: 500px;
+        height: 280px;
+        background: linear-gradient(135deg, #1e3a5f 0%, #0d1b2a 100%);
+        border-radius: 12px;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+                    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    }
+    
+    .visiting-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(ellipse at 0% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+            radial-gradient(ellipse at 100% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+        pointer-events: none;
+    }
+    
+    /* Left Half */
+    .visiting-card__left {
+        width: 50%;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .visiting-card__company-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+    
+    .visiting-card__logo {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        margin-bottom: 10px;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+    
+    .visiting-card__company-name {
+        font-size: 18px;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .visiting-card__company-address {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.6);
+        text-align: center;
+        line-height: 1.5;
+    }
+    
+    /* Divider */
+    .visiting-card__divider {
+        width: 1px;
+        background: linear-gradient(180deg, 
+            transparent 0%, 
+            rgba(255, 255, 255, 0.3) 20%, 
+            rgba(255, 255, 255, 0.3) 80%, 
+            transparent 100%);
+        margin: 20px 0;
+    }
+    
+    /* Right Half */
+    .visiting-card__right {
+        width: 50%;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .visiting-card__employee-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+    
+    .visiting-card__employee-name {
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0 0 5px 0;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .visiting-card__employee-position {
+        font-size: 12px;
+        color: #93c5fd;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0 0 3px 0;
+        text-align: center;
+    }
+    
+    .visiting-card__employee-department {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0;
+        text-align: center;
+    }
+    
+    .visiting-card__contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .visiting-card__contact-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .visiting-card__contact-item ion-icon {
+        font-size: 14px;
+        color: #60a5fa;
+    }
+    
+    .visiting-card-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+    
+    /* Print styles */
+    @media print {
+        .visiting-card-actions {
+            display: none !important;
+        }
+        
+        .visiting-card-preview-container h5 {
+            display: none !important;
+        }
+        
+        .visiting-card {
+            box-shadow: none;
+        }
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+    function downloadVisitingCard() {
+        const cardElement = document.getElementById('visitingCardContent');
+        const employeeName = "{{ employee.get_full_name|escapejs }}";
+        
+        // Show loading state
+        const downloadBtn = event.target.closest('button');
+        const originalText = downloadBtn.innerHTML;
+        downloadBtn.innerHTML = '<ion-icon name="hourglass-outline" class="me-2"></ion-icon> {% trans "Generating..." %}';
+        downloadBtn.disabled = true;
+        
+        html2canvas(cardElement, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: null,
+            logging: false
+        }).then(canvas => {
+            const { jsPDF } = window.jspdf;
+            
+            // Create PDF with business card dimensions (standard 3.5" x 2")
+            const pdf = new jsPDF({
+                orientation: 'landscape',
+                unit: 'mm',
+                format: [89, 51] // Standard business card size in mm
+            });
+            
+            // Add the canvas as image
+            const imgData = canvas.toDataURL('image/png');
+            pdf.addImage(imgData, 'PNG', 0, 0, 89, 51);
+            
+            // Download the PDF
+            pdf.save(`Visiting_Card_${employeeName.replace(/\s+/g, '_')}.pdf`);
+            
+            // Restore button state
+            downloadBtn.innerHTML = originalText;
+            downloadBtn.disabled = false;
+        }).catch(error => {
+            console.error('Error generating visiting card:', error);
+            downloadBtn.innerHTML = originalText;
+            downloadBtn.disabled = false;
+            alert('{% trans "Error generating visiting card. Please try again." %}');
+        });
+    }
+</script>
+

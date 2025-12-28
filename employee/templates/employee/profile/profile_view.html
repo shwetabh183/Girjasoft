@@ -92,6 +92,36 @@
 						</span>
 						<span class="oh-profile__info-value">{{employee.phone}}</span>
 					</li>
+					<li class="oh-profile__info-list-item" style="gap: 10px;">
+						<button
+							type="button"
+							hx-get="{% url 'employee-id-card-preview' employee.id %}"
+							hx-target="#idCardPreviewModalBody"
+							hx-swap="innerHTML"
+							class="oh-btn oh-btn--light-bkg d-flex align-items-center"
+							data-toggle="oh-modal-toggle"
+							data-target="#idCardPreviewModal"
+							title="{% trans 'Download ID Card' %}"
+							style="padding: 8px 16px; gap: 8px; font-size: 14px;"
+						>
+							<ion-icon name="id-card-outline" style="font-size: 20px;"></ion-icon>
+							<span>{% trans "Download ID" %}</span>
+						</button>
+						<button
+							type="button"
+							hx-get="{% url 'employee-visiting-card-preview' employee.id %}"
+							hx-target="#visitingCardPreviewModalBody"
+							hx-swap="innerHTML"
+							class="oh-btn oh-btn--light-bkg d-flex align-items-center"
+							data-toggle="oh-modal-toggle"
+							data-target="#visitingCardPreviewModal"
+							title="{% trans 'Download Visiting Card' %}"
+							style="padding: 8px 16px; gap: 8px; font-size: 14px;"
+						>
+							<ion-icon name="card-outline" style="font-size: 20px;"></ion-icon>
+							<span>{% trans "Visiting Card" %}</span>
+						</button>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -369,4 +399,31 @@
 		  $("#fieldContainerTable").find("[type=checkbox]").prop("checked",true).change()
 	  }
 </script>
+
+<!-- ID Card Preview Modal -->
+<div class="oh-modal" id="idCardPreviewModal" role="dialog" aria-labelledby="idCardPreviewModalLabel" aria-hidden="true">
+	<div class="oh-modal__dialog" style="max-width: 450px;">
+		<div class="oh-modal__dialog-header">
+			<span class="oh-modal__dialog-title" id="idCardPreviewModalLabel"><h5>{% trans 'Employee ID Card' %}</h5></span>
+			<button class="oh-modal__close" aria-label="Close"><ion-icon name="close-outline"></ion-icon></button>
+		</div>
+		<div class="oh-modal__dialog-body" id="idCardPreviewModalBody">
+			<!-- Content loaded via HTMX -->
+		</div>
+	</div>
+</div>
+
+<!-- Visiting Card Preview Modal -->
+<div class="oh-modal" id="visitingCardPreviewModal" role="dialog" aria-labelledby="visitingCardPreviewModalLabel" aria-hidden="true">
+	<div class="oh-modal__dialog" style="max-width: 600px;">
+		<div class="oh-modal__dialog-header">
+			<span class="oh-modal__dialog-title" id="visitingCardPreviewModalLabel"><h5>{% trans 'Visiting Card' %}</h5></span>
+			<button class="oh-modal__close" aria-label="Close"><ion-icon name="close-outline"></ion-icon></button>
+		</div>
+		<div class="oh-modal__dialog-body" id="visitingCardPreviewModalBody">
+			<!-- Content loaded via HTMX -->
+		</div>
+	</div>
+</div>
+
 {% endblock content %}

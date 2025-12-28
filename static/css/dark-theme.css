@@ -937,6 +937,35 @@ select option {
     color: var(--dark-text-primary) !important;
 }
 
+/* Breadcrumb navigation */
+.oh-navbar__breadcrumb {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-navbar__breadcrumb-item {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Breadcrumb separator arrow - replace dark SVG with light version */
+.oh-navbar__breadcrumb-item::after {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjEuNSIgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIGQ9Im04LjYyNSA1LjI1IDYuNzUgNi43NS02Ljc1IDYuNzUiPjwvcGF0aD4KPC9zdmc+") !important;
+    opacity: 0.7 !important;
+}
+
+/* Breadcrumb links */
+.oh-navbar__breadcrumb-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.oh-navbar__breadcrumb-link:hover {
+    color: var(--accent-blue-light) !important;
+}
+
+.oh-navbar__breadcrumb-link.active {
+    color: var(--dark-text-primary) !important;
+    font-weight: 500 !important;
+}
+
 .oh-navbar__action-icons-link {
     color: rgba(255, 255, 255, 0.7) !important;
 }
@@ -4923,6 +4952,44 @@ input[type="file"] {
     color: var(--dark-text-primary) !important;
 }
 
+/* Employee card dropdown z-index fix */
+.oh-kanban-card {
+    position: relative !important;
+}
+
+.oh-kanban-card__dots {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.oh-kanban-card__dots .oh-dropdown {
+    position: relative !important;
+}
+
+.oh-kanban-card__dots .oh-dropdown__menu {
+    z-index: 1050 !important;
+    position: absolute !important;
+}
+
+/* When dropdown is open, raise the entire card's z-index */
+.oh-kanban-card:has(.oh-dropdown__menu[style*="display: block"]),
+.oh-kanban-card:has(.oh-dropdown__menu:not([style*="display: none"])),
+.oh-kanban-card:hover {
+    z-index: 100 !important;
+}
+
+/* Also handle the dots container when dropdown is open */
+.oh-kanban-card__dots:has(.oh-dropdown__menu[style*="display: block"]),
+.oh-kanban-card__dots:has(.oh-dropdown__menu:not([style*="display: none"])) {
+    z-index: 1001 !important;
+}
+
+/* Grid layout z-index fix */
+.oh-layout--grid-3 .oh-kanban-card:has(.oh-dropdown__menu[style*="display: block"]),
+.oh-layout--grid-3 .oh-kanban-card:has(.oh-dropdown__menu:not([style*="display: none"])) {
+    z-index: 100 !important;
+}
+
 /* Grid layout for leave types */
 .oh-layout--grid-3 {
     color: var(--dark-text-secondary) !important;
@@ -6230,4 +6297,447 @@ img[src*="ui-avatars.com"] {
 input[readonly][style*="background-color: #a1a1a1"] {
     background-color: rgba(30, 41, 59, 0.6) !important;
     color: var(--dark-text-tertiary) !important;
+}
+
+/* ========== INLINE STYLE OVERRIDES ========== */
+/* These override common inline styles that cause visibility issues */
+
+/* Override inline color:black */
+[style*="color:black"],
+[style*="color: black"],
+[style*="color:#000"],
+[style*="color: #000"] {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Override inline background-color: white on buttons */
+.oh-btn[style*="background-color: white"],
+.oh-btn[style*="background-color:white"],
+button[style*="background-color: white"],
+button[style*="background-color:white"] {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-btn[style*="background-color: white"]:hover,
+.oh-btn[style*="background-color:white"]:hover,
+button[style*="background-color: white"]:hover,
+button[style*="background-color:white"]:hover {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+/* Override inline background on selects in helpdesk */
+.oh-helpdesk select[style*="background-color: #fff"],
+.oh-helpdesk select[style*="background-color:#fff"],
+select[style*="background-color: #fff"],
+select[style*="background-color:#fff"] {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Override inline background:#fff on activity sidebar header */
+.oh-activity-sidebar__header[style*="background:#fff"],
+.oh-activity-sidebar__header[style*="background: #fff"],
+[style*="background:#fff"],
+[style*="background: #fff"] {
+    background: var(--dark-bg-secondary) !important;
+}
+
+/* Work Info Complete table headers */
+#pending table th[style*="color:black"],
+#pending table th[style*="color: black"] {
+    color: var(--dark-text-primary) !important;
+}
+
+#pending table {
+    color: var(--dark-text-secondary) !important;
+}
+
+#pending .progress {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+#pending .progress-bar {
+    background-color: var(--accent-blue) !important;
+}
+
+#pending .progress-text {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* PMS / OKR Buttons with white background */
+.oh-btn-group .oh-btn[style*="background-color: white"],
+.oh-btn-group button[style*="background-color: white"] {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Helpdesk styles */
+.oh-helpdesk {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-helpdesk__header {
+    background: transparent !important;
+}
+
+.oh-helpdesk__header-title {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-helpdesk__left,
+.oh-helpdesk__right {
+    background: rgba(30, 41, 59, 0.6) !important;
+    border-color: var(--dark-border) !important;
+}
+
+/* Helpdesk card value and select */
+.helpdesk__card-value {
+    color: var(--dark-text-secondary) !important;
+}
+
+.helpdesk__card-value select.oh-select {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Avatar items border */
+.avatars__item {
+    border-color: var(--dark-bg-secondary) !important;
+}
+
+/* Import popup styles */
+.swal2-title {
+    color: var(--dark-text-primary) !important;
+}
+
+.swal2-html-container {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Oh text light/dark overrides */
+.oh-text--light {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.oh-text--dark {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Label with fw-bold and oh-text--dark */
+label.fw-bold.oh-text--dark,
+.oh-label.fw-bold.oh-text--dark {
+    color: var(--dark-text-primary) !important;
+}
+
+/* Progress container */
+.oh-progress-container {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-progress-container__percentage {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* 404 subtitle */
+.oh-404__subtitle {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* ========== FAQ CARDS (Loan, Reimbursement, etc.) ========== */
+.oh-faq-cards {
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-faq-card {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.oh-faq-card__title {
+    color: var(--dark-text-primary) !important;
+}
+
+.oh-faq-card__desc {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* Loan type badge */
+.loan-type {
+    background: rgba(59, 130, 246, 0.2) !important;
+    color: var(--accent-blue-light) !important;
+    border-radius: 4px !important;
+    padding: 2px 8px !important;
+}
+
+/* Override inline #4d4a4a color */
+[style*="color: #4d4a4a"],
+[style*="color:#4d4a4a"] {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* Time off modal user info */
+.oh-timeoff-modal__user[style*="color: #4d4a4a"],
+.oh-timeoff-modal__user[style*="color:#4d4a4a"] {
+    color: var(--dark-text-tertiary) !important;
+}
+
+/* Progress bar */
+.oh-recuritment__progress-bar,
+.oh-progress-bar {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.oh-progress-bar__state {
+    background: var(--accent-blue) !important;
+}
+
+/* Status dots - ensure they remain visible */
+.oh-dot[style*="background-color: red"] {
+    background-color: #ef4444 !important;
+}
+
+.oh-dot[style*="background-color: yellowgreen"] {
+    background-color: #84cc16 !important;
+}
+
+.oh-dot[style*="background-color: rgba(128, 128, 128"] {
+    background-color: rgba(148, 163, 184, 0.5) !important;
+}
+
+/* Reimbursement status badges */
+.loan-type[style*="background:#9acd32"],
+.loan-type[style*="background: #9acd32"] {
+    background: rgba(132, 204, 22, 0.2) !important;
+    color: #a3e635 !important;
+}
+
+.loan-type[style*="background:#ff4500"],
+.loan-type[style*="background: #ff4500"] {
+    background: rgba(239, 68, 68, 0.2) !important;
+    color: #f87171 !important;
+}
+
+/* ========== ADDITIONAL INLINE STYLE OVERRIDES ========== */
+
+/* Override inline gray borders */
+[style*="border: 2px solid white"] {
+    border-color: var(--dark-bg-secondary) !important;
+}
+
+/* Override light backgrounds in containers */
+div[style*="background:#fff"],
+div[style*="background: #fff"],
+div[style*="background-color:#fff"],
+div[style*="background-color: #fff"],
+div[style*="background:white"],
+div[style*="background: white"],
+div[style*="background-color:white"],
+div[style*="background-color: white"] {
+    background: var(--dark-bg-secondary) !important;
+}
+
+/* Override sticky header backgrounds */
+[style*="position:sticky"][style*="background:#fff"],
+[style*="position: sticky"][style*="background: #fff"] {
+    background: var(--dark-bg-secondary) !important;
+}
+
+/* Override text color in headers */
+th[style*="color:black"],
+th[style*="color: black"],
+td[style*="color:black"],
+td[style*="color: black"] {
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== BOOTSTRAP BUTTON VARIANTS ========== */
+.btn-light {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.btn-light:hover {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.btn-outline-light {
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* ========== ADDITIONAL COMMON CLASSES ========== */
+
+/* Bootstrap card-text */
+.card-text {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Card title */
+.card-title {
+    color: var(--dark-text-primary) !important;
+}
+
+/* List group */
+.list-group-item {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.list-group-item:hover {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+.list-group-item.active {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    border-color: var(--accent-blue) !important;
+}
+
+/* Table classes */
+.table {
+    color: var(--dark-text-secondary) !important;
+}
+
+.table thead th {
+    color: var(--dark-text-primary) !important;
+    border-bottom-color: var(--dark-border) !important;
+}
+
+.table td,
+.table th {
+    border-color: var(--dark-border) !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(59, 130, 246, 0.08) !important;
+}
+
+/* Accordion */
+.accordion-button {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.accordion-body {
+    background-color: rgba(30, 41, 59, 0.6) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    background-color: var(--dark-bg-secondary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.dropdown-item {
+    color: var(--dark-text-secondary) !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.dropdown-divider {
+    border-color: var(--dark-border) !important;
+}
+
+/* Nav tabs */
+.nav-tabs {
+    border-bottom-color: var(--dark-border) !important;
+}
+
+.nav-tabs .nav-link {
+    color: var(--dark-text-tertiary) !important;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: transparent !important;
+    border-color: var(--dark-border) var(--dark-border) transparent !important;
+    color: var(--dark-text-primary) !important;
+}
+
+/* Input group */
+.input-group-text {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Pagination */
+.page-link {
+    background-color: rgba(30, 41, 59, 0.85) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+}
+
+.page-link:hover {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: var(--accent-blue-light) !important;
+}
+
+.page-item.active .page-link {
+    background-color: var(--accent-blue) !important;
+    border-color: var(--accent-blue) !important;
+    color: white !important;
+}
+
+.page-item.disabled .page-link {
+    background-color: rgba(30, 41, 59, 0.5) !important;
+    color: var(--dark-text-muted) !important;
+}
+
+/* Popover */
+.popover {
+    background-color: var(--dark-bg-secondary) !important;
+    border-color: var(--dark-border) !important;
+}
+
+.popover-header {
+    background-color: rgba(59, 130, 246, 0.08) !important;
+    border-bottom-color: var(--dark-border) !important;
+    color: var(--dark-text-primary) !important;
+}
+
+.popover-body {
+    color: var(--dark-text-secondary) !important;
+}
+
+/* Close button */
+.btn-close {
+    filter: invert(1) !important;
+    opacity: 0.6 !important;
+}
+
+.btn-close:hover {
+    opacity: 1 !important;
 }

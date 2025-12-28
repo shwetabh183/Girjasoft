@@ -285,6 +285,22 @@
 							{% endif %}
 						</span>
 					</li>
+					<li class="oh-profile__info-list-item">
+						<button
+							type="button"
+							hx-get="{% url 'employee-id-card-preview' employee.id %}"
+							hx-target="#idCardPreviewModalBody"
+							hx-swap="innerHTML"
+							class="oh-btn oh-btn--light-bkg d-flex align-items-center"
+							data-toggle="oh-modal-toggle"
+							data-target="#idCardPreviewModal"
+							title="{% trans 'Download ID Card' %}"
+							style="padding: 6px 12px; gap: 6px;"
+						>
+							<ion-icon name="id-card-outline"></ion-icon>
+							<span>{% trans "Download ID" %}</span>
+						</button>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -606,5 +622,18 @@
 		}
 	})
 </script>
+
+<!-- ID Card Preview Modal -->
+<div class="oh-modal" id="idCardPreviewModal" role="dialog" aria-labelledby="idCardPreviewModalLabel" aria-hidden="true">
+	<div class="oh-modal__dialog" style="max-width: 450px;">
+		<div class="oh-modal__dialog-header">
+			<span class="oh-modal__dialog-title" id="idCardPreviewModalLabel"><h5>{% trans 'Employee ID Card' %}</h5></span>
+			<button class="oh-modal__close" aria-label="Close"><ion-icon name="close-outline"></ion-icon></button>
+		</div>
+		<div class="oh-modal__dialog-body" id="idCardPreviewModalBody">
+			<!-- Content loaded via HTMX -->
+		</div>
+	</div>
+</div>
 
 {% endblock content %}

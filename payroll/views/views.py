@@ -11,7 +11,6 @@ from itertools import groupby
 from urllib.parse import parse_qs
 
 import pandas as pd
-import pdfkit
 from django.contrib import messages
 from django.db.models import ProtectedError, Q
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -1440,7 +1439,7 @@ def equalize_lists_length(allowances, deductions):
 
 def generate_payslip_pdf(template_path, context, html=False):
     """
-    Generate a PDF file from an HTML template and context data.
+    Generate a PDF file from an HTML template and context data using xhtml2pdf.
 
     Args:
         template_path (str): The path to the HTML template.
@@ -1451,6 +1450,9 @@ def generate_payslip_pdf(template_path, context, html=False):
         HttpResponse: A response with the generated PDF file or raw HTML.
     """
     try:
+        from xhtml2pdf import pisa
+        from io import BytesIO
+
         # Render the HTML content from the template and context
         html_content = render_to_string(template_path, context)
 
@@ -1458,25 +1460,22 @@ def generate_payslip_pdf(template_path, context, html=False):
         if html:
             return HttpResponse(html_content, content_type="text/html")
 
-        # PDF options for pdfkit
-        pdf_options = {
-            "page-size": "A4",
-            "margin-top": "10mm",
-            "margin-bottom": "10mm",
-            "margin-left": "10mm",
-            "margin-right": "10mm",
-            "encoding": "UTF-8",
-            "enable-local-file-access": None,  # Required to load local CSS/images
-            "dpi": 300,
-            "zoom": 1.3,
-            "footer-center": "[page]/[topage]",  # Required to load local CSS/images
-        }
+        # Create a BytesIO buffer to receive PDF data
+        result = BytesIO()
 
-        # Generate the PDF as binary content
-        pdf = pdfkit.from_string(html_content, False, options=pdf_options)
+        # Generate the PDF from the HTML string
+        pdf_status = pisa.CreatePDF(
+            html_content.encode('utf-8'),
+            dest=result,
+            encoding='utf-8'
+        )
+
+        # Check for errors
+        if pdf_status.err:
+            return HttpResponse(f"Error generating PDF: PDF creation failed", status=500)
 
         # Return an HttpResponse containing the PDF content
-        response = HttpResponse(pdf, content_type="application/pdf")
+        response = HttpResponse(result.getvalue(), content_type="application/pdf")
         response["Content-Disposition"] = "inline; filename=payslip.pdf"
         return response
     except Exception as e:
@@ -1509,6 +1508,8 @@ def payslip_pdf(request, id):
             employee = user.employee_get
 
             # Taking the company_name of the user
+            # Initialize date_format with default value
+            date_format = "MMM. D, YYYY"
             info = EmployeeWorkInformation.objects.filter(employee_id=employee)
             if info.exists():
                 for data in info:

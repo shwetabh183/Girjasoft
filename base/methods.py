@@ -6,7 +6,6 @@ import random
 from datetime import date, datetime, time, timedelta
 
 import pandas as pd
-import pdfkit
 from django.apps import apps
 from django.conf import settings
 from django.contrib.auth.models import Group
@@ -1109,36 +1108,39 @@ def eval_validate(value):
 
 def template_pdf(template, context={}, html=False, filename="payslip.pdf"):
     """
-    Generate a PDF file from an HTML template and context data.
+    Generate a PDF file from an HTML template and context data using xhtml2pdf.
 
     Args:
-        template_path (str): The path to the HTML template.
+        template (str): The HTML template string.
         context (dict): The context data to render the template.
         html (bool): If True, return raw HTML instead of a PDF.
+        filename (str): The filename for the PDF.
 
     Returns:
         HttpResponse: A response with the generated PDF file or raw HTML.
     """
     try:
+        from xhtml2pdf import pisa
+        from io import BytesIO
+
         bootstrap_css = '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">'
         html_content = f"{bootstrap_css}\n{template}"
 
-        pdf_options = {
-            "page-size": "A4",
-            "margin-top": "10mm",
-            "margin-bottom": "10mm",
-            "margin-left": "10mm",
-            "margin-right": "10mm",
-            "encoding": "UTF-8",
-            "enable-local-file-access": None,
-            "dpi": 300,
-            "zoom": 1.3,
-            "footer-center": "[page]/[topage]",
-        }
+        # Create a BytesIO buffer to receive PDF data
+        result = BytesIO()
 
-        pdf = pdfkit.from_string(html_content, False, options=pdf_options)
+        # Generate the PDF from the HTML string
+        pdf_status = pisa.CreatePDF(
+            html_content.encode('utf-8'),
+            dest=result,
+            encoding='utf-8'
+        )
 
-        response = HttpResponse(pdf, content_type="application/pdf")
+        # Check for errors
+        if pdf_status.err:
+            return HttpResponse(f"Error generating PDF: PDF creation failed", status=500)
+
+        response = HttpResponse(result.getvalue(), content_type="application/pdf")
         response["Content-Disposition"] = f"inline; filename={filename}"
         return response
     except Exception as e:

@@ -402,11 +402,11 @@ from payroll.views.component_views import filter_payslip
 from payroll.views.views import equalize_lists_length
 
 try:
-    import pdfkit
+    from xhtml2pdf import pisa
 
-    HAVE_PDFKIT = True
+    HAVE_XHTML2PDF = True
 except Exception:
-    HAVE_PDFKIT = False
+    HAVE_XHTML2PDF = False
 
 
 class PayslipPDFAPIView(APIView):
@@ -520,23 +520,35 @@ class PayslipPDFAPIView(APIView):
             "payroll/payslip/payslip_pdf.html", context=data, request=request
         )
 
-        # If client asked for PDF and pdfkit is available -> return PDF
+        # If client asked for PDF and xhtml2pdf is available -> return PDF
         requested_format = request.GET.get("format", "").lower()
         if requested_format == "pdf":
-            if not HAVE_PDFKIT:
+            if not HAVE_XHTML2PDF:
                 return Response(
                     {
-                        "detail": "PDF generation not available on server. Install pdfkit/wkhtmltopdf."
+                        "detail": "PDF generation not available on server. Install xhtml2pdf."
                     },
                     status=status.HTTP_503_SERVICE_UNAVAILABLE,
                 )
             try:
-                # optional: configure pdfkit with path if needed
-                pdf_options = {
-                    "enable-local-file-access": None,  # if your template references local CSS
-                }
-                pdf_bytes = pdfkit.from_string(html, False, options=pdf_options)
-                response = HttpResponse(pdf_bytes, content_type="application/pdf")
+                from io import BytesIO
+                # Create a BytesIO buffer to receive PDF data
+                result = BytesIO()
+
+                # Generate the PDF from the HTML string
+                pdf_status = pisa.CreatePDF(
+                    html.encode('utf-8'),
+                    dest=result,
+                    encoding='utf-8'
+                )
+
+                if pdf_status.err:
+                    return Response(
+                        {"detail": "PDF generation failed"},
+                        status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                    )
+
+                response = HttpResponse(result.getvalue(), content_type="application/pdf")
                 response["Content-Disposition"] = f'inline; filename="payslip-{id}.pdf"'
                 return response
             except Exception as e:

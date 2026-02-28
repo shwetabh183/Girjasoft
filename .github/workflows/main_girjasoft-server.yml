@@ -20,6 +20,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Create deployment package
+        run: |
+          # Create a clean zip excluding unnecessary files
+          zip -r deploy.zip . \
+            -x "*.git*" \
+            -x "*girjasoftvenv/*" \
+            -x "*node_modules/*" \
+            -x "*.sqlite3" \
+            -x "*media/*" \
+            -x "*staticfiles/*" \
+            -x "*__pycache__/*" \
+            -x "*.pyc" \
+            -x "*whoosh_index/*" \
+            -x "*.vscode/*" \
+            -x "*.idea/*"
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -33,3 +49,4 @@ jobs:
         with:
           app-name: 'girjasoft-server'
           slot-name: 'Production'
+          package: 'deploy.zip'

@@ -40,6 +40,17 @@ jobs:
           path: |
             .
             !antenv/
+            !girjasoftvenv/
+            !node_modules/
+            !*.sqlite3
+            !media/
+            !staticfiles/
+            !__pycache__/
+            !*.pyc
+            !whoosh_index/
+            !.vscode/
+            !.idea/
+            !.git/
 
       # 🚫 Opting Out of Oryx Build
       # If you prefer to disable the Oryx build process during deployment, follow these steps:

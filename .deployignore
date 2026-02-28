@@ -1,0 +1,51 @@
+# Virtual environments
+girjasoftvenv/
+venv/
+env/
+ENV/
+.venv
+
+# Node modules
+node_modules/
+
+# Database files
+*.sqlite3
+*.db
+
+# Git directory
+.git/
+
+# Media files (uploaded separately)
+media/
+
+# Static files (collected on Azure)
+staticfiles/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE
+.vscode/
+.idea/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# Whoosh search index
+whoosh_index/
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db

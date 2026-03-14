@@ -1,5 +1,6 @@
 ﻿APScheduler
 arabic-reshaper
+azure-storage-blob
 asgiref
 asn1crypto
 bs4

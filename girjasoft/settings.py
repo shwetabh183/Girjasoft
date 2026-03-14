@@ -179,20 +179,8 @@ STATICFILES_DIRS = [
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
-# Azure Blob Storage for Media Files
-AZURE_ACCOUNT_NAME = env("AZURE_ACCOUNT_NAME", default=None)
-AZURE_ACCOUNT_KEY = env("AZURE_ACCOUNT_KEY", default=None)
-AZURE_CONTAINER = env("AZURE_CONTAINER", default="media")
-
-if AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY:
-    # Use Azure Blob Storage for media files
-    DEFAULT_FILE_STORAGE = "storages.backends.azure_storage.AzureStorage"
-    AZURE_CUSTOM_DOMAIN = f"{AZURE_ACCOUNT_NAME}.blob.core.windows.net"
-    MEDIA_URL = f"https://{AZURE_CUSTOM_DOMAIN}/{AZURE_CONTAINER}/"
-else:
-    # Fallback to local storage for development
-    MEDIA_URL = "/media/"
-    MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

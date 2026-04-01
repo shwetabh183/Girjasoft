@@ -442,6 +442,19 @@
             transform: translateY(-2px);
         }
 
+        .action-btn--download {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .action-btn--download:hover {
+            background: rgba(34, 197, 94, 0.25);
+            border-color: #4ade80;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+        }
+
         .action-btn ion-icon {
             font-size: 16px;
         }
@@ -665,6 +678,19 @@
                     </a>
                     {% endif %}
                 </form>
+
+                <!-- Download Android App Button -->
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">{% trans "Get Mobile App" %}</span>
+                    <div class="divider-line"></div>
+                </div>
+
+                <a href="{% static 'apk/Girjasoft-HRMS.apk' %}" download class="action-btn action-btn--download" style="width: 100%; text-decoration: none;">
+                    <ion-icon name="logo-android"></ion-icon>
+                    {% trans "Download Android App" %}
+                    <span style="font-size: 11px; opacity: 0.7; margin-left: 4px;">(9.5 MB)</span>
+                </a>
 
                 {% if initialize_database %}
                 <div class="divider">

@@ -124,6 +124,43 @@ function getCurrentLanguageCode(callback) {
     }
 }
 
+/**
+ * .xlsx files are ZIP archives and start with "PK" (0x50 0x4B). On errors, this project
+ * may return an HTML error page with HTTP 200, which jQuery treats as success — avoid
+ * saving that HTML as an .xlsx file.
+ */
+function downloadBlobAsXlsxIfValid(response, filename) {
+    function finalize(buffer) {
+        var bytes = new Uint8Array(buffer);
+        if (bytes.byteLength < 2 || bytes[0] !== 0x50 || bytes[1] !== 0x4b) {
+            Swal.fire({
+                icon: "error",
+                title: "Export failed",
+                text:
+                    "The server did not return a valid Excel file. Please try again or contact support if this continues.",
+            });
+            return;
+        }
+        var file = new Blob([buffer], {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        });
+        var url = URL.createObjectURL(file);
+        var link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+    }
+
+    if (response && typeof response.arrayBuffer === "function") {
+        response.arrayBuffer().then(finalize);
+        return;
+    }
+    finalize(response);
+}
+
 function validateActivityIds(event) {
     event.preventDefault();
 
@@ -689,15 +726,7 @@ $(".attendance-info-import").click(function (e) {
                         responseType: "blob",
                     },
                     success: function (response) {
-                        const file = new Blob([response], {
-                            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                        });
-                        const url = URL.createObjectURL(file);
-                        const link = document.createElement("a");
-                        link.href = url;
-                        link.download = "attendance_excel.xlsx";
-                        document.body.appendChild(link);
-                        link.click();
+                        downloadBlobAsXlsxIfValid(response, "attendance_excel.xlsx");
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         console.error("Error downloading file:", errorThrown);
@@ -1007,15 +1036,10 @@ $("#exportAccounts").click(function (e) {
                         responseType: "blob",
                     },
                     success: function (response) {
-                        const file = new Blob([response], {
-                            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                        });
-                        const url = URL.createObjectURL(file);
-                        const link = document.createElement("a");
-                        link.href = url;
-                        link.download = "Hour_account" + currentDate + ".xlsx";
-                        document.body.appendChild(link);
-                        link.click();
+                        downloadBlobAsXlsxIfValid(
+                            response,
+                            "Hour_account" + currentDate + ".xlsx"
+                        );
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         console.error("Error downloading file:", errorThrown);
@@ -1055,15 +1079,10 @@ $("#exportActivity").click(function (e) {
                         responseType: "blob",
                     },
                     success: function (response) {
-                        const file = new Blob([response], {
-                            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                        });
-                        const url = URL.createObjectURL(file);
-                        const link = document.createElement("a");
-                        link.href = url;
-                        link.download = "Attendance_activity" + currentDate + ".xlsx";
-                        document.body.appendChild(link);
-                        link.click();
+                        downloadBlobAsXlsxIfValid(
+                            response,
+                            "Attendance_activity" + currentDate + ".xlsx"
+                        );
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         console.error("Error downloading file:", errorThrown);
@@ -1103,15 +1122,10 @@ $("#exportLatecome").click(function (e) {
                         responseType: "blob",
                     },
                     success: function (response) {
-                        const file = new Blob([response], {
-                            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                        });
-                        const url = URL.createObjectURL(file);
-                        const link = document.createElement("a");
-                        link.href = url;
-                        link.download = "Late_come" + currentDate + ".xlsx";
-                        document.body.appendChild(link);
-                        link.click();
+                        downloadBlobAsXlsxIfValid(
+                            response,
+                            "Late_come" + currentDate + ".xlsx"
+                        );
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         console.error("Error downloading file:", errorThrown);

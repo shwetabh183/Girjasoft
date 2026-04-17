@@ -727,12 +727,20 @@ def export_data(request, model, form_class, filter_class, file_name, perm=None):
 
                 # Check if the type of 'value' is time
                 value = format_export_value(value, employee)
+                if isinstance(value, models.Model):
+                    value = str(value)
                 data_export[verbose_name].append(value)
 
     data_frame = pd.DataFrame(data=data_export)
-    styled_data_frame = data_frame.style.applymap(
-        lambda x: "text-align: center", subset=pd.IndexSlice[:, :]
-    )
+    _styler = data_frame.style
+    if hasattr(_styler, "map"):
+        styled_data_frame = _styler.map(
+            lambda x: "text-align: center", subset=pd.IndexSlice[:, :]
+        )
+    else:
+        styled_data_frame = _styler.applymap(
+            lambda x: "text-align: center", subset=pd.IndexSlice[:, :]
+        )
 
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine="xlsxwriter") as writer:

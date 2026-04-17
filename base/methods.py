@@ -1,5 +1,6 @@
 import ast
 import calendar
+import io
 import json
 import os
 import random
@@ -726,14 +727,18 @@ def export_data(request, model, form_class, filter_class, file_name, perm=None):
         lambda x: "text-align: center", subset=pd.IndexSlice[:, :]
     )
 
-    response = HttpResponse(content_type="application/ms-excel")
-    response["Content-Disposition"] = f'attachment; filename="{file_name}"'
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine="xlsxwriter") as writer:
+        styled_data_frame.to_excel(writer, index=False, sheet_name="Sheet1")
+        worksheet = writer.sheets["Sheet1"]
+        worksheet.set_column("A:Z", 18)
 
-    writer = pd.ExcelWriter(response, engine="xlsxwriter")
-    styled_data_frame.to_excel(writer, index=False, sheet_name="Sheet1")
-    worksheet = writer.sheets["Sheet1"]
-    worksheet.set_column("A:Z", 18)
-    writer.close()
+    output.seek(0)
+    response = HttpResponse(
+        output.read(),
+        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+    response["Content-Disposition"] = f'attachment; filename="{file_name}"'
 
     return response
 

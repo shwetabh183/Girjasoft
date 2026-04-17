@@ -688,8 +688,13 @@ def export_data(request, model, form_class, filter_class, file_name, perm=None):
     if not selected_fields:
         selected_fields = form.fields["selected_fields"].initial
         ids = request.GET.get("ids")
-        id_list = json.loads(ids)
-        export_objects = model.objects.filter(id__in=id_list)
+        if ids:
+            try:
+                id_list = json.loads(ids)
+                export_objects = model.objects.filter(id__in=id_list)
+            except (TypeError, ValueError, json.JSONDecodeError):
+                # Fall back to filtered queryset when ids payload is missing/invalid.
+                pass
 
     for field in form.fields["selected_fields"].choices:
         value = field[0]
@@ -711,7 +716,9 @@ def export_data(request, model, form_class, filter_class, file_name, perm=None):
                     value = _("Yes")
                 elif value is False:
                     value = _("No")
-                if value in fields_mapping:
+                # Some export fields are model instances (e.g., employee_id) and are
+                # unhashable, so direct dict membership checks can raise TypeError.
+                if isinstance(value, str) and value in fields_mapping:
                     value = fields_mapping[value]
                 if value == "None":
                     value = " "

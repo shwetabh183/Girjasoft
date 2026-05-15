@@ -50,6 +50,8 @@ urlpatterns = [
     path("today-attendance/", TodayAttendance.as_view(), name="api-"),
     path("offline-employees/count/", OfflineEmployeesCountView.as_view(), name="api-"),
     path("offline-employees/list/", OfflineEmployeesListView.as_view(), name="api-"),
+    path("online-employees/count/", OnlineEmployeesCountView.as_view(), name="api-"),
+    path("online-employees/list/", OnlineEmployeesListView.as_view(), name="api-"),
     path("permission-check/attendance", AttendancePermissionCheck.as_view()),
     path("checking-in", CheckingStatus.as_view()),
     path("offline-employee-mail-send", OfflineEmployeeMailsend.as_view()),

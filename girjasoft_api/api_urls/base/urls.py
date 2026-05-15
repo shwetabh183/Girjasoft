@@ -4,6 +4,11 @@ from ...api_views.base import views
 
 urlpatterns = [
     path(
+        "header-systray-permissions/",
+        views.HeaderSystrayPermissionsAPIView.as_view(),
+        name="api-header-systray-permissions",
+    ),
+    path(
         "job-positions/",
         views.JobPositionView.as_view(),
         name="api-job_position_detail",

@@ -431,6 +431,7 @@ class AttendanceRequestView(APIView):
             return groupby_queryset(request, url, field_name, request_filtered_queryset)
 
         pagenation = PageNumberPagination()
+        pagenation.page_size = 50
         page = pagenation.paginate_queryset(request_filtered_queryset, request)
         serializer = self.serializer_class(page, many=True)
         return pagenation.get_paginated_response(serializer.data)
@@ -743,7 +744,7 @@ class OfflineEmployeesCountView(APIView):
             .exists()
         )
 
-        if request.user.has_perm("employee.view_enployee") or is_manager:
+        if request.user.has_perm("employee.view_employee") or is_manager:
             count = (
                 EmployeeFilter({"not_in_yet": date.today()})
                 .qs.exclude(employee_work_info__isnull=True)
@@ -795,6 +796,7 @@ class OfflineEmployeesListView(APIView):
         leave_status = self.get_leave_status(filtered_qs)
 
         pagenation = PageNumberPagination()
+        pagenation.page_size = 50
         page = pagenation.paginate_queryset(leave_status, request)
         return pagenation.get_paginated_response(page)
 
@@ -846,6 +848,83 @@ class OfflineEmployeesListView(APIView):
                     settings.MEDIA_URL + employee["employee_profile"]
                 )
         return employees_with_leave_status
+
+
+class OnlineEmployeesCountView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        is_manager = (
+            EmployeeWorkInformation.objects.filter(
+                reporting_manager_id=request.user.employee_get
+            )
+            .only("id")
+            .exists()
+        )
+
+        if request.user.has_perm("employee.view_employee") or is_manager:
+            count = (
+                EmployeeFilter({"not_out_yet": date.today()})
+                .qs.exclude(employee_work_info__isnull=True)
+                .filter(is_active=True)
+                .count()
+            )
+            return Response({"count": count}, status=200)
+        return Response(
+            {"error": "Permission denied"}, status=status.HTTP_403_FORBIDDEN
+        )
+
+
+class OnlineEmployeesListView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        employee = getattr(user, "employee_get", None)
+        today = date.today()
+
+        managed_employee_ids = EmployeeWorkInformation.objects.filter(
+            reporting_manager_id=employee
+        ).values_list("employee_id", flat=True)
+
+        if user.has_perm("employee.view_employee"):
+            base_queryset = Employee.objects.all()
+        elif managed_employee_ids.exists():
+            base_queryset = Employee.objects.filter(id__in=managed_employee_ids)
+        else:
+            return Response(
+                {"error": "Permission denied"}, status=status.HTTP_403_FORBIDDEN
+            )
+
+        filtered_qs = (
+            EmployeeFilter({"not_out_yet": today}, queryset=base_queryset)
+            .qs.exclude(employee_work_info__isnull=True)
+            .filter(is_active=True)
+            .select_related("employee_work_info")
+        )
+
+        employees = filtered_qs.values(
+            "employee_first_name",
+            "employee_last_name",
+            "employee_profile",
+            "id",
+            "employee_work_info__job_position_id",
+        )
+
+        for employee_row in employees:
+            if employee_row["employee_profile"]:
+                employee_row["employee_profile"] = (
+                    settings.MEDIA_URL + employee_row["employee_profile"]
+                )
+            employee_row["job_position_id"] = employee_row.pop(
+                "employee_work_info__job_position_id"
+            )
+            employee_row["leave_status"] = "Working"
+
+        paginator = PageNumberPagination()
+        paginator.page_size = 50
+        page = paginator.paginate_queryset(employees, request)
+        return paginator.get_paginated_response(page)
 
 
 class CheckingStatus(APIView):

@@ -1387,3 +1387,24 @@ class AnnouncementListAPIView(APIView):
             content.append({"type": tag_type, "text": tag.get_text(" ", strip=True)})
 
         return content
+
+
+class HeaderSystrayPermissionsAPIView(APIView):
+    """
+    Permission flags for the global header / navbar (matches legacy index.html systray).
+    """
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        show_settings = user.has_module_perms("base") or user.has_perm(
+            "attendance.view_attendancevalidationcondition"
+        )
+        show_company_switcher = user.has_perm("base.change_company")
+        return Response(
+            {
+                "show_settings": show_settings,
+                "show_company_switcher": show_company_switcher,
+            }
+        )

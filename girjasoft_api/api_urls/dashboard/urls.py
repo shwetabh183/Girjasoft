@@ -1,0 +1,93 @@
+from django.urls import path
+
+from girjasoft_api.api_views.dashboard import chart_views, preferences_views, views
+
+urlpatterns = [
+    path("summary/", views.DashboardSummaryAPIView.as_view(), name="api-dashboard-summary"),
+    path("birthdays/", views.DashboardBirthdaysAPIView.as_view(), name="api-dashboard-birthdays"),
+    path(
+        "on-leave-today/",
+        views.DashboardOnLeaveTodayAPIView.as_view(),
+        name="api-dashboard-on-leave-today",
+    ),
+    path(
+        "work-info-pending/",
+        views.DashboardWorkInfoPendingAPIView.as_view(),
+        name="api-dashboard-work-info-pending",
+    ),
+    path(
+        "charts/employee-active/",
+        chart_views.DashboardChartEmployeeActiveAPIView.as_view(),
+        name="api-dashboard-chart-employee-active",
+    ),
+    path(
+        "charts/employee-gender/",
+        chart_views.DashboardChartEmployeeGenderAPIView.as_view(),
+        name="api-dashboard-chart-employee-gender",
+    ),
+    path(
+        "charts/employee-department/",
+        chart_views.DashboardChartEmployeeDepartmentAPIView.as_view(),
+        name="api-dashboard-chart-employee-department",
+    ),
+    path(
+        "charts/overall-leave/",
+        chart_views.DashboardChartOverallLeaveAPIView.as_view(),
+        name="api-dashboard-chart-overall-leave",
+    ),
+    path(
+        "charts/attendance-analytic/",
+        chart_views.DashboardChartAttendanceAnalyticAPIView.as_view(),
+        name="api-dashboard-chart-attendance-analytic",
+    ),
+    path(
+        "charts/pending-hours/",
+        chart_views.DashboardChartPendingHoursAPIView.as_view(),
+        name="api-dashboard-chart-pending-hours",
+    ),
+    path(
+        "charts/hired-candidates/",
+        chart_views.DashboardChartHiredCandidatesAPIView.as_view(),
+        name="api-dashboard-chart-hired-candidates",
+    ),
+    path(
+        "charts/onboarding-candidates/",
+        chart_views.DashboardChartOnboardingCandidatesAPIView.as_view(),
+        name="api-dashboard-chart-onboarding-candidates",
+    ),
+    path(
+        "charts/recruitment-pipeline/",
+        chart_views.DashboardChartRecruitmentPipelineAPIView.as_view(),
+        name="api-dashboard-chart-recruitment-pipeline",
+    ),
+    path(
+        "charts/objective-status/",
+        chart_views.DashboardChartObjectiveStatusAPIView.as_view(),
+        name="api-dashboard-chart-objective-status",
+    ),
+    path(
+        "charts/key-result-status/",
+        chart_views.DashboardChartKeyResultStatusAPIView.as_view(),
+        name="api-dashboard-chart-key-result-status",
+    ),
+    path(
+        "charts/feedback-status/",
+        chart_views.DashboardChartFeedbackStatusAPIView.as_view(),
+        name="api-dashboard-chart-feedback-status",
+    ),
+    path(
+        "hidden-charts/",
+        preferences_views.DashboardHiddenChartsAPIView.as_view(),
+        name="api-dashboard-hidden-charts",
+    ),
+    path(
+        "overtime-pending/",
+        preferences_views.DashboardOvertimePendingAPIView.as_view(),
+        name="api-dashboard-overtime-pending",
+    ),
+    path(
+        "feedback-pending/",
+        preferences_views.DashboardFeedbackPendingAPIView.as_view(),
+        name="api-dashboard-feedback-pending",
+    ),
+]

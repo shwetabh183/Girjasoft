@@ -223,6 +223,7 @@ class LeaveAllocationRequestGetCreateAPIView(APIView):
         )
         filterset = self.filterset_class(request.GET, queryset=queryset)
         paginator = PageNumberPagination()
+        paginator.page_size = 50
         field_name = request.GET.get("groupby_field", None)
         if field_name:
             url = request.build_absolute_uri()
@@ -415,6 +416,7 @@ class LeaveRequestGetCreateAPIView(APIView):
         )
         filterset = self.filterset_class(request.GET, queryset=queryset)
         paginator = PageNumberPagination()
+        paginator.page_size = 50
         field_name = request.GET.get("groupby_field", None)
         if field_name:
             url = request.build_absolute_uri()

@@ -8,5 +8,6 @@ urlpatterns = [
     path("notifications/", include("girjasoft_api.api_urls.notifications.urls")),
     path("payroll/", include("girjasoft_api.api_urls.payroll.urls")),
     path("attendance/", include("girjasoft_api.api_urls.attendance.urls")),
+    path("dashboard/", include("girjasoft_api.api_urls.dashboard.urls")),
     path("leave/", include("girjasoft_api.api_urls.leave.urls")),
 ]
